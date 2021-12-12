@@ -1,10 +1,10 @@
 extends:
   - stylelint-config-html/vue
   - stylelint-config-standard
-  - stylelint-config-recommended-scss
   - stylelint-config-recommended-vue
   - stylelint-config-prettier
 plugins:
   - stylelint-prettier
 rules:
+  color-function-notation: legacy
   prettier/prettier: true

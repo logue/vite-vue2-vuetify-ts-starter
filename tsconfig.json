@@ -13,9 +13,15 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": [
+      "node",
       "esnext",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",

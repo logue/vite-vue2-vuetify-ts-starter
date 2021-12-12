@@ -1,20 +1,19 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <hello-world msg="Welcome to Your Vue.js + TypeScript App" />
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '../components/HelloWorld.vue';
+import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 @Component({
+  name: 'Home',
   components: {
     HelloWorld,
   },
 })
-/** Home Component */
 export default class Home extends Vue {
   /*
   // Props
@@ -22,26 +21,26 @@ export default class Home extends Vue {
   readonly prop: string = 'prop';
 
   // Model and Data
-  data: string | null = null;
+  private data: string | null = null;
 
   // Computed
-  get computed(): string {
+  private get computed(): string {
     return this.$store.getters.computed;
   }
 
   // Watch
   @Watch('$route', { immediate: true })
-  onRouteChanged(): void {
+  private onRouteChanged(): void {
     // ...
   }
 
   // created or mounted etc.
-  created(): void {
+  private created(): void {
     // ...
   }
 
   // Methods
-  methods(): string {
+  public methods(): string {
     return 'method';
   }
   */

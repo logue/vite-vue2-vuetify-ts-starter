@@ -1,6 +1,11 @@
 import Vue from 'vue';
-import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import VueRouter, { Route, RouteConfig } from 'vue-router';
+import { Position } from 'vue-router/types/router';
+import goTo from 'vuetify/lib/services/goto';
+
+import Home from '@/views/Home.vue';
+import About from '@/views/About.vue';
+import ErrorPage from '@/views/Error.vue';
 
 Vue.use(VueRouter);
 
@@ -13,15 +18,42 @@ const routes: RouteConfig[] = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: About,
+  },
+  {
+    path: '*',
+    name: 'Error',
+    component: ErrorPage,
   },
 ];
 
-export default new VueRouter({
+const router: VueRouter = new VueRouter({
   mode: 'history',
+  scrollBehavior: async (
+    to: Route,
+    from: Route,
+    savedPosition: void | Position
+  ) => {
+    let scrollTo: number | string = 0;
+
+    if (to.hash) {
+      scrollTo = to.hash;
+    } else if (savedPosition) {
+      scrollTo = savedPosition.y;
+    }
+
+    return { x: 0, y: await goTo(scrollTo) };
+  },
   routes,
 });
+
+/*
+// @see https://github.com/championswimmer/vuex-persist#how-to-know-when-async-store-has-been-replaced
+router.beforeEach(
+  async (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
+    await store.restored;
+    next();
+  }
+);
+*/
+export default router;

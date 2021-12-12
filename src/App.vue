@@ -1,47 +1,160 @@
 <template>
-  <div id="app">
-    <nav id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <main>
-      <router-view />
-    </main>
-  </div>
+  <v-app>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-app-bar-title v-text="title" />
+    </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" permanent app>
+      <v-list nav dense>
+        <v-list-item-group>
+          <v-list-item link to="/">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item link to="/about">
+            <v-list-item-icon>
+              <v-icon>mdi-information</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>About</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-main>
+      <v-fade-transition mode="out-in">
+        <router-view />
+      </v-fade-transition>
+    </v-main>
+
+    <v-overlay v-model="loading">
+      <v-progress-circular indeterminate size="64" />
+    </v-overlay>
+
+    <v-snackbar
+      v-model="snackbar"
+      app
+      timeout="5000"
+      transition="scroll-y-transition"
+    >
+      {{ snackbarText }}
+      <template #action="{ attrs }">
+        <v-btn color="primary" icon v-bind="attrs" @click="snackbar = false">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
+  </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
+/**
+ * App
+ * @vuese
+ */
 @Component
-/** App Component */
 export default class App extends Vue {
-  beforeCreate() {
-    document.title = import.meta.env.VITE_APP_TITLE;
+  /** window title */
+  title: string = 'vite-vue2-vuetify-ts-starter';
+  /** drawer menu visibility */
+  drawer = false;
+  /** snackbar visibility */
+  snackbar = false;
+
+  /** theme dark mode */
+  get '$vuetify.theme.dark'(): boolean {
+    return this.$store.getters['ConfigModule/toggleTheme'];
+  }
+
+  /** snackbar text */
+  get snackbarText(): string {
+    return this.$store.getters.message;
+  }
+  /** progress percentage */
+  get progress(): number {
+    return this.$store.getters.progress;
+  }
+  set progress(value: number) {
+    this.$store.dispatch('setProgress', value);
+  }
+  /** loading overlay */
+  get loading(): boolean {
+    return this.$store.getters.loading;
+  }
+  set loading(value: boolean) {
+    this.$store.dispatch('setLoading', value);
+  }
+  /** Error Message */
+  get error(): boolean {
+    return this.$store.getters.error;
+  }
+  /** Toggle Theme Dark/Light mode */
+  get themeDark(): boolean {
+    return this.$store.getters['ConfigModule/themeDark'];
+  }
+
+  /** Theme Changer */
+  @Watch('themeDark')
+  onThemeChanged(): void {
+    this.$vuetify.theme.dark = this.$store.getters['ConfigModule/themeDark'];
+  }
+  /** Modify snackbar text */
+  @Watch('$store.getters.message')
+  onSnackbarTextChanged(): void {
+    this.snackbar = true;
+  }
+
+  /** when route change, hide snackbar */
+  @Watch('$route')
+  onRouteChanged(): void {
+    this.snackbar = false;
+  }
+  /** when loading */
+  @Watch('loading')
+  onLoading() {
+    // console.log('loading:', this.loading);
+    // change cursor
+    document.body.style.cursor = this.loading ? 'wait' : 'auto';
+  }
+
+  @Watch('error')
+  onError() {
+    this.$router.push({ name: 'Error' });
+  }
+
+  /** run once. */
+  async mounted() {
+    this.$vuetify.theme.dark = this.$store.getters['ConfigModule/themeDark'];
+    document.title = this.title;
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss">
+@import 'node_modules/vuetify/src/styles/styles';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-#nav {
-  padding: 30px;
+::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: rgba(map-get($grey, 'lighten-2'), 1);
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 0.25rem rgba(map-get($grey, 'base'), 0.1);
+  background-color: map-get($grey, 'darken-1');
 }
 </style>

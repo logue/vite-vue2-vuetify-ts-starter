@@ -1,11 +1,6 @@
-# Vue 2 + Typescript + Vite
+# Vue 2 + Typescript + Vite + Vuetify
 
-FOR EXPERIMENTAL.
-
-> Attach this to the Vue project. I developed it with reference to Vite's build tool.
-> This is different from the previous one, and the output is several times different. Amazing, Vue's performance jumps several times!!! Take it, and install it right away and try it out.
-
--- Tem Ray
+This is a [starter project](https://github.com/logue/vite-vue2-ts-starter) that uses [Vuetify](https://vuetifyjs.com/) as the UI framework. Please use scss version 1.32.12 due to a problem on the Vuetify side.
 
 ## Description
 
