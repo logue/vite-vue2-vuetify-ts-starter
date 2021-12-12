@@ -1,0 +1,30 @@
+root: true
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - google
+  - plugin:vue/recommended
+  - plugin:prettier-vue/recommended
+  - prettier
+  - eslint-config-prettier
+parser: vue-eslint-parser
+parserOptions:
+  ecmaVersion: latest
+  parser: '@typescript-eslint/parser'
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - vuejs-accessibility
+rules: {
+  require-jsdoc: off,
+  valid-jsdoc: off,
+  new-cap: off,
+  vue/html-self-closing: [error,
+    html: {
+      void: always
+    }
+  ]
+}
