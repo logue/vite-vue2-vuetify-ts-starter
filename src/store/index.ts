@@ -76,7 +76,7 @@ const actions: ActionTree<RootState, RootState> = {
 
 /** VuexStore */
 const store: StoreOptions<RootState> = {
-  strict: process.env.NODE_ENV !== 'production',
+  strict: import.meta.env.PROD,
   state,
   getters,
   mutations,
@@ -86,7 +86,7 @@ const store: StoreOptions<RootState> = {
   },
   plugins: [
     new VuexPersistence({
-      key: 'Vuetify',
+      key: import.meta.env.VITE_APP_STORAGE_NAMESPACE,
       storage: window.localStorage,
       modules: ['ConfigModule'],
     }).plugin,

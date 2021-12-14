@@ -13,7 +13,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": [
-      "node",
       "esnext",
       "dom"
     ],
@@ -21,7 +20,10 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": [
+      "vuetify"
+    ]
   },
   "include": [
     "src/**/*.ts",

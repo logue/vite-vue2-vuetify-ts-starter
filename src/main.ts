@@ -1,5 +1,5 @@
 /**
- * Vuetify Electron
+ * Vuetify Vite
  *
  * @author    Logue <logue@hotmail.co.jp>
  * @version   0.0.0

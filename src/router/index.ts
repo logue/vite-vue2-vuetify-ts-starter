@@ -34,6 +34,7 @@ const router: VueRouter = new VueRouter({
     from: Route,
     savedPosition: void | Position
   ) => {
+    // https://vuetifyjs.com/features/scrolling/#router3067306e4f7f7528
     let scrollTo: number | string = 0;
 
     if (to.hash) {

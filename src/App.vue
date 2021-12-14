@@ -7,6 +7,14 @@
       <v-btn icon @click="$store.dispatch('ConfigModule/toggleTheme')">
         <v-icon v-text="'mdi-invert-colors'" />
       </v-btn>
+      <v-progress-linear
+        :active="loading"
+        :indeterminate="progress === null"
+        :value="progress"
+        absolute
+        bottom
+        color="primary accent-3"
+      />
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" permanent app>
