@@ -18,7 +18,7 @@ export interface ConfigState {
   locale: string;
 }
 
-/** Default state value */
+/** Default Configure state value */
 const state: ConfigState = {
   themeDark: window.matchMedia('(prefers-color-scheme: dark)').matches,
   locale:
@@ -26,13 +26,13 @@ const state: ConfigState = {
     window.navigator.language,
 };
 
-// Getters
+/** Getters */
 const getters: GetterTree<ConfigState, RootState> = {
   themeDark: (s): boolean => s.themeDark,
   locale: (s): string => s.locale,
 };
 
-// Mutation
+/** Mutations */
 const mutations: MutationTree<ConfigState> = {
   toggleTheme(s) {
     s.themeDark = !s.themeDark;
@@ -42,7 +42,7 @@ const mutations: MutationTree<ConfigState> = {
   },
 };
 
-// Action
+/** Action */
 const actions: ActionTree<ConfigState, RootState> = {
   /**
    * Switch Dark/Light mode.
@@ -61,7 +61,7 @@ const actions: ActionTree<ConfigState, RootState> = {
   },
 };
 
-// VuexStore
+/** VuexStore */
 const ConfigModule: Module<ConfigState, RootState> = {
   namespaced: true,
   state,

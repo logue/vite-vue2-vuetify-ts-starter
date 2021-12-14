@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
-// ロケール
 import ja from 'vuetify/es5/locale/ja';
 import en from 'vuetify/es5/locale/en';
 
@@ -16,16 +15,20 @@ export default new Vuetify({
     iconfont: 'mdi',
   },
   lang: {
+    current: navigator.language,
     locales: { ja, en },
   },
   theme: {
     options: {
       themeCache: {
-        get: (key: VuetifyParsedTheme) =>
-          localStorage.getItem(key as unknown as string),
-        set: (key: VuetifyParsedTheme, value: string) =>
-          localStorage.setItem(key as unknown as string, value),
+        get: (key: VuetifyParsedTheme) => {
+          return localStorage.getItem(JSON.stringify(key));
+        },
+        set: (key: VuetifyParsedTheme, value: string) => {
+          localStorage.setItem(JSON.stringify(key), value);
+        },
       },
+      customProperties: true,
     },
   },
 });

@@ -3,6 +3,10 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-app-bar-title v-text="title" />
+      <v-spacer />
+      <v-btn icon @click="$store.dispatch('ConfigModule/toggleTheme')">
+        <v-icon v-text="'mdi-invert-colors'" />
+      </v-btn>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" permanent app>
@@ -54,11 +58,10 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 
+@Component
 /**
  * App
- * @vuese
  */
-@Component
 export default class App extends Vue {
   /** window title */
   title: string = 'vite-vue2-vuetify-ts-starter';
@@ -76,17 +79,25 @@ export default class App extends Vue {
   get snackbarText(): string {
     return this.$store.getters.message;
   }
-  /** progress percentage */
+  /** get progress percentage */
   get progress(): number {
     return this.$store.getters.progress;
   }
+  /**
+   * set progress percentage
+   * @param value percentage
+   */
   set progress(value: number) {
     this.$store.dispatch('setProgress', value);
   }
-  /** loading overlay */
+  /** get loading overlay visibility */
   get loading(): boolean {
     return this.$store.getters.loading;
   }
+  /**
+   * set loading overlay
+   * @param value visibility
+   */
   set loading(value: boolean) {
     this.$store.dispatch('setLoading', value);
   }
@@ -123,6 +134,7 @@ export default class App extends Vue {
     document.body.style.cursor = this.loading ? 'wait' : 'auto';
   }
 
+  /** When error has occurred */
   @Watch('error')
   onError() {
     this.$router.push({ name: 'Error' });

@@ -11,8 +11,9 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@',
-        replacement: `${path.resolve(__dirname, './src')}`,
+        // vue @ shortcut fix
+        find: '@/',
+        replacement: `${path.resolve(__dirname, './src')}/`,
       },
       {
         find: 'src/',

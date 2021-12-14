@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
+  <v-container class="home">
+    <hello-world msg="Welcome to Your Vue.js + TypeScript App" />
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -9,11 +9,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 @Component({
-  name: 'Home',
   components: {
     HelloWorld,
   },
 })
+/**
+ * Home
+ */
 export default class Home extends Vue {
   /*
   // Props
@@ -21,26 +23,26 @@ export default class Home extends Vue {
   readonly prop: string = 'prop';
 
   // Model and Data
-  private data: string | null = null;
+  data: string | null = null;
 
   // Computed
-  private get computed(): string {
+  get computed(): string {
     return this.$store.getters.computed;
   }
 
   // Watch
   @Watch('$route', { immediate: true })
-  private onRouteChanged(): void {
+  onRouteChanged(): void {
     // ...
   }
 
   // created or mounted etc.
-  private created(): void {
+  created(): void {
     // ...
   }
 
   // Methods
-  public methods(): string {
+  methods(): string {
     return 'method';
   }
   */

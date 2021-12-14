@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "target": "esnext",
     "useDefineForClassFields": true,
     "experimentalDecorators": true,

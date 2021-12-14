@@ -13,6 +13,7 @@ import ConfigModule from './ConfigModule';
 
 Vue.use(Vuex);
 
+/** Root State Interface */
 export interface RootState {
   // Loading overlay
   loading: boolean;
@@ -24,7 +25,7 @@ export interface RootState {
   error: string | null;
 }
 
-// State
+/** State Default value */
 const state: RootState = {
   loading: false,
   progress: 0,
@@ -32,7 +33,7 @@ const state: RootState = {
   error: null,
 };
 
-// Getters
+/** Getters */
 const getters: GetterTree<RootState, RootState> = {
   loading: (s): boolean => s.loading,
   progress: (s): number => s.progress,
@@ -40,7 +41,7 @@ const getters: GetterTree<RootState, RootState> = {
   error: (s): string | null => s.error,
 };
 
-// Mutation
+/** Mutations */
 const mutations: MutationTree<RootState> = {
   setLoading(s, display: boolean) {
     s.loading = display;
@@ -57,7 +58,7 @@ const mutations: MutationTree<RootState> = {
   },
 };
 
-// Action
+/** Actions */
 const actions: ActionTree<RootState, RootState> = {
   setLoading(context: ActionContext<RootState, RootState>, display = false) {
     context.commit('setLoading', display);
@@ -73,7 +74,7 @@ const actions: ActionTree<RootState, RootState> = {
   },
 };
 
-// VuexStore
+/** VuexStore */
 const store: StoreOptions<RootState> = {
   strict: process.env.NODE_ENV !== 'production',
   state,
@@ -84,14 +85,12 @@ const store: StoreOptions<RootState> = {
     ConfigModule,
   },
   plugins: [
-    // ブラウザを閉じても保存されるデータ
     new VuexPersistence({
-      key: 'NgsTools',
+      key: 'Vuetify',
       storage: window.localStorage,
       modules: ['ConfigModule'],
     }).plugin,
     /*
-    // ブラウザを閉じるまで保存されるデータ
     new VuexPersistence({
       key: 'pipBoyA',
       storage: window.sessionStorage,
