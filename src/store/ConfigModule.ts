@@ -12,9 +12,9 @@ import { RootState } from '.';
 
 /** Config State */
 export interface ConfigState {
-  // Dark Theme mode
+  /** Dark Theme mode */
   themeDark: boolean;
-  // Language
+  /** Language */
   locale: string;
 }
 

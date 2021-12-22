@@ -43,34 +43,83 @@ const getters: GetterTree<RootState, RootState> = {
 
 /** Mutations */
 const mutations: MutationTree<RootState> = {
-  setLoading(s, display: boolean) {
+  /**
+   * Store loading
+   * @param s Vuex state
+   * @param display payload
+   */
+  storeLoading(s, display: boolean) {
     s.loading = display;
   },
-  setProgress(s, progress: number) {
+  /**
+   * store progress
+   * @param s Vuex state
+   * @param progres spayload
+   */
+  storeProgress(s, progress: number) {
     s.progress = progress;
     s.loading = true;
   },
-  setMessage(s, message: string) {
+  /**
+   * Store snackbar text
+   * @param s Vuex state
+   * @param message payload
+   */
+  storeMessage(s, message: string) {
     s.message = message;
   },
-  setError(s, error: string) {
+  /**
+   * Store error message
+   * @param s Vuex state
+   * @param error payload
+   */
+  storeError(s, error: string) {
     s.error = error;
   },
 };
 
 /** Actions */
 const actions: ActionTree<RootState, RootState> = {
-  setLoading(context: ActionContext<RootState, RootState>, display = false) {
-    context.commit('setLoading', display);
+  /**
+   * Loading overlay visibility
+   * @param context Vuex Context
+   * @param display visibility
+   */
+  setLoading(
+    context: ActionContext<RootState, RootState>,
+    display: boolean = false
+  ) {
+    context.commit('storetLoading', display);
   },
-  setProgress(context: ActionContext<RootState, RootState>, progress = 0) {
-    context.commit('setProgress', progress);
+  /**
+   * Loading progress bar value
+   * @param context Vuex Context
+   * @param progress percentage(0~100)
+   */
+  setProgress(
+    context: ActionContext<RootState, RootState>,
+    progress: number = 0
+  ) {
+    context.commit('storeProgress', progress);
   },
-  setMessage(context: ActionContext<RootState, RootState>, message = null) {
-    context.commit('setMessage', message);
+  /**
+   * Set snackbar message.
+   * @param context Vuex Context
+   * @param message message text
+   */
+  setMessage(
+    context: ActionContext<RootState, RootState>,
+    message: string = null
+  ) {
+    context.commit('storeMessage', message);
   },
+  /**
+   * Set Error message
+   * @param context Vuex Context
+   * @param error error message etc.
+   */
   setError(context: ActionContext<RootState, RootState>, error = null) {
-    context.commit('setError', error);
+    context.commit('storeError', error);
   },
 };
 
@@ -86,19 +135,21 @@ const store: StoreOptions<RootState> = {
   },
   plugins: [
     new VuexPersistence({
-      key: import.meta.env.VITE_APP_STORAGE_NAMESPACE,
+      key: import.meta.env.VITE_APP_WEBSTORAGE_NAMESPACE,
       storage: window.localStorage,
       modules: ['ConfigModule'],
     }).plugin,
     /*
+    // store as session storage
     new VuexPersistence({
-      key: 'pipBoyA',
+      key: import.meta.env.VITE_APP_WEBSTORAGE_NAMESPACE,
       storage: window.sessionStorage,
-      modules: ['MapLocationModule', 'CheckModule'],
+      modules: ['SomeModule'],
     }).plugin,
+    // store as Indexed DB (using vuex-persist-indexeddb)
     createPersistedState({
-      key: 'PipBoyA',
-      paths: ['CategoryMarkerModule'],
+      key: import.meta.env.VITE_APP_WEBSTORAGE_NAMESPACE,
+      paths: ['SomeLargeModule'],
     }),
     */
   ],

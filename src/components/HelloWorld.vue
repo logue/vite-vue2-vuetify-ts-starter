@@ -8,7 +8,7 @@
           contain
           height="200"
         />
-        <p>{{ msg }}</p>
+        <p v-text="msg" />
       </v-col>
 
       <v-col class="mb-4">

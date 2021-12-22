@@ -82,7 +82,6 @@ export default class App extends Vue {
   get '$vuetify.theme.dark'(): boolean {
     return this.$store.getters['ConfigModule/toggleTheme'];
   }
-
   /** snackbar text */
   get snackbarText(): string {
     return this.$store.getters.message;

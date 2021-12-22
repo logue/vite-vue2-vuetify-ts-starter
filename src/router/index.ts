@@ -28,6 +28,7 @@ const routes: RouteConfig[] = [
 ];
 
 const router: VueRouter = new VueRouter({
+  base: import.meta.env.BASE_URL,
   mode: 'history',
   scrollBehavior: async (
     to: Route,

@@ -9,7 +9,7 @@ import en from 'vuetify/es5/locale/en';
 */
 
 import '@mdi/font/css/materialdesignicons.css';
-import '@fontsource/noto-sans-jp';
+// import '@fontsource/noto-sans-jp';
 
 Vue.use(Vuetify);
 
