@@ -34,9 +34,16 @@ export default defineConfig({
   },
   plugins: [
     // Vue2
-    createVuePlugin(),
+    createVuePlugin({
+      target: 'esnext',
+    }),
     // Vuetify
     Components({
+      // generate `components.d.ts` global declarations
+      dts: true,
+      // auto import for directives
+      directives: false,
+      // resolvers for custom components
       resolvers: [VuetifyResolver()],
     }),
     // eslint
