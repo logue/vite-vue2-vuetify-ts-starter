@@ -75,7 +75,6 @@ export default defineConfig({
           // if you use Code encryption by rollup-plugin-obfuscator
           obfuscator({
             globalOptions: {
-              domainLock: ['ngs.logue.be'],
               debugProtection: true,
             },
           }),

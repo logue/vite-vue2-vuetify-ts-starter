@@ -23,6 +23,7 @@
       ]
     },
     "types": [
+      "vite/client",
       "node",
       "vuetify"
     ]

@@ -73,7 +73,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
  */
 export default class App extends Vue {
   /** window title */
-  title: string = 'vite-vue2-vuetify-ts-starter';
+  title: string = import.meta.env.VITE_APP_TITLE;
   /** drawer menu visibility */
   drawer = false;
   /** snackbar visibility */

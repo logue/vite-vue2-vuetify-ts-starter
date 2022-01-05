@@ -5,6 +5,7 @@ extends:
   - stylelint-config-recommended-vue
   - stylelint-config-prettier
 plugins:
+  - stylelint-order
   - stylelint-prettier
 rules:
   prettier/prettier: true
