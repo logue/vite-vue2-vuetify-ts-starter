@@ -7,10 +7,12 @@ extends:
 plugins:
   - stylelint-order
   - stylelint-prettier
+ignoreFiles:
+  - 'dist/**/*'
 rules:
   prettier/prettier: true
-  color-function-notation: legacy
-  selector-class-pattern: null
-  no-descending-specificity: null
   at-rule-no-unknown: null
+  color-function-notation: legacy
+  no-descending-specificity: null
+  selector-class-pattern: null
   scss/no-global-function-names: null

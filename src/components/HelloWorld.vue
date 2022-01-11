@@ -8,7 +8,7 @@
           contain
           height="200"
         />
-        <p v-text="msg" />
+        <p v-text="message" />
       </v-col>
 
       <v-col class="mb-4">
@@ -34,9 +34,8 @@
             :href="next.href"
             class="subheading mx-3"
             target="_blank"
-          >
-            {{ next.text }}
-          </a>
+            v-text="next.text"
+          />
         </v-row>
       </v-col>
 
@@ -50,9 +49,8 @@
             :href="link.href"
             class="subheading mx-3"
             target="_blank"
-          >
-            {{ link.text }}
-          </a>
+            v-text="link.text"
+          />
         </v-row>
       </v-col>
 
@@ -66,9 +64,8 @@
             :href="eco.href"
             class="subheading mx-3"
             target="_blank"
-          >
-            {{ eco.text }}
-          </a>
+            v-text="eco.text"
+          />
         </v-row>
       </v-col>
     </v-row>
@@ -76,28 +73,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, PropSync, Vue } from 'vue-property-decorator';
 
 @Component
 /**
  * HelloWorld Component
  */
 export default class HelloWorld extends Vue {
-  ecosystem = [
+  whatsNext: Record<string, string>[] = [
     {
-      text: 'vuetify-loader',
-      href: 'https://github.com/vuetifyjs/vuetify-loader',
+      text: 'Explore components',
+      href: 'https://vuetifyjs.com/components/api-explorer',
     },
     {
-      text: 'github',
-      href: 'https://github.com/vuetifyjs/vuetify',
+      text: 'Select a layout',
+      href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
     },
     {
-      text: 'awesome-vuetify',
-      href: 'https://github.com/vuetifyjs/awesome-vuetify',
+      text: 'Frequently Asked Questions',
+      href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
     },
   ];
-  importantLinks = [
+
+  importantLinks: Record<string, string>[] = [
     {
       text: 'Documentation',
       href: 'https://vuetifyjs.com',
@@ -119,22 +117,23 @@ export default class HelloWorld extends Vue {
       href: 'https://medium.com/vuetify',
     },
   ];
-  whatsNext = [
+
+  ecosystem: Record<string, string>[] = [
     {
-      text: 'Explore components',
-      href: 'https://vuetifyjs.com/components/api-explorer',
+      text: 'unplugin-vue-components',
+      href: 'https://github.com/antfu/unplugin-vue-components',
     },
     {
-      text: 'Select a layout',
-      href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
+      text: 'github',
+      href: 'https://github.com/vuetifyjs/vuetify',
     },
     {
-      text: 'Frequently Asked Questions',
-      href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+      text: 'awesome-vuetify',
+      href: 'https://github.com/vuetifyjs/awesome-vuetify',
     },
   ];
 
-  @Prop()
-  readonly msg: string;
+  @PropSync('msg', { type: String })
+  readonly message: string;
 }
 </script>

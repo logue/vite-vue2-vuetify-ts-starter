@@ -10,9 +10,11 @@ extends:
   - plugin:vuetify/recommended
   - plugin:prettier-vue/recommended
   - prettier
+  - plugin:yaml/recommended
   - eslint-config-prettier
 plugins:
   - prettier
+  - yaml
   - '@typescript-eslint'
   - vuejs-accessibility
 parser: vue-eslint-parser
@@ -22,8 +24,8 @@ parserOptions:
   sourceType: module
 rules:
   prettier/prettier: error
+  new-cap: off
   require-jsdoc: warn
   valid-jsdoc: off
-  new-cap: off
   vue/html-self-closing: [error, html: { void: always }]
   vue/multi-word-component-names: warn

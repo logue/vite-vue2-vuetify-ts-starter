@@ -40,7 +40,7 @@ export default defineConfig({
     // Vuetify
     Components({
       // generate `components.d.ts` global declarations
-      dts: true,
+      // dts: true,
       // auto import for directives
       directives: false,
       // resolvers for custom components

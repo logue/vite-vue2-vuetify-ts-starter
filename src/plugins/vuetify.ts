@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
 import { VuetifyParsedTheme } from 'vuetify/types/services/theme';
+import { loadFonts } from './webfontloader';
 /*
 // Locale
 import i18n from './i18n';
@@ -9,7 +10,7 @@ import en from 'vuetify/es5/locale/en';
 */
 
 import '@mdi/font/css/materialdesignicons.css';
-// import '@fontsource/noto-sans-jp';
+loadFonts();
 
 Vue.use(Vuetify);
 
