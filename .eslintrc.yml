@@ -23,8 +23,9 @@ parserOptions:
   parser: '@typescript-eslint/parser'
   sourceType: module
 rules:
-  prettier/prettier: error
   new-cap: off
+  no-invalid-this: off
+  prettier/prettier: error
   require-jsdoc: warn
   valid-jsdoc: off
   vue/html-self-closing: [error, html: { void: always }]
