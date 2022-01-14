@@ -89,7 +89,7 @@ const actions: ActionTree<RootState, RootState> = {
     context: ActionContext<RootState, RootState>,
     display: boolean = false
   ) {
-    context.commit('storetLoading', display);
+    context.commit('storeLoading', display);
   },
   /**
    * Loading progress bar value
