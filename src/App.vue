@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-app-bar-title v-text="title" />
       <v-spacer />
       <v-btn icon @click="$store.dispatch('ConfigModule/toggleTheme')">
@@ -17,9 +17,9 @@
       />
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" permanent app>
+    <v-navigation-drawer v-model="drawer" app>
       <v-list>
-        <v-list-item link to="/">
+        <v-list-item link :to="{ name: 'Home' }">
           <v-list-item-icon>
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
@@ -75,9 +75,9 @@ export default class App extends Vue {
   /** window title */
   title: string = import.meta.env.VITE_APP_TITLE;
   /** drawer menu visibility */
-  drawer = false;
+  drawer?: boolean = null;
   /** snackbar visibility */
-  snackbar = false;
+  snackbar: boolean = false;
 
   /** theme dark mode */
   get '$vuetify.theme.dark'(): boolean {
