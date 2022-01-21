@@ -68,43 +68,43 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component
-/**
- * App
- */
+/** App */
 export default class App extends Vue {
-  /** window title */
+  /** Window title */
   title: string = import.meta.env.VITE_APP_TITLE;
-  /** drawer menu visibility */
+  /** Drawer menu visibility */
   drawer?: boolean = null;
-  /** snackbar visibility */
+  /** Snackbar visibility */
   snackbar: boolean = false;
 
-  /** theme dark mode */
+  /** Theme dark mode */
   get '$vuetify.theme.dark'(): boolean {
     return this.$store.getters['ConfigModule/toggleTheme'];
   }
-  /** snackbar text */
+  /** Snackbar text */
   get snackbarText(): string {
     return this.$store.getters.message;
   }
-  /** get progress percentage */
+  /** Get progress percentage */
   get progress(): number {
     return this.$store.getters.progress;
   }
   /**
-   * set progress percentage
-   * @param value percentage
+   * Set progress percentage
+   *
+   * @param value - Percentage
    */
   set progress(value: number) {
     this.$store.dispatch('setProgress', value);
   }
-  /** get loading overlay visibility */
+  /** Get loading overlay visibility */
   get loading(): boolean {
     return this.$store.getters.loading;
   }
   /**
-   * set loading overlay
-   * @param value visibility
+   * Set loading overlay
+   *
+   * @param value - Visibility
    */
   set loading(value: boolean) {
     this.$store.dispatch('setLoading', value);
@@ -129,12 +129,12 @@ export default class App extends Vue {
     this.snackbar = true;
   }
 
-  /** when route change, hide snackbar */
+  /** When route change, hide snackbar */
   @Watch('$route')
   onRouteChanged(): void {
     this.snackbar = false;
   }
-  /** when loading */
+  /** When loading */
   @Watch('loading')
   onLoading() {
     // console.log('loading:', this.loading);
@@ -148,7 +148,7 @@ export default class App extends Vue {
     this.$router.push({ name: 'Error' });
   }
 
-  /** run once. */
+  /** Run once. */
   mounted() {
     this.$vuetify.theme.dark = this.$store.getters['ConfigModule/themeDark'];
     document.title = this.title;

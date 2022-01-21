@@ -7,15 +7,16 @@ extends:
   - google
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:vue/recommended
-  - plugin:vuetify/recommended
   - plugin:prettier-vue/recommended
   - prettier
   - plugin:yaml/recommended
   - eslint-config-prettier
 plugins:
+  - vue
   - prettier
   - yaml
   - '@typescript-eslint'
+  - eslint-plugin-tsdoc
   - vuejs-accessibility
 parser: vue-eslint-parser
 parserOptions:
@@ -27,6 +28,7 @@ rules:
   no-invalid-this: off
   prettier/prettier: error
   require-jsdoc: warn
+  tsdoc/syntax: warn
   valid-jsdoc: off
   vue/html-self-closing: [error, html: { void: always }]
   vue/multi-word-component-names: warn

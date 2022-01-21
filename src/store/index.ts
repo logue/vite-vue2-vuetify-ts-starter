@@ -15,14 +15,14 @@ Vue.use(Vuex);
 
 /** Root State Interface */
 export interface RootState {
-  // Loading overlay
+  /* + Loading overlay */
   loading: boolean;
-  // ProgressBar Percentage
+  /** ProgressBar Percentage */
   progress: number;
-  // SnackBar Text
-  message: string | null;
-  // Error Message
-  error: string | null;
+  /** SnackBar Text */
+  message?: string;
+  /** Error Message */
+  error?: string;
 }
 
 /** State Default value */
@@ -45,16 +45,18 @@ const getters: GetterTree<RootState, RootState> = {
 const mutations: MutationTree<RootState> = {
   /**
    * Store loading
-   * @param s Vuex state
-   * @param display payload
+   *
+   * @param s - Vuex state
+   * @param display - Payload
    */
   storeLoading(s, display: boolean) {
     s.loading = display;
   },
   /**
-   * store progress
-   * @param s Vuex state
-   * @param progres spayload
+   * Store progress
+   *
+   * @param s - Vuex state
+   * @param progres - Spayload
    */
   storeProgress(s, progress: number) {
     s.progress = progress;
@@ -62,16 +64,18 @@ const mutations: MutationTree<RootState> = {
   },
   /**
    * Store snackbar text
-   * @param s Vuex state
-   * @param message payload
+   *
+   * @param s - Vuex state
+   * @param message - Payload
    */
   storeMessage(s, message: string) {
     s.message = message;
   },
   /**
    * Store error message
-   * @param s Vuex state
-   * @param error payload
+   *
+   * @param s - Vuex state
+   * @param error - Payload
    */
   storeError(s, error: string) {
     s.error = error;
@@ -82,8 +86,9 @@ const mutations: MutationTree<RootState> = {
 const actions: ActionTree<RootState, RootState> = {
   /**
    * Loading overlay visibility
-   * @param context Vuex Context
-   * @param display visibility
+   *
+   * @param context - Vuex Context
+   * @param display - Visibility
    */
   setLoading(
     context: ActionContext<RootState, RootState>,
@@ -93,8 +98,9 @@ const actions: ActionTree<RootState, RootState> = {
   },
   /**
    * Loading progress bar value
-   * @param context Vuex Context
-   * @param progress percentage(0~100)
+   *
+   * @param context - Vuex Context
+   * @param progress - Percentage(0~100)
    */
   setProgress(
     context: ActionContext<RootState, RootState>,
@@ -104,8 +110,9 @@ const actions: ActionTree<RootState, RootState> = {
   },
   /**
    * Set snackbar message.
-   * @param context Vuex Context
-   * @param message message text
+   *
+   * @param context - Vuex Context
+   * @param message - Message text
    */
   setMessage(
     context: ActionContext<RootState, RootState>,
@@ -115,8 +122,9 @@ const actions: ActionTree<RootState, RootState> = {
   },
   /**
    * Set Error message
-   * @param context Vuex Context
-   * @param error error message etc.
+   *
+   * @param context - Vuex Context
+   * @param error - Error message etc.
    */
   setError(context: ActionContext<RootState, RootState>, error = null) {
     context.commit('storeError', error);

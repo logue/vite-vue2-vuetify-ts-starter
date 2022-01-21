@@ -17,9 +17,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-/**
- * Error
- */
+/** Error */
 export default class Error extends Vue {
   /** Get Error Message */
   get error(): string {

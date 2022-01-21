@@ -1,6 +1,4 @@
-/**
- * Config store
- */
+/** Config store */
 import {
   ActionContext,
   ActionTree,
@@ -46,15 +44,17 @@ const mutations: MutationTree<ConfigState> = {
 const actions: ActionTree<ConfigState, RootState> = {
   /**
    * Switch Dark/Light mode.
-   * @param context Vuex Context
+   *
+   * @param context - Vuex Context
    */
   toggleTheme(context: ActionContext<ConfigState, RootState>) {
     context.commit('toggleTheme');
   },
   /**
    * Change locale.
-   * @param context Vuex Context
-   * @param locale locale code
+   *
+   * @param context - Vuex Context
+   * @param locale - Locale code
    */
   setLocale(context: ActionContext<ConfigState, RootState>, locale = 'en') {
     context.commit('setLocale', locale);

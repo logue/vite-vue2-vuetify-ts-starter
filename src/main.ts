@@ -1,11 +1,4 @@
-/**
- * Vuetify Vite
- *
- * @author    Logue <logue@hotmail.co.jp>
- * @version   0.0.0
- * @copyright 2021 Masashi Yoshikawa <https://logue.dev/> All rights reserved.
- * @license   MIT
- */
+/** Vuetify Vite */
 
 import Vue from 'vue';
 import App from './App.vue';

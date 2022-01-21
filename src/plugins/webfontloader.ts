@@ -1,7 +1,7 @@
 /**
- * plugins/webfontloader.js
+ * Plugins/webfontloader.js
  *
- * webfontloader documentation: https://github.com/typekit/webfontloader
+ * Webfontloader documentation: https://github.com/typekit/webfontloader
  */
 export async function loadFonts(): Promise<void> {
   const webFontLoader = await import(

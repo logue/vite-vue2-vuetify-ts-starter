@@ -76,9 +76,7 @@
 import { Component, PropSync, Vue } from 'vue-property-decorator';
 
 @Component
-/**
- * HelloWorld Component
- */
+/** HelloWorld Component */
 export default class HelloWorld extends Vue {
   whatsNext: Record<string, string>[] = [
     {
