@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "vite-vue2-vuetify-ts-starter",
   "private": true,
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Vue2 Vuetify TypeScript Startar project for Vite.",
   "author": {
     "name": "Logue",
@@ -17,14 +17,17 @@
   "bugs": {
     "url": "https://github.com/logue/vite-vue2-vuetify-ts-starter/issues"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf ./node_modules/.vite",
     "build": "vite build",
     "build:clean": "rimraf dist",
-    "lint": "eslint . --ext js,json,ts,yml,yaml,htm,html,vue --fix --cache && prettier **/*.{js,json,ts,yml,yaml,htm,html,vue} --write",
-    "lint:style": "stylelint **/*.{css,sass,scss,vue} --fix --cache && prettier **/*.{css,sass,scss,vue} --write",
+    "lint": "eslint . --ext js,jsx,ts,tsx,vue,json,yml,yaml,htm,html --fix --cache && prettier **/*.{js,jsx,ts,tsx,vue,json,yml,yaml,htm,html,md} --write",
+    "lint:style": "stylelint **/*.{css,sass,scss,htm,html,vue} --fix --cache && prettier **/*.{css,sass,scss,htm,html,vue} --write",
     "preview": "vite preview",
     "prepare": "husky install"
   },
@@ -44,7 +47,7 @@
     "@types/node": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
-    "@vue/compiler-sfc": "^3.2.27",
+    "@vue/compiler-sfc": "^3.2.29",
     "@vue/eslint-config-typescript": "^10.0.0",
     "eslint": "^8.7.0",
     "eslint-config-google": "^0.14.0",
@@ -57,13 +60,15 @@
     "eslint-plugin-vuetify": "^1.1.0",
     "eslint-plugin-yaml": "^0.5.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.2.2",
+    "lint-staged": "^12.3.1",
     "postcss-html": "^1.3.0",
+    "postcss-scss": "^4.0.3",
     "prettier": "^2.5.1",
     "prettier-plugin-jsdoc": "^0.3.30",
+    "prettier-plugin-md-nocjsp": "^1.2.0",
     "rimraf": "^3.0.2",
     "sass": "1.32.12",
-    "stylelint": "^14.2.0",
+    "stylelint": "^14.3.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-scss": "^5.0.2",
     "stylelint-config-recommended-vue": "^1.1.0",
@@ -73,12 +78,12 @@
     "typescript": "^4.5.5",
     "unplugin-vue-components": "^0.17.14",
     "vite": "^2.7.13",
-    "vite-plugin-env-compatible": "^1.1.1",
+    "vite-plugin-compression": "^0.4.0",
     "vite-plugin-eslint": "^1.3.0",
     "vite-plugin-vue2": "^1.9.2",
     "vue-eslint-parser": "^8.1.0",
     "vue-template-compiler": "^2.6.14",
-    "vue-tsc": "^0.30.6"
+    "vue-tsc": "^0.31.1"
   },
   "husky": {
     "hooks": {

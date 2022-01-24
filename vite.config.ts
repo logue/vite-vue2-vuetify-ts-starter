@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import { createVuePlugin } from 'vite-plugin-vue2';
-import eslintPlugin from 'vite-plugin-eslint';
-import viteStylelint from '@amatlash/vite-plugin-stylelint';
-import envCompatible from 'vite-plugin-env-compatible';
 import Components from 'unplugin-vue-components/vite';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import eslintPlugin from 'vite-plugin-eslint';
+import viteStylelint from '@amatlash/vite-plugin-stylelint';
+import viteCompression from 'vite-plugin-compression';
 import path from 'path';
 
 // https://vitejs.dev/config/
@@ -34,24 +34,35 @@ export default defineConfig({
   },
   plugins: [
     // Vue2
+    // https://github.com/underfin/vite-plugin-vue2
     createVuePlugin({
       target: 'esnext',
     }),
-    // Vuetify
+    // unplugin-vue-components
+    // https://github.com/antfu/unplugin-vue-components
     Components({
       // generate `components.d.ts` global declarations
       dts: true,
       // auto import for directives
       directives: false,
       // resolvers for custom components
-      resolvers: [VuetifyResolver()],
+      resolvers: [
+        // Vuetify
+        VuetifyResolver(),
+      ],
     }),
     // eslint
-    eslintPlugin(),
+    // https://github.com/gxmari007/vite-plugin-eslint
+    eslintPlugin({
+      fix: true,
+      include: '**/*.{js,jsx,ts,tsx,vue,json,yml,yaml,htm,html}',
+    }),
     // Stylelint
+    // https://github.com/gxmari007/vite-plugin-eslint
     viteStylelint(),
-    // fix .env file
-    envCompatible(),
+    // compress assets
+    // https://github.com/vbenjs/vite-plugin-compression
+    viteCompression(),
   ],
   css: {
     // https://vitejs.dev/config/#css-preprocessoroptions
