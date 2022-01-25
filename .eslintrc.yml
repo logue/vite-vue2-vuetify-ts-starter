@@ -29,6 +29,7 @@ parserOptions:
 rules:
   new-cap: off
   no-invalid-this: off
+  no-unused-vars: warn
   prettier/prettier: error
   require-jsdoc: warn
   tsdoc/syntax: warn
