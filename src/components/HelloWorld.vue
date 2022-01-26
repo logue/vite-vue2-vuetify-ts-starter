@@ -8,12 +8,18 @@
           contain
           height="200"
         />
-        <p v-text="message" />
+        <p v-text="msg" />
       </v-col>
 
       <v-col class="mb-4">
         <h1 class="text-h3 font-weight-bold mb-3">Welcome to Vuetify</h1>
-
+        <p>
+          Build:
+          <time
+            :datetime="meta.date"
+            v-text="new Date(meta.date).toLocaleString()"
+          />
+        </p>
         <p class="subheading font-weight-regular">
           For help and collaboration with other Vuetify developers,
           <br />
@@ -73,11 +79,15 @@
 </template>
 
 <script lang="ts">
-import { Component, PropSync, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import MetaInterface from '@/interfaces/MetaInterface';
+import Meta from '@/Meta';
 
 @Component
 /** HelloWorld Component */
 export default class HelloWorld extends Vue {
+  /** Whats next */
   whatsNext: Record<string, string>[] = [
     {
       text: 'Explore components',
@@ -92,7 +102,7 @@ export default class HelloWorld extends Vue {
       href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
     },
   ];
-
+  /** Important Links */
   importantLinks: Record<string, string>[] = [
     {
       text: 'Documentation',
@@ -115,7 +125,7 @@ export default class HelloWorld extends Vue {
       href: 'https://medium.com/vuetify',
     },
   ];
-
+  /** Ecosystem Links */
   ecosystem: Record<string, string>[] = [
     {
       text: 'unplugin-vue-components',
@@ -131,7 +141,11 @@ export default class HelloWorld extends Vue {
     },
   ];
 
-  @PropSync('msg', { type: String })
-  readonly message: string;
+  /** Message */
+  @Prop({ type: String })
+  msg: string;
+
+  /** Meta information */
+  meta: MetaInterface = Meta;
 }
 </script>

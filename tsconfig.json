@@ -3,7 +3,7 @@
   "compilerOptions": {
     "allowJs": false,
     "target": "esnext",
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": false,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
