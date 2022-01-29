@@ -6,6 +6,12 @@ declare module '*.vue' {
   export default Vue;
 }
 
+// Vuetify
+declare module 'vuetify/lib/framework' {
+  import Vuetify from 'vuetify';
+  export default Vuetify;
+}
+
 interface ImportMetaEnv {
   // see https://vitejs.dev/guide/env-and-mode.html#env-files
   // add .env variables.

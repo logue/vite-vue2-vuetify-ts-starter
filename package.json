@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "vite-vue2-vuetify-ts-starter",
   "private": true,
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Vue2 Vuetify TypeScript Startar project for Vite.",
   "author": {
     "name": "Logue",
@@ -27,7 +27,8 @@
     "build": "vite build",
     "build:clean": "rimraf dist",
     "lint": "eslint . --fix --cache && prettier . --write",
-    "lint:style": "stylelint **/*.{css,sass,scss,htm,html,vue} --fix --cache && prettier **/*.{css,sass,scss,htm,html,vue} --write",
+    "lint:style": "stylelint **/*.{css,sass,scss,htm,html,vue} --fix --cache",
+    "lint:markup": "vue-tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky install"
   },
@@ -44,23 +45,23 @@
   },
   "devDependencies": {
     "@amatlash/vite-plugin-stylelint": "^1.2.0",
-    "@types/node": "^17.0.12",
+    "@types/node": "^17.0.13",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "@vue/compiler-sfc": "^3.2.29",
     "@vue/eslint-config-typescript": "^10.0.0",
-    "eslint": "^8.7.0",
+    "eslint": "^8.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^3.1.0",
     "eslint-plugin-tsdoc": "^0.2.14",
-    "eslint-plugin-vue": "^8.3.0",
+    "eslint-plugin-vue": "^8.4.0",
     "eslint-plugin-vuejs-accessibility": "^1.1.1",
     "eslint-plugin-vuetify": "^1.1.0",
     "eslint-plugin-yaml": "^0.5.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.3.1",
+    "lint-staged": "^12.3.2",
     "postcss-html": "^1.3.0",
     "postcss-scss": "^4.0.3",
     "prettier": "^2.5.1",
@@ -76,7 +77,7 @@
     "stylelint-order": "^5.0.0",
     "stylelint-prettier": "^2.0.0",
     "typescript": "^4.5.5",
-    "unplugin-vue-components": "^0.17.14",
+    "unplugin-vue-components": "^0.17.15",
     "vite": "^2.7.13",
     "vite-plugin-eslint": "^1.3.0",
     "vite-plugin-vue2": "^1.9.3",
@@ -92,19 +93,10 @@
   "lint-staged": {
     "*.{vue,htm,html}": [
       "eslint --fix --cache",
-      "stylelint --fix --cache",
-      "prettier --write"
+      "stylelint --fix --cache"
     ],
-    "*.{js,ts,json,yml,yaml,htm,html}": [
-      "eslint --fix --cache",
-      "prettier --write"
-    ],
-    "*.{css,sass,scss,htm,html}": [
-      "stylelint --fix --cache",
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx,json,yml,yaml,htm,html}": "eslint --fix --cache",
+    "*.{css,sass,scss,htm,html}": "stylelint --fix --cache",
+    "*": "prettier -w -u"
   }
 }
