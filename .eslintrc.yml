@@ -8,12 +8,12 @@ extends:
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:vue/recommended
   - plugin:prettier-vue/recommended
+  - vuetify
   - prettier
   - plugin:yaml/recommended
   - eslint-config-prettier
 plugins:
   - vue
-  - vuetify
   - prettier
   - yaml
   - '@typescript-eslint'
