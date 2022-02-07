@@ -44,7 +44,7 @@
       </v-fade-transition>
     </v-main>
 
-    <v-overlay v-model="loading">
+    <v-overlay v-show="loading">
       <v-progress-circular indeterminate size="64" />
     </v-overlay>
 

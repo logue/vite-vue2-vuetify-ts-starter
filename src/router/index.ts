@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter, { Route, RouteConfig } from 'vue-router';
-import { Position } from 'vue-router/types/router';
+import { NavigationGuardNext, Position } from 'vue-router/types/router';
 import goTo from 'vuetify/lib/services/goto';
+import store from '@/store';
 
 import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
@@ -49,13 +50,21 @@ const router: VueRouter = new VueRouter({
   routes,
 });
 
-/*
-// @see https://github.com/championswimmer/vuex-persist#how-to-know-when-async-store-has-been-replaced
 router.beforeEach(
   async (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
-    await store.restored;
+    // Show Loading
+    store.dispatch('setLoading', true);
+    await Vue.nextTick();
+
+    // @see https://github.com/championswimmer/vuex-persist#how-to-know-when-async-store-has-been-replaced
+    // await store.restored;
+
     next();
   }
 );
-*/
+
+router.afterEach(() => {
+  // Hide Loading
+  store.dispatch('setLoading', false);
+});
 export default router;

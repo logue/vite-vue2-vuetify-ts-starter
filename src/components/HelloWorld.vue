@@ -87,6 +87,9 @@ import Meta from '@/Meta';
 @Component
 /** HelloWorld Component */
 export default class HelloWorld extends Vue {
+  /** Meta information */
+  meta: MetaInterface = Meta;
+
   /** Whats next */
   whatsNext: Record<string, string>[] = [
     {
@@ -102,6 +105,7 @@ export default class HelloWorld extends Vue {
       href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
     },
   ];
+
   /** Important Links */
   importantLinks: Record<string, string>[] = [
     {
@@ -125,6 +129,7 @@ export default class HelloWorld extends Vue {
       href: 'https://medium.com/vuetify',
     },
   ];
+
   /** Ecosystem Links */
   ecosystem: Record<string, string>[] = [
     {
@@ -143,9 +148,6 @@ export default class HelloWorld extends Vue {
 
   /** Message */
   @Prop({ type: String })
-  msg: string;
-
-  /** Meta information */
-  meta: MetaInterface = Meta;
+  readonly msg: string;
 }
 </script>
