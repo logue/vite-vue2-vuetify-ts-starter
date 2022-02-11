@@ -73,7 +73,7 @@ export default class App extends Vue {
   /** Window title */
   title: string = import.meta.env.VITE_APP_TITLE;
   /** Drawer menu visibility */
-  drawer?: boolean = null;
+  drawer: boolean = false;
   /** Snackbar visibility */
   snackbar: boolean = false;
 
@@ -173,7 +173,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 0.75rem;
   box-shadow: inset 0 0 0.25rem rgba(map-get($grey, 'base'), 0.1);
   background-color: map-get($grey, 'darken-1');
 }

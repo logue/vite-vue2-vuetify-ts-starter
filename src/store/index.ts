@@ -29,16 +29,16 @@ export interface RootState {
 const state: RootState = {
   loading: false,
   progress: 0,
-  message: null,
-  error: null,
+  message: undefined,
+  error: undefined,
 };
 
 /** Getters */
 const getters: GetterTree<RootState, RootState> = {
   loading: (s): boolean => s.loading,
   progress: (s): number => s.progress,
-  message: (s): string | null => s.message,
-  error: (s): string | null => s.error,
+  message: (s): string | undefined => s.message,
+  error: (s): string | undefined => s.error,
 };
 
 /** Mutations */
@@ -114,10 +114,7 @@ const actions: ActionTree<RootState, RootState> = {
    * @param context - Vuex Context
    * @param message - Message text
    */
-  setMessage(
-    context: ActionContext<RootState, RootState>,
-    message: string = null
-  ) {
+  setMessage(context: ActionContext<RootState, RootState>, message?: string) {
     context.commit('storeMessage', message);
   },
   /**
@@ -126,7 +123,7 @@ const actions: ActionTree<RootState, RootState> = {
    * @param context - Vuex Context
    * @param error - Error message etc.
    */
-  setError(context: ActionContext<RootState, RootState>, error = null) {
+  setError(context: ActionContext<RootState, RootState>, error?) {
     context.commit('storeError', error);
   },
 };
@@ -144,7 +141,7 @@ const store: StoreOptions<RootState> = {
   },
   plugins: [
     new VuexPersistence({
-      key: import.meta.env.VITE_APP_WEBSTORAGE_NAMESPACE,
+      key: import.meta.env.VITE_APP_WEBSTORAGE_NAMESPACE || 'vuex',
       storage: window.localStorage,
       modules: ['ConfigModule'],
     }).plugin,
