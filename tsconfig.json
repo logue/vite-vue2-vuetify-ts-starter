@@ -9,13 +9,14 @@
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
+    "noImplicitAny": false,
     "paths": {
       "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": false,
+    "strict": true,
     "target": "esnext",
     "types": ["vite/client", "node", "vuetify"],
     "useDefineForClassFields": false
