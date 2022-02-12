@@ -15,6 +15,7 @@ extends:
 plugins:
   - vue
   - prettier
+  - vuetify
   - yaml
   - eslint-plugin-tsdoc
   - '@typescript-eslint'
