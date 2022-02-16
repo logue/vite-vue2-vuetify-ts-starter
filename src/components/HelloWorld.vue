@@ -81,7 +81,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import MetaInterface from '@/interfaces/MetaInterface';
+import type MetaInterface from '@/interfaces/MetaInterface';
 import Meta from '@/Meta';
 
 @Component

@@ -1,11 +1,12 @@
 /** Config store */
-import {
+import type {
   ActionContext,
   ActionTree,
   GetterTree,
   Module,
   MutationTree,
 } from 'vuex';
+
 import { RootState } from '.';
 
 /** Config State */

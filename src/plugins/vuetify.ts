@@ -1,7 +1,7 @@
-import Vue from 'vue';
+import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
 import Vuetify from 'vuetify/lib/framework';
-import { VuetifyParsedTheme } from 'vuetify/types/services/theme';
-import { loadFonts } from './webfontloader';
+import Vue from 'vue';
+
 /*
 // Locale
 import i18n from './i18n';
@@ -10,6 +10,8 @@ import en from 'vuetify/es5/locale/en';
 */
 
 import '@mdi/font/css/materialdesignicons.css';
+import { loadFonts } from './webfontloader';
+
 loadFonts();
 
 Vue.use(Vuetify);

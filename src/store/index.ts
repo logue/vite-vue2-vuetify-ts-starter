@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Vuex, {
+import type {
   ActionContext,
   ActionTree,
   GetterTree,
@@ -7,8 +6,10 @@ import Vuex, {
   StoreOptions,
 } from 'vuex';
 import VuexPersistence from 'vuex-persist';
-// import createPersistedState from 'vuex-persist-indexeddb';
+import Vuex, { Store } from 'vuex';
+import Vue from 'vue';
 
+// Modules
 import ConfigModule from './ConfigModule';
 
 Vue.use(Vuex);
@@ -161,4 +162,4 @@ const store: StoreOptions<RootState> = {
   ],
 };
 
-export default new Vuex.Store<RootState>(store);
+export default new Store<RootState>(store);

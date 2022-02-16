@@ -1,15 +1,18 @@
-import Vue from 'vue';
-import VueRouter, { Route, RouteConfig } from 'vue-router';
-import { NavigationGuardNext, Position } from 'vue-router/types/router';
+import type { NavigationGuardNext, Position } from 'vue-router/types/router';
+import type { Route, RouteConfig } from 'vue-router';
 import goTo from 'vuetify/lib/services/goto';
+import VueRouter from 'vue-router';
 import store from '@/store';
+import Vue from 'vue';
 
-import Home from '@/views/Home.vue';
-import About from '@/views/About.vue';
+// View
 import ErrorPage from '@/views/Error.vue';
+import About from '@/views/About.vue';
+import Home from '@/views/Home.vue';
 
 Vue.use(VueRouter);
 
+/** Router Config */
 const routes: RouteConfig[] = [
   {
     path: '/',
@@ -33,7 +36,7 @@ const router: VueRouter = new VueRouter({
   mode: 'history', // abstract, hash, history
   scrollBehavior: async (
     to: Route,
-    from: Route,
+    _from: Route,
     savedPosition: void | Position
   ) => {
     // https://vuetifyjs.com/features/scrolling/#router3067306e4f7f7528
@@ -51,7 +54,7 @@ const router: VueRouter = new VueRouter({
 });
 
 router.beforeEach(
-  async (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
+  async (_to: Route, _from: Route, next: NavigationGuardNext<Vue>) => {
     // Show Loading
     store.dispatch('setLoading', true);
     await Vue.nextTick();
