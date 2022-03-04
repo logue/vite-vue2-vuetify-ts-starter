@@ -7,7 +7,7 @@ import type {
   MutationTree,
 } from 'vuex';
 
-import { RootState } from '.';
+import type { RootState } from '.';
 
 /** Config State */
 export interface ConfigState {

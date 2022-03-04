@@ -1,5 +1,9 @@
-import type { NavigationGuardNext, Position } from 'vue-router/types/router';
-import type { Route, RouteConfig } from 'vue-router';
+import type {
+  NavigationGuardNext,
+  Position,
+  Route,
+  RouteConfig,
+} from 'vue-router/types/router';
 import goTo from 'vuetify/lib/services/goto';
 import VueRouter from 'vue-router';
 import store from '@/store';

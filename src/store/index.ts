@@ -5,9 +5,11 @@ import type {
   MutationTree,
   StoreOptions,
 } from 'vuex';
-import VuexPersistence from 'vuex-persist';
 import Vuex, { Store } from 'vuex';
 import Vue from 'vue';
+
+// eslint-disable-next-line import/no-named-as-default
+import VuexPersistence from 'vuex-persist';
 
 // Modules
 import ConfigModule from './ConfigModule';
