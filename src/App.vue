@@ -18,8 +18,8 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app>
-      <v-list>
-        <v-list-item link :to="{ name: 'Home' }">
+      <v-list link>
+        <v-list-item :to="{ name: 'Home' }">
           <v-list-item-icon>
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
@@ -27,7 +27,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link :to="{ name: 'About' }">
+        <v-list-item :to="{ name: 'About' }">
           <v-list-item-icon>
             <v-icon>mdi-information</v-icon>
           </v-list-item-icon>
@@ -158,14 +158,6 @@ export default class App extends Vue {
 
 <style lang="scss">
 @import 'node_modules/vuetify/src/styles/styles';
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 ::-webkit-scrollbar {
   width: 0.75rem;

@@ -12,6 +12,7 @@ declare module 'vue' {
     VBtn: typeof import('vuetify/lib')['VBtn']
     VCol: typeof import('vuetify/lib')['VCol']
     VContainer: typeof import('vuetify/lib')['VContainer']
+    VDivider: typeof import('vuetify/lib')['VDivider']
     VFadeTransition: typeof import('vuetify/lib')['VFadeTransition']
     VIcon: typeof import('vuetify/lib')['VIcon']
     VImg: typeof import('vuetify/lib')['VImg']

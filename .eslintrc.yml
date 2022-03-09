@@ -16,7 +16,6 @@ extends:
   - eslint-config-prettier
 plugins:
   - vue
-  - prettier
   - vuetify
   - yaml
   - eslint-plugin-tsdoc
@@ -33,8 +32,8 @@ rules:
   new-cap: off
   no-invalid-this: off
   no-unused-vars: warn
-  prettier/prettier: error
   require-jsdoc: warn
+  tsdoc/syntax: warn
   valid-jsdoc: off
   vue/html-self-closing: [error, html: { void: always }]
   vue/multi-word-component-names: warn
