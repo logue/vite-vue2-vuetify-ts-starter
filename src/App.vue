@@ -159,14 +159,46 @@ export default class App extends Vue {
 <style lang="scss">
 @import 'node_modules/vuetify/src/styles/styles';
 
+html {
+  // Fix always scrollbar shown.
+  overflow-y: auto;
+  // Modern scrollbar style
+  scrollbar-width: thin;
+  scrollbar-color: map-get($grey, 'lighten-2') map-get($grey, 'base');
+}
+
 ::-webkit-scrollbar {
-  width: 0.75rem;
-  background-color: rgba(map-get($grey, 'lighten-2'), 1);
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: map-get($grey, 'lighten-2');
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0.75rem;
-  box-shadow: inset 0 0 0.25rem rgba(map-get($grey, 'base'), 0.1);
-  background-color: map-get($grey, 'darken-1');
+  border-radius: 0.5rem;
+  background-color: map-get($grey, 'base');
+  box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.1);
 }
+
+/*
+// Color scheme of scroll bar according to the theme
+.theme-- {
+  &light {
+    scrollbar-color: map-get($grey, 'lighten-2') map-get($grey, 'base');
+    ::-webkit-scrollbar-track {
+      background-color: map-get($grey, 'lighten-2');
+    }
+  }
+  &dark {
+    scrollbar-color: map-get($grey, 'darken-2') map-get($grey, 'base');
+
+    ::-webkit-scrollbar-track {
+      background-color: map-get($grey, 'darken-2');
+    }
+  }
+}
+*/
 </style>
