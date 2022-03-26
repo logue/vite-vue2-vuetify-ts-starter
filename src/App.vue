@@ -5,7 +5,7 @@
       <v-app-bar-title v-text="title" />
       <v-spacer />
       <v-btn icon @click="$store.dispatch('ConfigModule/toggleTheme')">
-        <v-icon v-text="'mdi-invert-colors'" />
+        <v-icon>mdi-theme-light-dark</v-icon>
       </v-btn>
       <v-progress-linear
         :active="loading"
