@@ -1,9 +1,9 @@
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import eslintPlugin from '@modyqyw/vite-plugin-eslint';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig, type UserConfig } from 'vite';
 import stylelintPlugin from 'vite-plugin-stylelint';
 import { createVuePlugin } from 'vite-plugin-vue2';
-import eslintPlugin from 'vite-plugin-eslint';
 import path from 'path';
 import fs from 'fs';
 
