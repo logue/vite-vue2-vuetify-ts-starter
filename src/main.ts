@@ -1,4 +1,5 @@
 /** Vuetify Vite */
+import VueCompositionAPI from '@vue/composition-api';
 import Vue from 'vue';
 
 import vuetify from './plugins/vuetify';
@@ -7,6 +8,7 @@ import store from './store';
 
 import App from './App.vue';
 
+Vue.use(VueCompositionAPI);
 Vue.config.productionTip = true;
 
 new Vue({

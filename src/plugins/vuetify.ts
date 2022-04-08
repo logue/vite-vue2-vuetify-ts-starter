@@ -9,6 +9,7 @@ import ja from 'vuetify/es5/locale/ja';
 import en from 'vuetify/es5/locale/en';
 */
 
+import { getCurrentInstance } from '@vue/composition-api';
 import '@mdi/font/css/materialdesignicons.css';
 import { loadFonts } from './webfontloader';
 
@@ -42,3 +43,14 @@ export default new Vuetify({
     },
   },
 });
+
+/** Get vuetify instance (For Composition api) */
+export function useVuetify(): Vuetify {
+  /** Get Instance */
+  const instance = getCurrentInstance();
+  if (!instance) {
+    throw new Error(`Should be used in setup().`);
+  }
+  // @ts-ignore
+  return instance.proxy.$vuetify;
+}

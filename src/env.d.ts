@@ -3,11 +3,13 @@
 
 declare module '*.vue' {
   import Vue from 'vue';
-  export default Vue;
+  const component: ReturnType<typeof defineComponent>;
+  export default component;
 }
 
 // Vuetify
 declare module 'vuetify/lib/framework' {
+  import 'vuetify/types';
   import Vuetify from 'vuetify';
   export default Vuetify;
 }

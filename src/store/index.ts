@@ -5,6 +5,7 @@ import type {
   MutationTree,
   StoreOptions,
 } from 'vuex';
+import { getCurrentInstance } from '@vue/composition-api';
 import Vuex, { Store } from 'vuex';
 import Vue from 'vue';
 
@@ -165,3 +166,13 @@ const store: StoreOptions<RootState> = {
 };
 
 export default new Store<RootState>(store);
+
+/** Get vuex instance (For Composition api) */
+export function useStore(): Store<RootState> {
+  /** Vue Instance */
+  const instance = getCurrentInstance();
+  if (!instance) {
+    throw new Error(`Should be used in setup().`);
+  }
+  return instance.proxy.$store;
+}
