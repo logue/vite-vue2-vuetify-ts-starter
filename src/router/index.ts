@@ -1,16 +1,18 @@
 import type {
   NavigationGuardNext,
   Position,
+  PositionResult,
   Route,
   RouteConfig,
 } from 'vue-router/types/router';
+import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
+import { getCurrentInstance } from '@vue/composition-api';
 import goTo from 'vuetify/lib/services/goto';
 import VueRouter from 'vue-router';
 import store from '@/store';
 import Vue from 'vue';
 
 // View
-import { getCurrentInstance } from '@vue/composition-api';
 import ErrorPage from '@/views/Error.vue';
 import About from '@/views/About.vue';
 import Home from '@/views/Home.vue';
@@ -43,9 +45,9 @@ const router: VueRouter = new VueRouter({
     to: Route,
     _from: Route,
     savedPosition: void | Position
-  ) => {
+  ): Promise<PositionResult> => {
     // https://vuetifyjs.com/features/scrolling/#router3067306e4f7f7528
-    let scrollTo: number | string = 0;
+    let scrollTo: VuetifyGoToTarget = 0;
 
     if (to.hash) {
       scrollTo = to.hash;

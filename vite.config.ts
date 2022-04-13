@@ -45,7 +45,7 @@ const config: UserConfig = {
       // generate `components.d.ts` global declarations
       dts: true,
       // auto import for directives
-      directives: false,
+      directives: true,
       // resolvers for custom components
       resolvers: [
         // Vuetify

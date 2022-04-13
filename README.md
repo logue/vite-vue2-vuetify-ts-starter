@@ -14,11 +14,13 @@ This template is for using Vue2 with TypeScript in Vite. Includes [vue-router](h
 
 In addition, [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/), and [Prettier](https://prettier.io/) are also included and are set to be executed automatically at runtime and commit. (Since these settings are set strictly, please relax yourself.)
 
+### Composition API
+
 It also supports the [Composition API](https://composition-api.vuejs.org/). The installed VueRouter and Vuex are for Vue2, but you can use the functions (such as `useRouter()`, `useRoute()` and `useStore()`) for the composition API for Vue3.
 
-Of course, Vuetify instance can also be accessed with `useVuetify()`.
+Of course, Vuetify instance can also be accessed with `useVuetify()`. In the Composition API, you can handle it in the same way as `this.$vuetify` by entering `const vuetify = useVuetify();` in the `setup()` function.
 
-It is possible to mix code written in composition-api and code written in vue-property-decolator, but it is not recommended to use them together in the same component. [^1]
+It is possible to mix code written in Composition API and code written in vue-property-decolator, but it is not recommended to use them together in the same component. [^1]
 
 If you are thinking of supporting Vue2 and Vue3 both, consider introducing [vue-demi](https://github.com/vueuse/vue-demi).
 

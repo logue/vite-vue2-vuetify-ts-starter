@@ -45,7 +45,7 @@ export default new Vuetify({
 });
 
 /** Get vuetify instance (For Composition api) */
-export function useVuetify(): Vuetify {
+export function useVuetify() {
   /** Get Instance */
   const instance = getCurrentInstance();
   if (!instance) {
