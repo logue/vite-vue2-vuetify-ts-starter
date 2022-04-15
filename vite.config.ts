@@ -1,9 +1,9 @@
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import { createVuePlugin as vue } from 'vite-plugin-vue2';
 import eslintPlugin from '@modyqyw/vite-plugin-eslint';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig, type UserConfig } from 'vite';
 import stylelintPlugin from 'vite-plugin-stylelint';
-import { createVuePlugin } from 'vite-plugin-vue2';
 import path from 'path';
 import fs from 'fs';
 
@@ -36,7 +36,7 @@ const config: UserConfig = {
   plugins: [
     // Vue2
     // https://github.com/underfin/vite-plugin-vue2
-    createVuePlugin({
+    vue({
       target: 'esnext',
     }),
     // unplugin-vue-components
@@ -53,20 +53,32 @@ const config: UserConfig = {
       ],
     }),
     // eslint
-    // https://github.com/gxmari007/vite-plugin-eslint
-    eslintPlugin({
-      fix: true,
-    }),
+    // https://github.com/ModyQyW/vite-plugin-eslint
+    eslintPlugin(),
     // Stylelint
     // https://github.com/ModyQyW/vite-plugin-stylelint
-    stylelintPlugin({
-      fix: true,
-    }),
+    stylelintPlugin(),
     // compress assets
     // https://github.com/vbenjs/vite-plugin-compression
     // viteCompression(),
   ],
   css: {
+    postcss: {
+      plugins: [
+        // Fix vite build includes @charset problem
+        // https://github.com/vitejs/vite/issues/5655
+        {
+          postcssPlugin: 'internal:charset-removal',
+          AtRule: {
+            charset: atRule => {
+              if (atRule.name === 'charset') {
+                atRule.remove();
+              }
+            },
+          },
+        },
+      ],
+    },
     // https://vitejs.dev/config/#css-preprocessoroptions
     preprocessorOptions: {
       sass: {

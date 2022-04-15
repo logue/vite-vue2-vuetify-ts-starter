@@ -22,6 +22,19 @@ Of course, Vuetify instance can also be accessed with `useVuetify()`. In the Com
 
 It is possible to mix code written in Composition API and code written in vue-property-decolator, but it is not recommended to use them together in the same component. [^1]
 
+As a limitation, Vue2's composition api cannot monitor the router with the watch function. In that case, monitor it by the following normal method:
+
+```js
+watch: {
+  $route: {
+    handler(to) {
+      //
+    },
+    immediate: true,
+  },
+},
+```
+
 If you are thinking of supporting Vue2 and Vue3 both, consider introducing [vue-demi](https://github.com/vueuse/vue-demi).
 
 ## Recommended IDE Setup
