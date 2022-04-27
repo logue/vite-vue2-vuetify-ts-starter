@@ -13,9 +13,9 @@ import store from '@/store';
 import Vue from 'vue';
 
 // View
-import ErrorPage from '@/views/Error.vue';
-import About from '@/views/About.vue';
-import Home from '@/views/Home.vue';
+import ErrorPage from '@/views/ErrorPage.vue';
+import AboutPage from '@/views/AboutPage.vue';
+import HomePage from '@/views/HomePage.vue';
 
 Vue.use(VueRouter);
 
@@ -24,12 +24,12 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: HomePage,
   },
   {
     path: '/about',
     name: 'About',
-    component: About,
+    component: AboutPage,
   },
   {
     path: '*',
