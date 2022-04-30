@@ -37,6 +37,12 @@ watch: {
 
 If you are thinking of supporting Vue2 and Vue3 both, consider introducing [vue-demi](https://github.com/vueuse/vue-demi).
 
+### Vue i18n
+
+If you want to use [vue-i18n](https://kazupon.github.io/vue-i18n/), please install [vue-i18n-composable](https://github.com/intlify/vue-i18n-composable) and call the instance with `useI18n()`.
+
+In addition, the conventional method using `$t()` written in non composition-api can be used as it is.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur).
