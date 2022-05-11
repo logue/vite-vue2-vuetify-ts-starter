@@ -1,4 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "npm-scripts.showStartNotification": false,
+  "volar.tsPlugin": true,
+  "volar.icon.preview": true,
+  "volar.icon.finder": true
 }

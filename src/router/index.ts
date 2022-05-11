@@ -6,7 +6,6 @@ import type {
   RouteConfig,
 } from 'vue-router/types/router';
 import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
-import { getCurrentInstance } from '@vue/composition-api';
 import goTo from 'vuetify/lib/services/goto';
 import VueRouter from 'vue-router';
 import store from '@/store';
@@ -78,23 +77,3 @@ router.afterEach(() => {
   store.dispatch('setLoading', false);
 });
 export default router;
-
-/** Get router instance (For Composition api) */
-export function useRouter(): VueRouter {
-  /** Get Instance */
-  const instance = getCurrentInstance();
-  if (!instance) {
-    throw new Error(`Should be used in setup().`);
-  }
-  return instance.proxy.$router;
-}
-
-/** Get route instance (For Composition api) */
-export function useRoute(): Route {
-  /** Get Instance */
-  const instance = getCurrentInstance();
-  if (!instance) {
-    throw new Error(`Should be used in setup().`);
-  }
-  return instance.proxy.$route;
-}
