@@ -5,6 +5,7 @@ import Components from 'unplugin-vue-components/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type UserConfig } from 'vite';
 import stylelintPlugin from 'vite-plugin-stylelint';
+import checker from 'vite-plugin-checker';
 import path from 'path';
 import fs from 'fs';
 
@@ -60,6 +61,9 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       // Stylelint
       // https://github.com/ModyQyW/vite-plugin-stylelint
       stylelintPlugin(),
+      // vite-plugin-checker
+      // https://github.com/fi3ework/vite-plugin-checker
+      checker({ typescript: true, vueTsc: true }),
       // compress assets
       // https://github.com/vbenjs/vite-plugin-compression
       // viteCompression(),
@@ -101,15 +105,16 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
             // Split external library from transpiled code.
             vue: [
               'vue',
-              '@vue/composition-api',
               'vue-class-component',
               'vue-property-decorator',
               'vue-router',
+              'vue2-helpers',
               'vuex',
               'vuex-persist',
-              'vue2-helpers',
+              'deepmerge',
+              '@vue/composition-api',
             ],
-            vuetify: ['vuetify/lib', 'webfontloader'],
+            vuetify: ['vuetify/lib', 'vuetify/src', 'webfontloader'],
           },
           plugins: [
             mode === 'analyze'
@@ -150,9 +155,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       */
     },
   };
-  // Hook production build.
-  // if (command === 'build') {
-  // Write meta data.
+  // Output build dates to Meta.ts
   fs.writeFileSync(
     path.resolve(path.join(__dirname, 'src/Meta.ts')),
     `import type MetaInterface from '@/interfaces/MetaInterface';
@@ -165,7 +168,5 @@ const meta: MetaInterface = {
 export default meta;
 `
   );
-  // }
-
   return config;
 });

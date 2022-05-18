@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-app-bar-title v-text="title" />
+      <v-app-bar-title>{{ title }}</v-app-bar-title>
       <v-spacer />
       <v-btn icon @click="$store.dispatch('ConfigModule/toggleTheme')">
         <v-icon>mdi-theme-light-dark</v-icon>
