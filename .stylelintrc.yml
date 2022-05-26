@@ -1,3 +1,4 @@
+customSyntax: postcss-html
 extends:
   - stylelint-config-html/vue
   - stylelint-config-recommended-scss
