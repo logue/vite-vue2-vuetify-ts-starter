@@ -29,7 +29,13 @@
     "types": ["vite/client", "node", "vue", "vuetify"],
     "useDefineForClassFields": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "components.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

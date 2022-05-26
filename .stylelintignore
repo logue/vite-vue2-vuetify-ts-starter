@@ -2,6 +2,5 @@
 .vscode/
 .yarn/
 dist/
-public/assets/
-components.d.ts
 index.html
+public/assets/

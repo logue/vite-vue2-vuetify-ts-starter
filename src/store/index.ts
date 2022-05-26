@@ -59,7 +59,7 @@ const mutations: MutationTree<RootState> = {
    * Store progress
    *
    * @param s - Vuex state
-   * @param progres - Spayload
+   * @param progress - Payload
    */
   storeProgress(s, progress: number) {
     s.progress = progress;

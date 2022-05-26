@@ -1,10 +1,8 @@
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import { createVuePlugin as Vue } from 'vite-plugin-vue2';
-import eslintPlugin from '@modyqyw/vite-plugin-eslint';
 import Components from 'unplugin-vue-components/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type UserConfig } from 'vite';
-import stylelintPlugin from 'vite-plugin-stylelint';
 import checker from 'vite-plugin-checker';
 import path from 'path';
 import fs from 'fs';
@@ -46,21 +44,23 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       // https://github.com/antfu/unplugin-vue-components
       Components({
         // generate `components.d.ts` global declarations
+        // https://github.com/antfu/unplugin-vue-components#typescript
         dts: true,
         // auto import for directives
-        directives: true,
+        directives: false,
         // resolvers for custom components
         resolvers: [
           // Vuetify
           VuetifyResolver(),
         ],
+        // https://github.com/antfu/unplugin-vue-components#types-for-global-registered-components
+        types: [
+          {
+            from: 'vue-router',
+            names: ['RouterLink', 'RouterView'],
+          },
+        ],
       }),
-      // eslint
-      // https://github.com/ModyQyW/vite-plugin-eslint
-      eslintPlugin(),
-      // Stylelint
-      // https://github.com/ModyQyW/vite-plugin-stylelint
-      stylelintPlugin(),
       // vite-plugin-checker
       // https://github.com/fi3ework/vite-plugin-checker
       checker({ typescript: true, vueTsc: true }),
@@ -109,6 +109,8 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
               'vue-property-decorator',
               'vue-router',
               'vue2-helpers',
+              'vue2-helpers/vue-router',
+              'vue2-helpers/vuex',
               'vuex',
               'vuex-persist',
               'deepmerge',
@@ -155,7 +157,8 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       */
     },
   };
-  // Output build dates to Meta.ts
+
+  // Write meta data.
   fs.writeFileSync(
     path.resolve(path.join(__dirname, 'src/Meta.ts')),
     `import type MetaInterface from '@/interfaces/MetaInterface';
@@ -168,5 +171,6 @@ const meta: MetaInterface = {
 export default meta;
 `
   );
+
   return config;
 });
