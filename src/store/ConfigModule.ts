@@ -57,7 +57,7 @@ const actions: ActionTree<ConfigState, RootState> = {
    * @param context - Vuex Context
    * @param locale - Locale code
    */
-  setLocale(context: ActionContext<ConfigState, RootState>, locale = 'en') {
+  setLocale(context: ActionContext<ConfigState, RootState>, locale: string) {
     context.commit('setLocale', locale);
   },
 };

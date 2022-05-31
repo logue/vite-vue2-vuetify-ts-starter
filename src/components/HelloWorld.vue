@@ -147,7 +147,7 @@ export default class HelloWorld extends Vue {
   ];
 
   /** Message */
-  @Prop({ type: String })
+  @Prop({ type: String, default: undefined })
   readonly msg!: string;
 }
 </script>

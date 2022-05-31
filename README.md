@@ -76,4 +76,6 @@ Also, if you used the .env file in the previous environment, you need to change 
 
 When adding or deleting files, an error may occur and even if the error is corrected, it may not be reflected in devserver. In that case, stop devserver and delete all the files in the `node_modules/.vite` directory. You can also run it with the `clean` command.
 
+Due to [yarn issues](https://github.com/yarnpkg/berry/issues/4448), it may not work properly if the path contains non-ASCII characters (such as 日本語 or 한국어, 中文 etc.).
+
 [^1]: <https://github.com/vuejs/composition-api/issues/136>

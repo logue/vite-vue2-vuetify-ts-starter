@@ -126,7 +126,7 @@ const actions: ActionTree<RootState, RootState> = {
    * @param context - Vuex Context
    * @param error - Error message etc.
    */
-  setError(context: ActionContext<RootState, RootState>, error?) {
+  setError(context: ActionContext<RootState, RootState>, error) {
     context.commit('storeError', error);
   },
 };
