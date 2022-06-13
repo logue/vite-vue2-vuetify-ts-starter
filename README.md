@@ -45,6 +45,38 @@ If you want to use [vue-i18n](https://kazupon.github.io/vue-i18n/), please insta
 
 In addition, the conventional method using `$t()` written in non composition-api can be used as it is.
 
+### Teleport
+
+Vue3 adds a mechanism called [`Teleport`](https://v3.vuejs.org/guide/teleport.html), which allows you to install vue components anywhere. This starter template is for vue2, but you can do the same with [vue2-teleport](https://www.npmjs.com/package/vue2-teleport).
+
+However, you will need to manually load the component with `import Teleport from 'vue2-teleport';` wherever you want to use it.
+
+For example, if you want to include [JSON-LD](https://json-ld.org/), enter as follows.
+
+```vue
+<template>
+  <div class="container">
+    ... Some Content
+    <teleport to="head">
+      <pre :is="'script'" type="application/ld+json">
+{
+  '@context': 'http://schema.org',
+  '@type': 'WebSite',
+  name: 'Vite Vue2 Vuetify TypeScript Startar',
+  url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
+  logo: '{{ require('@/assets/logo.svg') }}',
+  description: 'Vite Vue2 TypeScript Demo Page',
+}
+      </pre>
+    </teleport>
+  </div>
+</template>
+```
+
+In this example, the `pre` tag is used to prevent the editor from auto-formatting, but it is converted to a `script` tag by `:is` Prop and then inserted inside the `head` tag.
+
+JSON-LD is literally a `script`, so it can't be embedded directly, so it's a roundabout thing like this, but simple things like `meta` tags are reflected by simply inserting a tag.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=vue.volar) (and disable Vetur).

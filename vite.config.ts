@@ -115,6 +115,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
               'vue-class-component',
               'vue-property-decorator',
               'vue-router',
+              'vue2-teleport',
               'vue2-helpers',
               'vue2-helpers/vue-router',
               'vue2-helpers/vuex',
@@ -124,6 +125,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
               '@vue/composition-api',
             ],
             vuetify: ['vuetify/lib', 'vuetify/src', 'webfontloader'],
+            materialdesignicons: ['@mdi/font/css/materialdesignicons.css'],
           },
           plugins: [
             mode === 'analyze'
