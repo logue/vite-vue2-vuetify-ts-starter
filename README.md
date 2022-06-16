@@ -51,31 +51,52 @@ Vue3 adds a mechanism called [`Teleport`](https://v3.vuejs.org/guide/teleport.ht
 
 However, you will need to manually load the component with `import Teleport from 'vue2-teleport';` wherever you want to use it.
 
-For example, if you want to include [JSON-LD](https://json-ld.org/), enter as follows.
+#### Teleport JSON-LD Example
+
+If you want to include [JSON-LD](https://json-ld.org/), enter as follows.
 
 ```vue
 <template>
   <div class="container">
     ... Some Content
     <teleport to="head">
-      <pre :is="'script'" type="application/ld+json">
-{
-  '@context': 'http://schema.org',
-  '@type': 'WebSite',
-  name: 'Vite Vue2 Vuetify TypeScript Startar',
-  url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
-  logo: '{{ require('@/assets/logo.svg') }}',
-  description: 'Vite Vue2 TypeScript Demo Page',
-}
-      </pre>
+      <component :is="'script'" type="application/ld+json" v-text="jsonLd" />
     </teleport>
   </div>
 </template>
+
+<script>
+import { defineComponent } from '@vue/composition-api';
+
+import Teleport from 'vue2-teleport';
+
+export default defineComponent({
+  components: {
+    Teleport,
+  },
+  setup() {
+    const jsonLd = ref(
+      JSON.stringfy({
+        '@schema': 'https://json.schemastore.org/jsonld.json',
+        '@context': 'http://schema.org',
+        '@type': 'WebSite',
+        name: 'Vite Vue2 Vuetify TypeScript Startar',
+        url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
+        description: 'Vite Vue2 Vuetify TypeScript Demo Page',
+      })
+    );
+
+    return {
+      jsonLd,
+    };
+  },
+});
+</script>
 ```
 
-In this example, the `pre` tag is used to prevent the editor from auto-formatting, but it is converted to a `script` tag by `:is` Prop and then inserted inside the `head` tag.
-
 JSON-LD is literally a `script`, so it can't be embedded directly, so it's a roundabout thing like this, but simple things like `meta` tags are reflected by simply inserting a tag.
+
+Notice: For Vue3, `:as="'script'"` becomes `is="script"`.
 
 ## Recommended IDE Setup
 

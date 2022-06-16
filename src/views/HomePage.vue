@@ -4,19 +4,10 @@
     <teleport to="head">
       <meta
         name="keyword"
-        content="template,typescript,vue2,vue-property-decorator,vue-class-component,vuetify,vite,vite-template,volar"
+        content="template, typescript, vue2, vue-property-decorator, vue-class-component, vite, vite-template, composition-api, volar"
       />
-      <meta name="description" content="Vite Vue2 Vuetify TypeScript Demo" />
-      <pre :is="'script'" type="application/ld+json">
-{
-  '@context': 'http://schema.org',
-  '@type': 'WebSite',
-  name: 'Vite Vue2 Vuetify TypeScript Startar',
-  url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
-  logo: '{{ require('@/assets/logo.svg') }}',
-  description: 'Vite Vue2 TypeScript Demo Page',
-}
-      </pre>
+      <meta name="description" content="Vite Vue2 TypeScript Demo" />
+      <component :is="'script'" type="application/ld+json" v-text="jsonLd" />
     </teleport>
   </v-container>
 </template>
@@ -37,6 +28,20 @@ export default class Home extends Vue {
 
   // Model and Data
   data: string | null = null;
+  */
+  jsonLd = JSON.stringify(
+    {
+      '@schema': 'https://json.schemastore.org/jsonld.json',
+      '@context': 'http://schema.org',
+      '@type': 'WebSite',
+      name: 'Vite Vue2 Vuetify TypeScript Startar',
+      url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
+      description: 'Vite Vue2 Vuetify TypeScript Demo Page',
+    },
+    null,
+    2
+  );
+  /*
 
   // Computed
   get computed(): string {

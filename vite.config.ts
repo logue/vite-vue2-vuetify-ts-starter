@@ -67,8 +67,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         typescript: true,
         vueTsc: true,
         eslint: {
-          lintCommand:
-            'eslint ./src/ --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint', // for example, lint .ts & .tsx
+          lintCommand: 'eslint', // for example, lint .ts & .tsx
         },
       }),
       // compress assets
