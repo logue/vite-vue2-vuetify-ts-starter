@@ -1,7 +1,7 @@
 .husky/
 .vscode/
 .yarn/
-components.d.ts
 dist/
-index.html
 public/assets/
+components.d.ts
+tsconfig.node.json
