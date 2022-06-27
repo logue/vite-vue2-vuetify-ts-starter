@@ -1,22 +1,16 @@
-import type {
-  NavigationGuardNext,
-  Position,
-  PositionResult,
-  Route,
-  RouteConfig,
-} from 'vue-router/types/router';
+import type { NavigationGuardNext, Route, RouteConfig } from 'vue-router';
+import type { Position, PositionResult } from 'vue-router/types/router';
+import { createRouter, Router } from 'vue2-helpers/vue-router';
+import { nextTick } from '@vue/composition-api';
+
 import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
 import goTo from 'vuetify/lib/services/goto';
-import VueRouter from 'vue-router';
 import store from '@/store';
-import Vue from 'vue';
 
 // View
 import ErrorPage from '@/views/ErrorPage.vue';
 import AboutPage from '@/views/AboutPage.vue';
 import HomePage from '@/views/HomePage.vue';
-
-Vue.use(VueRouter);
 
 /** Router Config */
 const routes: RouteConfig[] = [
@@ -37,7 +31,7 @@ const routes: RouteConfig[] = [
   },
 ];
 
-const router: VueRouter = new VueRouter({
+const router: Router = createRouter({
   base: import.meta.env.BASE_URL,
   mode: 'history', // abstract, hash, history
   scrollBehavior: async (
@@ -63,7 +57,7 @@ router.beforeEach(
   async (_to: Route, _from: Route, next: NavigationGuardNext<Vue>) => {
     // Show Loading
     store.dispatch('setLoading', true);
-    await Vue.nextTick();
+    await nextTick();
 
     // @see https://github.com/championswimmer/vuex-persist#how-to-know-when-async-store-has-been-replaced
     // await store.restored;
@@ -76,4 +70,5 @@ router.afterEach(() => {
   // Hide Loading
   store.dispatch('setLoading', false);
 });
+
 export default router;

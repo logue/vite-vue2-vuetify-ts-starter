@@ -1,3 +1,5 @@
+import { getCurrentInstance } from '@vue/composition-api';
+import type { Framework, UserVuetifyPreset } from 'vuetify';
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
 import Vuetify from 'vuetify/lib/framework';
 import Vue from 'vue';
@@ -9,15 +11,12 @@ import ja from 'vuetify/es5/locale/ja';
 import en from 'vuetify/es5/locale/en';
 */
 
-import { getCurrentInstance } from '@vue/composition-api';
 import '@mdi/font/css/materialdesignicons.css';
 import { loadFonts } from './webfontloader';
 
 loadFonts();
 
-Vue.use(Vuetify);
-
-export default new Vuetify({
+export default createVuetify({
   icons: {
     iconfont: 'mdi',
   },
@@ -44,13 +43,22 @@ export default new Vuetify({
   },
 });
 
-/** Get vuetify instance (For Composition api) */
-export function useVuetify() {
-  /** Get Instance */
+/** Create Vuetify */
+export function createVuetify(options: Partial<UserVuetifyPreset>): Vuetify {
+  Vue.use(Vuetify);
+  return new Vuetify(options);
+}
+
+/** Vuetify Instance */
+export function useVuetify(): Framework {
+  /** Vue instance */
   const instance = getCurrentInstance();
-  if (!instance) {
-    throw new Error(`Should be used in setup().`);
+  if (instance) {
+    return instance.proxy.$vuetify;
+  } else {
+    console.warn(
+      `[vuetify] getCurrentInstance() returned null. Method must be called at the top of a setup function`
+    );
   }
-  // @ts-ignore
-  return instance.proxy.$vuetify;
+  return undefined as any;
 }

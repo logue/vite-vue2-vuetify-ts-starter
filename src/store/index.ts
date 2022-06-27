@@ -5,16 +5,11 @@ import type {
   MutationTree,
   StoreOptions,
 } from 'vuex';
-import Vuex, { Store } from 'vuex';
-import Vue from 'vue';
-
-// eslint-disable-next-line import/no-named-as-default
+import { createStore } from 'vue2-helpers/vuex';
 import VuexPersistence from 'vuex-persist';
 
 // Modules
 import ConfigModule from './ConfigModule';
-
-Vue.use(Vuex);
 
 /** Root State Interface */
 export interface RootState {
@@ -164,4 +159,4 @@ const store: StoreOptions<RootState> = {
   ],
 };
 
-export default new Store<RootState>(store);
+export default createStore(store);

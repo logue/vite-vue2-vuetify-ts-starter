@@ -1,5 +1,5 @@
 /** Vuetify Vite */
-import VueCompositionAPI, { createApp } from '@vue/composition-api';
+import VueCompositionAPI, { createApp, h } from '@vue/composition-api';
 import Vue from 'vue';
 
 Vue.use(VueCompositionAPI);
@@ -12,7 +12,7 @@ import store from './store';
 import App from './App.vue';
 
 const app = createApp({
-  render: h => h(App),
+  render: () => h(App),
   router,
   store,
   vuetify,
