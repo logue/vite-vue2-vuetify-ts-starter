@@ -14,18 +14,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { defineComponent, computed, onMounted, type Ref } from 'vue';
+import { useStore } from '@logue/vue2-helpers/dist/vuex';
 
-@Component
 /** Error */
-export default class Error extends Vue {
-  /** Get Error Message */
-  get error(): string {
-    return this.$store.getters.error;
-  }
-  /** Mounted */
-  mounted() {
-    this.$store.dispatch('setLoading', false);
-  }
-}
+export default defineComponent({
+  setup() {
+    /** Vuex */
+    const store = useStore();
+    /** Get Error Message */
+    const error: Ref<string> = computed(() => store.getters.error);
+
+    /** Mounted */
+    onMounted(() => store.dispatch('setLoading', false));
+
+    return {
+      error,
+    };
+  },
+});
 </script>

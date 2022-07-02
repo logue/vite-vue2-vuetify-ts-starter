@@ -1,5 +1,5 @@
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
-import { createVuePlugin as Vue } from 'vite-plugin-vue2';
+import vue from '@vitejs/plugin-vue2';
 import Components from 'unplugin-vue-components/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type UserConfig } from 'vite';
@@ -36,10 +36,8 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     plugins: [
       // Vue2
-      // https://github.com/underfin/vite-plugin-vue2
-      Vue({
-        target: 'esnext',
-      }),
+      // https://github.com/vitejs/vite-plugin-vue2
+      vue(),
       // unplugin-vue-components
       // https://github.com/antfu/unplugin-vue-components
       Components({
@@ -115,13 +113,13 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
               'vue-property-decorator',
               'vue-router',
               'vue2-teleport',
-              'vue2-helpers',
-              'vue2-helpers/vue-router',
-              'vue2-helpers/vuex',
+              '@logue/vue2-helpers',
+              '@logue/vue2-helpers/dist/vue-router',
+              '@logue/vue2-helpers/dist/vuex',
+              '@logue/vue2-helpers/dist/vuetify',
               'vuex',
               'vuex-persist',
               'deepmerge',
-              '@vue/composition-api',
             ],
             vuetify: ['vuetify/lib', 'vuetify/src', 'webfontloader'],
             materialdesignicons: ['@mdi/font/css/materialdesignicons.css'],

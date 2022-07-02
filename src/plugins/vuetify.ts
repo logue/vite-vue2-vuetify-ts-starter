@@ -1,8 +1,5 @@
-import { getCurrentInstance } from '@vue/composition-api';
-import type { Framework, UserVuetifyPreset } from 'vuetify';
+import { createVuetify } from '@logue/vue2-helpers/dist/vuetify';
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
-import Vuetify from 'vuetify/lib/framework';
-import Vue from 'vue';
 
 /*
 // Locale
@@ -42,23 +39,3 @@ export default createVuetify({
     },
   },
 });
-
-/** Create Vuetify */
-export function createVuetify(options: Partial<UserVuetifyPreset>): Vuetify {
-  Vue.use(Vuetify);
-  return new Vuetify(options);
-}
-
-/** Vuetify Instance */
-export function useVuetify(): Framework {
-  /** Vue instance */
-  const instance = getCurrentInstance();
-  if (instance) {
-    return instance.proxy.$vuetify;
-  } else {
-    console.warn(
-      `[vuetify] getCurrentInstance() returned null. Method must be called at the top of a setup function`
-    );
-  }
-  return undefined as any;
-}

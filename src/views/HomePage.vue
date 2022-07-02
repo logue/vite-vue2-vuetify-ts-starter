@@ -7,62 +7,80 @@
         content="template, typescript, vue2, vue-property-decorator, vue-class-component, vite, vite-template, composition-api, volar"
       />
       <meta name="description" content="Vite Vue2 TypeScript Demo" />
-      <component :is="'script'" type="application/ld+json" v-text="jsonLd" />
+      <component :is="'script'" type="application/ld+json">
+        {{ jsonLd }}
+      </component>
     </teleport>
   </v-container>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { defineComponent, ref, watch, type Ref, type SetupContext } from 'vue';
+// import { useStore } from '@logue/vue2-helpers/dist/vuex';
+import { useRoute } from '@logue/vue2-helpers/dist/vue-router';
 
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue';
 import Teleport from 'vue2-teleport';
 
-@Component({ components: { HelloWorld, Teleport } })
-/** Home */
-export default class Home extends Vue {
-  /*
-  // Props
-  @Prop({ type: String, default: 'prop' })
-  readonly prop: string = 'prop';
+/** Home Component */
+export default defineComponent({
+  /** Components */
+  components: {
+    HelloWorld,
+    Teleport,
+  },
+  /** Props */
+  props: {
+    prop: { type: String, default: 'prop' },
+  },
+  /**
+   * Setup
+   *
+   * @param _props - Props
+   * @param _context - Context
+   */
+  setup(_props, _context: SetupContext) {
+    /** Route */
+    const route = useRoute();
+    /** Vuex */
+    // const store = useStore();
 
-  // Model and Data
-  data: string | null = null;
-  */
-  jsonLd = JSON.stringify(
-    {
-      '@schema': 'https://json.schemastore.org/jsonld.json',
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      name: 'Vite Vue2 Vuetify TypeScript Startar',
-      url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
-      description: 'Vite Vue2 Vuetify TypeScript Demo Page',
-    },
-    null,
-    2
-  );
-  /*
+    const data: Ref<string | undefined> = ref();
 
-  // Computed
-  get computed(): string {
-    return this.$store.getters.computed;
-  }
+    const jsonLd: Ref<string> = ref(
+      JSON.stringify(
+        {
+          '@schema': 'https://json.schemastore.org/jsonld.json',
+          '@context': 'http://schema.org',
+          '@type': 'WebSite',
+          name: 'Vite Vue2 TypeScript Startar',
+          url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
+          description: 'Vite Vue2 TypeScript Demo Page',
+        },
+        null,
+        2
+      )
+    );
 
-  // Watch
-  @Watch('$route', { immediate: true })
-  onRouteChanged(): void {
-    // ...
-  }
+    /* *
+     * Computed
+     * /
+    const computedValue: Ref<string> = computed({
+      get: () => store.getters.computedValue,
+      set: v => store.dispatch('setComputedValue', v)
+    }
+     */
 
-  // created or mounted etc.
-  created(): void {
-    // ...
-  }
+    // Watch
+    watch(
+      () => route?.name,
+      name => console.log('route is changed:', name)
+    );
 
-  // Methods
-  methods(): string {
-    return 'method';
-  }
-  */
-}
+    return {
+      data,
+      jsonLd,
+    };
+  },
+});
 </script>

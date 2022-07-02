@@ -33,10 +33,10 @@ const getters: GetterTree<ConfigState, RootState> = {
 
 /** Mutations */
 const mutations: MutationTree<ConfigState> = {
-  toggleTheme(s) {
+  storeThemeDark(s) {
     s.themeDark = !s.themeDark;
   },
-  setLocale(s, locale: string) {
+  storeLocale(s, locale: string) {
     s.locale = locale;
   },
 };
@@ -48,8 +48,8 @@ const actions: ActionTree<ConfigState, RootState> = {
    *
    * @param context - Vuex Context
    */
-  toggleTheme(context: ActionContext<ConfigState, RootState>) {
-    context.commit('toggleTheme');
+  setThemeDark(context: ActionContext<ConfigState, RootState>, mode: boolean) {
+    context.commit('storeThemeDark', mode);
   },
   /**
    * Change locale.
@@ -58,7 +58,7 @@ const actions: ActionTree<ConfigState, RootState> = {
    * @param locale - Locale code
    */
   setLocale(context: ActionContext<ConfigState, RootState>, locale: string) {
-    context.commit('setLocale', locale);
+    context.commit('storeLocale', locale);
   },
 };
 

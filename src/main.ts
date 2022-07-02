@@ -1,21 +1,18 @@
-/** Vuetify Vite */
-import VueCompositionAPI, { createApp, h } from '@vue/composition-api';
+/** Vue main script */
 import Vue from 'vue';
 
-Vue.use(VueCompositionAPI);
+import router from '@/router';
+import store from '@/store';
+import vuetify from './plugins/vuetify';
+
+import App from '@/App.vue';
+
 Vue.config.productionTip = false;
 
-import vuetify from './plugins/vuetify';
-import router from './router';
-import store from './store';
-
-import App from './App.vue';
-
-const app = createApp({
-  render: () => h(App),
+const app = new Vue({
   router,
   store,
   vuetify,
+  render: h => h(App),
 });
-
-app.mount('#app');
+app.$mount('#app');

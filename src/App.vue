@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-app-bar-title>{{ title }}</v-app-bar-title>
       <v-spacer />
-      <v-btn icon @click="$store.dispatch('ConfigModule/toggleTheme')">
+      <v-btn icon @click="themeDark = !themeDark">
         <v-icon>mdi-theme-light-dark</v-icon>
       </v-btn>
       <v-progress-linear
@@ -65,95 +65,111 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  type ComputedRef,
+  type Ref,
+  type SetupContext,
+} from 'vue';
+import { useRoute, useRouter } from '@logue/vue2-helpers/dist/vue-router';
+import { useStore } from '@logue/vue2-helpers/dist/vuex';
+import { useVuetify } from '@logue/vue2-helpers/dist/vuetify';
 
-@Component
 /** App */
-export default class App extends Vue {
-  /** Window title */
-  title: string = import.meta.env.VITE_APP_TITLE;
-  /** Drawer menu visibility */
-  drawer: boolean = false;
-  /** Snackbar visibility */
-  snackbar: boolean = false;
-
-  /** Theme dark mode */
-  get '$vuetify.theme.dark'(): boolean {
-    return this.$store.getters['ConfigModule/toggleTheme'];
-  }
-  /** Snackbar text */
-  get snackbarText(): string {
-    return this.$store.getters.message;
-  }
-  /** Get progress percentage */
-  get progress(): number {
-    return this.$store.getters.progress;
-  }
+export default defineComponent({
   /**
-   * Set progress percentage
+   * Setup
    *
-   * @param value - Percentage
+   * @param _props - Props
+   * @param _context - Context
    */
-  set progress(value: number) {
-    this.$store.dispatch('setProgress', value);
-  }
-  /** Get loading overlay visibility */
-  get loading(): boolean {
-    return this.$store.getters.loading;
-  }
-  /**
-   * Set loading overlay
-   *
-   * @param value - Visibility
-   */
-  set loading(value: boolean) {
-    this.$store.dispatch('setLoading', value);
-  }
-  /** Error Message */
-  get error(): boolean {
-    return this.$store.getters.error;
-  }
-  /** Toggle Theme Dark/Light mode */
-  get themeDark(): boolean {
-    return this.$store.getters['ConfigModule/themeDark'];
-  }
+  setup: (_props, _context: SetupContext) => {
+    /** Vuex */
+    const store = useStore();
+    /** Router */
+    const router = useRouter();
+    /** Router */
+    const route = useRoute();
+    /** Vuetify */
+    const vuetify = useVuetify();
 
-  /** Theme Changer */
-  @Watch('themeDark')
-  onThemeChanged(): void {
-    this.$vuetify.theme.dark = this.$store.getters['ConfigModule/themeDark'];
-  }
-  /** Modify snackbar text */
-  @Watch('$store.getters.message')
-  onSnackbarTextChanged(): void {
-    this.snackbar = true;
-  }
+    /** Title */
+    const title: Ref<string> = ref(
+      import.meta.env.VITE_APP_TITLE || 'Vite APP'
+    );
+    /** Drawer menu visibility */
+    const drawer: Ref<boolean> = ref(false);
+    /** Snackbar visibility */
+    const snackbar: Ref<boolean> = ref(false);
+    /** current page name */
+    const name: Ref<string | null | undefined> = ref(route?.name);
 
-  /** When route change, hide snackbar */
-  @Watch('$route')
-  onRouteChanged(): void {
-    this.snackbar = false;
-  }
-  /** When loading */
-  @Watch('loading')
-  onLoading() {
-    // console.log('loading:', this.loading);
-    // change cursor
-    document.body.style.cursor = this.loading ? 'wait' : 'auto';
-  }
+    /** Snackbar text */
+    const snackbarText: ComputedRef<string> = computed(
+      () => store.getters.message
+    );
 
-  /** When error has occurred */
-  @Watch('error')
-  onError() {
-    this.$router.push({ name: 'Error' });
-  }
+    /** progress percentage */
+    const progress: Ref<number> = computed({
+      get: () => store.getters.progress,
+      set: v => store.dispatch('setProgress', v),
+    });
 
-  /** Run once. */
-  mounted() {
-    this.$vuetify.theme.dark = this.$store.getters['ConfigModule/themeDark'];
-    document.title = this.title;
-  }
-}
+    /** loading overlay visibility */
+    const loading: Ref<boolean> = computed({
+      get: () => store.getters.loading,
+      set: v => store.dispatch('setLoading', v),
+    });
+
+    /** Toggle Theme Dark/Light mode */
+    const themeDark: Ref<boolean> = computed({
+      get: () => store.getters['ConfigModule/themeDark'],
+      set: v => store.dispatch('ConfigModule/setThemeDark', v),
+    });
+
+    /** Error Message */
+    const error: ComputedRef<boolean> = computed(() => store.getters.error);
+
+    /** Modify snackbar text */
+    watch(snackbarText, () => (snackbar.value = true));
+
+    /** When route change, hide snackbar */
+    watch(name, () => (snackbar.value = false));
+
+    /** When loading */
+    watch(
+      loading,
+      () => (document.body.style.cursor = loading.value ? 'wait' : 'auto')
+    );
+
+    /** When error has occurred */
+    watch(error, () => router.push({ name: 'Error' }));
+
+    /** Toggle Dark Mode */
+    watch(themeDark, current => (vuetify.theme.dark = current));
+
+    /** Run once. */
+    onMounted(() => {
+      document.title = title.value;
+      loading.value = false;
+    });
+
+    return {
+      title,
+      drawer,
+      snackbar,
+      snackbarText,
+      progress,
+      loading,
+      error,
+      themeDark,
+    };
+  },
+});
 </script>
 
 <style lang="scss">

@@ -4,6 +4,8 @@
   <img src="https://user-images.githubusercontent.com/480173/157433906-7f7910d4-6430-49f4-857a-044945e71360.png" alt="logo" width="300" height="300" />
 </p>
 
+**Vue 2.7.0 supported!** above 0.5.0.
+
 This is a [starter project](https://github.com/logue/vite-vue2-ts-starter) that uses [Vuetify](https://vuetifyjs.com/) as the UI framework. Please use scss version 1.32.12 due to a problem on the Vuetify side.
 
 Vuetify3 version is [here](https://github.com/logue/vite-vuetify-ts-starter).
@@ -132,3 +134,8 @@ When adding or deleting files, an error may occur and even if the error is corre
 Due to [yarn issues](https://github.com/yarnpkg/berry/issues/4448), it may not work properly if the path contains non-ASCII characters (such as 日本語 or 한국어, 中文 etc.).
 
 [^1]: <https://github.com/vuejs/composition-api/issues/136>
+
+## See Also
+
+- [vite-vue2-vuetify-ts-starter](https://github.com/logue/vite-vue2-vuetify-ts-starter) - UI library using Vuetify2
+- [laravel9-vite-vue2-starter](https://github.com/logue/laravel9-vite-vue2-starter) - for Laravel.
