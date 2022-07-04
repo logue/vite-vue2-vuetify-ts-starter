@@ -5,7 +5,7 @@ import type {
   MutationTree,
   StoreOptions,
 } from 'vuex';
-import { createStore } from '@logue/vue2-helpers/dist/vuex';
+import { createStore } from '@logue/vue2-helpers/vuex';
 import VuexPersistence from 'vuex-persist';
 
 // Modules

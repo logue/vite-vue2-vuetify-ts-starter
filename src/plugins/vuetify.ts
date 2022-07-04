@@ -1,6 +1,6 @@
-import { createVuetify } from '@logue/vue2-helpers/dist/vuetify';
+import Vuetify from 'vuetify/lib';
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
-
+Vue.use(Vuetify);
 /*
 // Locale
 import i18n from './i18n';
@@ -10,10 +10,11 @@ import en from 'vuetify/es5/locale/en';
 
 import '@mdi/font/css/materialdesignicons.css';
 import { loadFonts } from './webfontloader';
+import Vue from 'vue';
 
 loadFonts();
 
-export default createVuetify({
+export default new Vuetify({
   icons: {
     iconfont: 'mdi',
   },

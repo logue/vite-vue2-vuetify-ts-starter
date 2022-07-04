@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, onMounted, type Ref } from 'vue';
-import { useStore } from '@logue/vue2-helpers/dist/vuex';
+import { useStore } from '@logue/vue2-helpers/vuex';
 
 /** Error */
 export default defineComponent({

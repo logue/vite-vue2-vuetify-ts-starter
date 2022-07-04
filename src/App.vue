@@ -75,9 +75,9 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue';
-import { useRoute, useRouter } from '@logue/vue2-helpers/dist/vue-router';
-import { useStore } from '@logue/vue2-helpers/dist/vuex';
-import { useVuetify } from '@logue/vue2-helpers/dist/vuetify';
+import { useRoute, useRouter } from '@logue/vue2-helpers/vue-router';
+import { useStore } from '@logue/vue2-helpers/vuex';
+import { useVuetify } from '@logue/vue2-helpers/vuetify';
 
 /** App */
 export default defineComponent({

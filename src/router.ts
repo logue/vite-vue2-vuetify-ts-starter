@@ -1,7 +1,7 @@
 import { nextTick } from 'vue';
 import type { NavigationGuardNext, Route, RouteConfig } from 'vue-router';
 import type { Position, PositionResult } from 'vue-router/types/router';
-import { createRouter, Router } from '@logue/vue2-helpers/dist/vue-router';
+import { createRouter, Router } from '@logue/vue2-helpers/vue-router';
 
 import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
 import goTo from 'vuetify/lib/services/goto';
