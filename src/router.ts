@@ -7,27 +7,22 @@ import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
 import goTo from 'vuetify/lib/services/goto';
 import store from '@/store';
 
-// View
-import ErrorPage from '@/views/ErrorPage.vue';
-import AboutPage from '@/views/AboutPage.vue';
-import HomePage from '@/views/HomePage.vue';
-
 /** Router Config */
 const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage,
+    component: () => import('@/views/HomePage.vue'),
   },
   {
     path: '/about',
     name: 'About',
-    component: AboutPage,
+    component: () => import('@/views/AboutPage.vue'),
   },
   {
     path: '*',
     name: 'Error',
-    component: ErrorPage,
+    component: () => import('@/views/ErrorPage.vue'),
   },
 ];
 

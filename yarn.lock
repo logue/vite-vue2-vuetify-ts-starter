@@ -868,6 +868,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vue/compiler-sfc@npm:2.7.2":
+  version: 2.7.2
+  resolution: "@vue/compiler-sfc@npm:2.7.2"
+  dependencies:
+    "@babel/parser": ^7.18.4
+    postcss: ^8.4.14
+    source-map: ^0.6.1
+  checksum: 6be7856dd590f68a937684befd085ca2f13937517ea77e9776242086893f11e7e7fdbb69e78c1bc357bcd465cf0d8aa247dfebcafe5a3f3c014995be4bcabbec
+  languageName: node
+  linkType: hard
+
 "@vue/compiler-sfc@npm:^3.2.37":
   version: 3.2.37
   resolution: "@vue/compiler-sfc@npm:3.2.37"
@@ -8235,12 +8246,12 @@ __metadata:
     unplugin-vue-components: ^0.21.0
     vite: ^2.9.13
     vite-plugin-checker: ^0.4.7
-    vue: ^2.7.0
+    vue: 2.7.2
     vue-class-component: ^7.2.6
     vue-eslint-parser: ^9.0.3
     vue-property-decorator: ^9.1.2
     vue-router: ^3.5.4
-    vue-template-compiler: ^2.7.1
+    vue-template-compiler: ^2.7.2
     vue-tsc: ^0.38.2
     vue2-teleport: ^1.0.1
     vuetify: ^2.6.7
@@ -8399,13 +8410,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-template-compiler@npm:^2.7.1":
-  version: 2.7.1
-  resolution: "vue-template-compiler@npm:2.7.1"
+"vue-template-compiler@npm:^2.7.2":
+  version: 2.7.2
+  resolution: "vue-template-compiler@npm:2.7.2"
   dependencies:
     de-indent: ^1.0.2
     he: ^1.2.0
-  checksum: cafb8d7ec30af46d6c72aebcaf6097b53a2e93e2959c2f0971731608409f561b3f23ffa019dac08ba54c5017dd6fa31680018fe6a823f8064f47c1d4de5b6041
+  checksum: c22164aeff8b28fac760e552b04ad549a7add2eb91fad60dbf5ce34aa0779a32d2fff43ca3a87f98621cbc0fcbabb784750d1c72d4b947b2e4699daf623130de
   languageName: node
   linkType: hard
 
@@ -8429,7 +8440,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:^2.6.11, vue@npm:^2.7.0":
+"vue@npm:2.7.2":
+  version: 2.7.2
+  resolution: "vue@npm:2.7.2"
+  dependencies:
+    "@vue/compiler-sfc": 2.7.2
+    csstype: ^3.1.0
+  checksum: f9ab2adfe4ae2c4354399bb9b8abfb862dc3a4fe3dd5a7b6b27763c13afb83036bcb97064c56f0c0dc3bf899e88b1da214f2c3e5f257dfc2eedf4b49efd0a2d2
+  languageName: node
+  linkType: hard
+
+"vue@npm:^2.6.11":
   version: 2.7.0
   resolution: "vue@npm:2.7.0"
   dependencies:

@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
 Vue.use(Vuetify);
@@ -10,7 +11,7 @@ import en from 'vuetify/es5/locale/en';
 
 import '@mdi/font/css/materialdesignicons.css';
 import { loadFonts } from './webfontloader';
-import Vue from 'vue';
+
 
 loadFonts();
 
