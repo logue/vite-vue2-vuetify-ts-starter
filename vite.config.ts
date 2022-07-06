@@ -119,9 +119,13 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
               '@logue/vue2-helpers',
               '@logue/vue2-helpers/vue-router',
               '@logue/vue2-helpers/vuex',
-              '@logue/vue2-helpers/vuetify',
             ],
-            vuetify: ['vuetify/lib', 'vuetify/src', 'webfontloader'],
+            vuetify: [
+              'vuetify/lib',
+              'vuetify/src',
+              '@logue/vue2-helpers/vuetify',
+              'webfontloader',
+            ],
             materialdesignicons: ['@mdi/font/css/materialdesignicons.css'],
           },
           plugins: [

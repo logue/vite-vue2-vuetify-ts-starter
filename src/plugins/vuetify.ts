@@ -1,21 +1,21 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+/** Vuetify Plugin */
+import type { UserVuetifyPreset } from 'vuetify';
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
-Vue.use(Vuetify);
+import Vuetify from 'vuetify/lib/framework';
+import Vue from 'vue';
+
 /*
 // Locale
 import i18n from './i18n';
-import ja from 'vuetify/es5/locale/ja';
-import en from 'vuetify/es5/locale/en';
+import { en, ja } from 'vuetify/lib/locale';
 */
 
 import '@mdi/font/css/materialdesignicons.css';
 import { loadFonts } from './webfontloader';
 
-
 loadFonts();
 
-export default new Vuetify({
+export default createVuetify({
   icons: {
     iconfont: 'mdi',
   },
@@ -41,3 +41,9 @@ export default new Vuetify({
     },
   },
 });
+
+/** Create Vuetify */
+export function createVuetify(options: Partial<UserVuetifyPreset>): Vuetify {
+  Vue.use(Vuetify);
+  return new Vuetify(options);
+}

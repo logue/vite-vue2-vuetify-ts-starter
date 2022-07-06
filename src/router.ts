@@ -1,14 +1,19 @@
+/** Vue Router Configure */
 import { nextTick } from 'vue';
-import type { NavigationGuardNext, Route, RouteConfig } from 'vue-router';
+import type { NavigationGuardNext, Route } from 'vue-router';
 import type { Position, PositionResult } from 'vue-router/types/router';
-import { createRouter, Router } from '@logue/vue2-helpers/vue-router';
+import {
+  createRouter,
+  type Router,
+  type RouteRecordRaw,
+} from '@logue/vue2-helpers/vue-router';
 
 import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
 import goTo from 'vuetify/lib/services/goto';
 import store from '@/store';
 
 /** Router Config */
-const routes: RouteConfig[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
