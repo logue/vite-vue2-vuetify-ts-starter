@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "vite-vue2-vuetify-ts-starter",
   "private": true,
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Vue2 Vuetify TypeScript Startar project for Vite.",
   "author": {
     "name": "Logue",
@@ -17,12 +17,12 @@
   "bugs": {
     "url": "https://github.com/logue/vite-vue2-vuetify-ts-starter/issues"
   },
+  "license": "MIT",
   "engines": {
-    "node": ">=16.15.1",
+    "node": ">=16.16.0",
     "yarn": ">=1.22.4"
   },
   "packageManager": "yarn@3.2.1",
-  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf ./node_modules/.vite",
@@ -39,7 +39,7 @@
   "dependencies": {
     "@logue/vue2-helpers": "^1.2.4",
     "@mdi/font": "^6.9.96",
-    "vue": "^2.7.3",
+    "vue": "^2.7.4",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.5.4",
@@ -50,7 +50,6 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "@types/eslint": "^8.4.5",
     "@types/node": "^18.0.3",
     "@types/webfontloader": "^1.6.34",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
@@ -75,7 +74,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
-    "postcss-html": "^1.4.1",
+    "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.4",
     "prettier": "^2.7.1",
     "reflect-metadata": "^0.1.13",
@@ -88,11 +87,11 @@
     "stylelint-order": "^5.0.0",
     "typescript": "^4.7.4",
     "unplugin-vue-components": "^0.21.1",
-    "vite": "^2.9.13",
+    "vite": "^2.9.14",
     "vite-plugin-checker": "^0.4.8",
     "vue-eslint-parser": "^9.0.3",
-    "vue-template-compiler": "^2.7.3",
-    "vue-tsc": "^0.38.2"
+    "vue-template-compiler": "^2.7.4",
+    "vue-tsc": "^0.38.3"
   },
   "husky": {
     "hooks": {

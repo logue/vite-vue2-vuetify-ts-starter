@@ -21,10 +21,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           find: '@/',
           replacement: `${path.resolve(__dirname, './src')}/`,
         },
-        {
-          find: 'src/',
-          replacement: `${path.resolve(__dirname, './src')}/`,
-        },
       ],
     },
     // https://vitejs.dev/config/#server-options
