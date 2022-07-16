@@ -9,10 +9,9 @@ import App from '@/App.vue';
 
 Vue.config.productionTip = false;
 
-const app = new Vue({
+new Vue({
   router,
   store,
   vuetify,
   render: h => h(App),
-});
-app.$mount('#app');
+}).$mount('#app');

@@ -26,19 +26,14 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "types": ["vite/client", "node", "vue", "vuetify"],
+    "types": ["vite/client", "vitest/globals", "node", "vue", "vuetify"],
     "useDefineForClassFields": true
   },
-  "include": [
-    "components.d.ts",
-    "src/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "vueCompilerOptions": {
+    "experimentalDisableTemplateSupport": true,
     "target": 2.7
   }
 }

@@ -1,7 +1,8 @@
 .husky/
 .vscode/
 .yarn/
-components.d.ts
 dist/
-index.html
+coverage/
 public/assets/
+components.d.ts
+

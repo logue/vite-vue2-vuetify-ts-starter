@@ -43,7 +43,7 @@ export default createVuetify({
 });
 
 /** Create Vuetify */
-export function createVuetify(options: Partial<UserVuetifyPreset>): Vuetify {
+export function createVuetify(options: UserVuetifyPreset): Vuetify {
   Vue.use(Vuetify);
   return new Vuetify(options);
 }

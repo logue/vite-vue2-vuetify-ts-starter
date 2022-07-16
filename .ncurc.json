@@ -1,4 +1,4 @@
 {
   "upgrade": true,
-  "reject": ["vue", "vue-router", "vuex", "sass"]
+  "reject": ["vue", "vue-router", "vuex", "@vue/test-utils", "sass"]
 }

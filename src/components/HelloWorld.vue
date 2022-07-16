@@ -1,13 +1,45 @@
+<!-- eslint-disable vuejs-accessibility/anchor-has-content -->
 <template>
-  <v-container>
-    <v-row class="text-center">
+  <v-container class="text-center">
+    <v-row class="my-3">
+      <v-col>
+        <a href="https://vitejs.dev" target="_blank">
+          <v-img
+            :src="viteLogo"
+            class="mx-auto logo"
+            alt="Vite logo"
+            contain
+            width="200"
+            height="200"
+          />
+        </a>
+      </v-col>
+      <v-col>
+        <a href="https://vuejs.org/" target="_blank">
+          <v-img
+            :src="vueLogo"
+            class="mx-auto logo vue"
+            alt="Vue logo"
+            contain
+            width="200"
+            height="200"
+          />
+        </a>
+      </v-col>
+      <v-col>
+        <a href="https://vuetifyjs.org/" target="_blank">
+          <v-img
+            :src="vuetifyLogo"
+            class="mx-auto logo vuetify"
+            alt="Vuetify logo"
+            contain
+            width="200"
+            height="200"
+          />
+        </a>
+      </v-col>
+
       <v-col cols="12">
-        <v-img
-          :src="require('@/assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
         <p v-text="msg" />
       </v-col>
 
@@ -94,6 +126,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
+// Logo
+import vueLogo from '@/assets/vue.svg';
+import viteLogo from '@/assets/vite.svg';
+import vuetifyLogo from '@/assets/vuetify.svg';
 
 import type MetaInterface from '@/interfaces/MetaInterface';
 import Meta from '@/Meta';
@@ -218,7 +255,27 @@ export default defineComponent({
       whatsNext,
       importantLinks,
       ecosystem,
+      vueLogo,
+      viteLogo,
+      vuetifyLogo,
     };
   },
 });
 </script>
+
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+.logo.vuetify:hover {
+  filter: drop-shadow(0 0 2em #2196f3aa);
+}
+</style>
