@@ -15,7 +15,7 @@
         </a>
       </v-col>
       <v-col>
-        <a href="https://vuejs.org/" target="_blank">
+        <a href="https://v2.vuejs.org/" target="_blank">
           <v-img
             :src="vueLogo"
             class="mx-auto logo vue"
@@ -27,7 +27,7 @@
         </a>
       </v-col>
       <v-col>
-        <a href="https://vuetifyjs.org/" target="_blank">
+        <a href="https://vuetifyjs.com/" target="_blank">
           <v-img
             :src="vuetifyLogo"
             class="mx-auto logo vuetify"

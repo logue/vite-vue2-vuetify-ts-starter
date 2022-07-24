@@ -118,7 +118,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
             ],
             vuetify: [
               'vuetify/lib',
-              'vuetify/src',
               '@logue/vue2-helpers/vuetify',
               'webfontloader',
             ],
