@@ -7,14 +7,18 @@ import checker from 'vite-plugin-checker';
 import path from 'path';
 import fs from 'fs';
 
-// https://vitejs.dev/config/
+/**
+ * Vite Configure
+ *
+ * @see {@link https://vitejs.dev/config/}
+ */
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
   const config: UserConfig = {
-    // https://vitejs.dev/config/#base
+    // // https://vitejs.dev/config/shared-options.html#base
     base: './',
     // Resolver
     resolve: {
-      // https://vitejs.dev/config/#resolve-alias
+      // https://vitejs.dev/config/shared-options.html#resolve-alias
       alias: [
         {
           // vue @ shortcut fix
@@ -23,7 +27,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         },
       ],
     },
-    // https://vitejs.dev/config/#server-options
+    // https://vitejs.dev/config/server-options.html
     server: {
       fs: {
         // Allow serving files from one level up to the project root
@@ -97,8 +101,13 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       },
     },
     // Build Options
-    // https://vitejs.dev/config/#build-options
+    // https://vitejs.dev/config/build-options.html
     build: {
+      // Build Target
+      // https://vitejs.dev/config/build-options.html#build-target
+      target: 'es2021',
+      // Rollup Options
+      // https://vitejs.dev/config/build-options.html#build-rollupoptions
       rollupOptions: {
         output: {
           manualChunks: {
@@ -146,20 +155,9 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           ],
         },
       },
-      target: 'es2021',
-      /*
       // Minify option
-      // https://vitejs.dev/config/#build-minify
-      minify: 'terser',
-      terserOptions: {
-        ecma: 2020,
-        parse: {},
-        compress: { drop_console: true },
-        mangle: true, // Note `mangle.properties` is `false` by default.
-        module: true,
-        output: { comments: true, beautify: false },
-      },
-      */
+      // https://vitejs.dev/config/build-options.html#build-minify
+      minify: 'esbuild',
     },
   };
 
