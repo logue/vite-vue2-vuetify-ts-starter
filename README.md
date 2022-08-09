@@ -12,46 +12,27 @@ Vuetify3 version is [here](https://github.com/logue/vite-vuetify-ts-starter).
 
 ## Description
 
-This template is for using Vue2 with TypeScript in Vite. Includes [vue-router](https://router.vuejs.org/) and [Vuex](https://vuex.vuejs.org/), [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator).
+This template is for using Vue2 with TypeScript in Vite. Includes [vue-router](https://router.vuejs.org/) and [Vuex](https://vuex.vuejs.org/).
 
 In addition, [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/), and [Prettier](https://prettier.io/) are also included and are set to be executed automatically at runtime and commit. (Since these settings are set strictly, please relax yourself.)
 
 Also, when the development server is executed, it is checked in real time by [vite-plugin-checker](https://github.com/fi3ework/vite-plugin-checker).
 
+[Vitest](https://github.com/vuejs/vue-test-utils) is included in the program for testing.
+
 ### Composition API
 
-It also supports the [Composition API](https://composition-api.vuejs.org/). The installed VueRouter and Vuex are for Vue2, but you can use the functions (such as `useRouter()`, `useRoute()` and `useStore()`) for the composition API for Vue3.
+With the standard support for [Composition API](https://composition-api.vuejs.org/) in vue 2.7 from 0.5.0, the default format is composition api.
 
-Of course, Vuetify instance can also be accessed with `useVuetify()`. In the Composition API, you can handle it in the same way as `this.$vuetify` by entering `const vuetify = useVuetify();` in the `setup()` function.
+[vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) will continue to be available, but mixed use is not recommended. [^1]
 
-It is possible to mix code written in Composition API and code written in vue-property-decolator, but it is not recommended to use them together in the same component. [^1]
-
-As a limitation, Vue2's composition api cannot monitor the router with the watch function. In that case, monitor it by the following normal method:
-
-```js
-watch: {
-  $route: {
-    handler(to) {
-      //
-    },
-    immediate: true,
-  },
-},
-```
-
-If you are thinking of supporting Vue2 and Vue3 both, consider introducing [vue-demi](https://github.com/vueuse/vue-demi).
-
-### Vue i18n
-
-If you want to use [vue-i18n](https://kazupon.github.io/vue-i18n/), please install [vue-i18n-composable](https://github.com/intlify/vue-i18n-composable) and call the instance with `useI18n()`.
-
-In addition, the conventional method using `$t()` written in non composition-api can be used as it is.
+[^1]: <https://github.com/vuejs/composition-api/issues/136>
 
 ### Teleport
 
 Vue3 adds a mechanism called [`Teleport`](https://v3.vuejs.org/guide/teleport.html), which allows you to install vue components anywhere. This starter template is for vue2, but you can do the same with [vue2-teleport](https://www.npmjs.com/package/vue2-teleport).
 
-However, you will need to manually load the component with `import Teleport from 'vue2-teleport';` wherever you want to use it.
+⚠ Notice: For Vue3, `:is="'script'"` becomes `as="script"`.
 
 #### Teleport JSON-LD Example
 
@@ -70,12 +51,7 @@ If you want to include [JSON-LD](https://json-ld.org/), enter as follows.
 <script>
 import { defineComponent } from '@vue/composition-api';
 
-import Teleport from 'vue2-teleport';
-
 export default defineComponent({
-  components: {
-    Teleport,
-  },
   setup() {
     const jsonLd = ref(
       JSON.stringfy({
@@ -98,7 +74,11 @@ export default defineComponent({
 
 JSON-LD is literally a `script`, so it can't be embedded directly, so it's a roundabout thing like this, but simple things like `meta` tags are reflected by simply inserting a tag.
 
-Notice: For Vue3, `:as="'script'"` becomes `is="script"`.
+### Vue i18n
+
+If you want to use [vue-i18n](https://kazupon.github.io/vue-i18n/), please install [vue-i18n-composable](https://github.com/intlify/vue-i18n-composable) and call the instance with `useI18n()`.
+
+In addition, the conventional method using `$t()` written in non composition-api can be used as it is.
 
 ## Recommended IDE Setup
 
@@ -113,6 +93,8 @@ Notice: For Vue3, `:as="'script'"` becomes `is="script"`.
 | lint          | Run ESLint and prettier.                           |
 | lint:style    | Run Stylelint.                                     |
 | lint:markup   | Check vue markup.                                  |
+| test          | Run vitest                                         |
+| coverage      | Output Coverage Report.                            |
 | build         | Build for production.                              |
 | build:analyze | Execute Bundle Analyzer                            |
 | build:deploy  | Build for production without checking.             |
@@ -133,9 +115,10 @@ When adding or deleting files, an error may occur and even if the error is corre
 
 Due to [yarn issues](https://github.com/yarnpkg/berry/issues/4448), it may not work properly if the path contains non-ASCII characters (such as 日本語 or 한국어, 中文 etc.).
 
-[^1]: <https://github.com/vuejs/composition-api/issues/136>
+From 0.7.4, the default project type is module. If you find a plugin that doesn't work, remove `"type": "module"` from package.json. ([Laravel vite plugin](https://github.com/laravel/vite-plugin) etc.)
 
 ## See Also
 
-- [vite-vue2-vuetify-ts-starter](https://github.com/logue/vite-vue2-vuetify-ts-starter) - UI library using Vuetify2
-- [laravel9-vite-vue2-starter](https://github.com/logue/laravel9-vite-vue2-starter) - for Laravel.
+- [vite-vue2-ts-starter](https://github.com/logue/vite-vue2-ts-starter)
+- [laravel9-vite-vue2-starter](https://github.com/logue/laravel9-vite-vue2-starter) - for Laravel + Breeze.
+- [vite-vue2-ts-ssr-starter](https://github.com/logue/vite-vue2-ts-ssr-starter) - SSR (Server Side Rendering) Version.

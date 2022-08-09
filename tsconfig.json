@@ -5,7 +5,7 @@
     "newLine": "lf",
     "noImplicitAny": false,
     "paths": { "@/*": ["./src/*"] },
-    "types": ["vite/client", "vitest/globals", "node", "vue", "vuetify"]
+    "types": ["vite/client", "vitest/globals", "vue", "vuetify"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist"],

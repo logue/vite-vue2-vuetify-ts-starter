@@ -1,6 +1,4 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "volar.tsPlugin": true,
   "volar.icon.preview": true,
-  "volar.icon.finder": true
 }

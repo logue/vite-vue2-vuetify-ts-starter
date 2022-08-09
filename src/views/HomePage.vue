@@ -16,18 +16,16 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch, type Ref, type SetupContext } from 'vue';
-// import { useStore } from '@logue/vue2-helpers/dist/vuex';
+// import { useStore } from '@logue/vue2-helpers/vuex';
 import { useRoute } from '@logue/vue2-helpers/vue-router';
 
 import HelloWorld from '@/components/HelloWorld.vue';
-import Teleport from 'vue2-teleport';
 
 /** Home Component */
 export default defineComponent({
   /** Components */
   components: {
     HelloWorld,
-    Teleport,
   },
   /** Props */
   props: {

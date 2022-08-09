@@ -6,15 +6,14 @@ extends:
   - eslint:recommended
   - google
   - plugin:@typescript-eslint/eslint-recommended
-  - plugin:json-schema-validator/recommended
   - plugin:import/recommended
   - plugin:import/typescript
   - plugin:jsdoc/recommended
-  - plugin:jsonc/prettier
   - plugin:vue/recommended
   - plugin:vuetify/recommended
   - plugin:vuejs-accessibility/recommended
   - plugin:yaml/recommended
+  - plugin:jsonc/prettier
   - '@vue/eslint-config-prettier'
 plugins:
   - '@typescript-eslint'
