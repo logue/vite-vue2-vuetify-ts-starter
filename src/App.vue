@@ -61,6 +61,17 @@
         </v-btn>
       </template>
     </v-snackbar>
+    <teleport to="head">
+      <meta
+        name="theme-color"
+        :content="vuetify.theme.currentTheme.primary?.toString()"
+      />
+      <link
+        rel="icon"
+        :href="require('@/assets/vuetify.svg')"
+        type="image/svg+xml"
+      />
+    </teleport>
   </v-app>
 </template>
 
@@ -159,6 +170,7 @@ export default defineComponent({
     });
 
     return {
+      vuetify,
       title,
       drawer,
       snackbar,

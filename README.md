@@ -4,11 +4,18 @@
   <img src="https://user-images.githubusercontent.com/480173/157433906-7f7910d4-6430-49f4-857a-044945e71360.png" alt="logo" width="300" height="300" />
 </p>
 
-**Vue 2.7.0 supported!** above 0.5.0.
-
 This is a [starter project](https://github.com/logue/vite-vue2-ts-starter) that uses [Vuetify](https://vuetifyjs.com/) as the UI framework. Please use scss version 1.32.12 due to a problem on the Vuetify side.
 
 Vuetify3 version is [here](https://github.com/logue/vite-vuetify-ts-starter).
+
+## Checklist
+
+When you use this template, try follow the checklist to update your info properly
+
+- [ ] Change the author name in `LICENSE` and package.json.
+- [ ] Change the favicon in `public`
+- [ ] Remove the `.github` folder which contains the funding info
+- [ ] Clean up the READMEs and remove routes
 
 ## Description
 
