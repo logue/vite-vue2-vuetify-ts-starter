@@ -12,7 +12,7 @@ import fs from 'fs';
  *
  * @see {@link https://vitejs.dev/config/}
  */
-export default defineConfig(async ({ mode }): Promise<UserConfig> => {
+export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
   const config: UserConfig = {
     // // https://vitejs.dev/config/shared-options.html#base
     base: './',
@@ -158,6 +158,10 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       // Minify option
       // https://vitejs.dev/config/build-options.html#build-minify
       minify: 'esbuild',
+    },
+    esbuild: {
+      // Drop console when production build.
+      drop: command === 'serve' ? [] : ['console'],
     },
   };
 
