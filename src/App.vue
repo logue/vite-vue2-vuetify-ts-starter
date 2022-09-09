@@ -86,7 +86,7 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue';
-import { useRoute, useRouter } from '@logue/vue2-helpers/vue-router';
+import { useRoute, useRouter } from 'vue-router/composables';
 import { useStore } from '@logue/vue2-helpers/vuex';
 import { useVuetify } from '@logue/vue2-helpers/vuetify';
 
@@ -120,9 +120,10 @@ export default defineComponent({
     const name: Ref<string | null | undefined> = ref(route?.name);
 
     /** Snackbar text */
-    const snackbarText: ComputedRef<string> = computed(
-      () => store.getters.message
-    );
+    const snackbarText: Ref<string> = computed({
+      get: () => store.getters.message,
+      set: v => store.dispatch('setMessage', v),
+    });
 
     /** progress percentage */
     const progress: Ref<number> = computed({
@@ -154,7 +155,7 @@ export default defineComponent({
     /** When loading */
     watch(
       loading,
-      () => (document.body.style.cursor = loading.value ? 'wait' : 'auto')
+      isloading => (document.body.style.cursor = isloading ? 'wait' : 'auto')
     );
 
     /** When error has occurred */
@@ -162,6 +163,13 @@ export default defineComponent({
 
     /** Toggle Dark Mode */
     watch(themeDark, current => (vuetify.theme.dark = current));
+
+    /** Reset SnackbarText when snackbar closed. */
+    watch(snackbar, visibility => {
+      if (!visibility) {
+        snackbarText.value = '';
+      }
+    });
 
     /** Run once. */
     onMounted(() => {

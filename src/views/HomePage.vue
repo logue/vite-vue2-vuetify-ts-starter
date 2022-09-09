@@ -20,6 +20,7 @@ import { defineComponent, ref, watch, type Ref, type SetupContext } from 'vue';
 import { useRoute } from 'vue-router/composables';
 
 import HelloWorld from '@/components/HelloWorld.vue';
+import logo from '@/assets/vuetify.svg';
 
 /** Home Component */
 export default defineComponent({
@@ -43,8 +44,7 @@ export default defineComponent({
     /** Vuex */
     // const store = useStore();
 
-    const data: Ref<string | undefined> = ref();
-
+    /** JSON LD sample */
     const jsonLd: Ref<string> = ref(
       JSON.stringify(
         {
@@ -54,6 +54,7 @@ export default defineComponent({
           name: 'Vite Vue2 TypeScript Startar',
           url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
           description: 'Vite Vue2 TypeScript Demo Page',
+          logo: logo,
         },
         null,
         2
@@ -76,7 +77,6 @@ export default defineComponent({
     );
 
     return {
-      data,
       jsonLd,
     };
   },

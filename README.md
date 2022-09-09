@@ -8,15 +8,6 @@ This is a [starter project](https://github.com/logue/vite-vue2-ts-starter) that 
 
 Vuetify3 version is [here](https://github.com/logue/vite-vuetify-ts-starter).
 
-## Checklist
-
-When you use this template, try follow the checklist to update your info properly
-
-- [ ] Change the author name in `LICENSE` and package.json.
-- [ ] Change the favicon in `public`
-- [ ] Remove the `.github` folder which contains the funding info
-- [ ] Clean up the READMEs and remove routes
-
 ## Description
 
 This template is for using Vue2 with TypeScript in Vite. Includes [vue-router](https://router.vuejs.org/) and [Vuex](https://vuex.vuejs.org/).
@@ -39,8 +30,6 @@ With the standard support for [Composition API](https://composition-api.vuejs.or
 
 Vue3 adds a mechanism called [`Teleport`](https://v3.vuejs.org/guide/teleport.html), which allows you to install vue components anywhere. This starter template is for vue2, but you can do the same with [vue2-teleport](https://www.npmjs.com/package/vue2-teleport).
 
-⚠ Notice: For Vue3, `:is="'script'"` becomes `as="script"`.
-
 #### Teleport JSON-LD Example
 
 If you want to include [JSON-LD](https://json-ld.org/), enter as follows.
@@ -56,7 +45,7 @@ If you want to include [JSON-LD](https://json-ld.org/), enter as follows.
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
@@ -80,6 +69,8 @@ export default defineComponent({
 ```
 
 JSON-LD is literally a `script`, so it can't be embedded directly, so it's a roundabout thing like this, but simple things like `meta` tags are reflected by simply inserting a tag.
+
+⚠ Notice: `<component :is="'script'" ... />` becomes `<component :as="'script'" ... />` in Vue3.
 
 ### Vue i18n
 
@@ -112,9 +103,7 @@ In addition, the conventional method using `$t()` written in non composition-api
 
 It also works when migrating from VueCLI.
 
-However, when importing a stylesheet with `@import`, it cannot be specified from the library directory. Must be specified from `~node_modules/`.
-
-Also, if you used the .env file in the previous environment, you need to change the calling part from `process.env` to `import.meta.env` after installing [vite-plugin-env-compatible](https://github.com/IndexXuan/vite-plugin-env-compatible) separately.
+However, when importing a stylesheet with `@import`, it cannot be specified from the library directory. Must be specified from `./node_modules/`.
 
 ## Troubleshooting
 
@@ -122,7 +111,16 @@ When adding or deleting files, an error may occur and even if the error is corre
 
 Due to [yarn issues](https://github.com/yarnpkg/berry/issues/4448), it may not work properly if the path contains non-ASCII characters (such as 日本語 or 한국어, 中文 etc.).
 
-From 0.7.4, the default project type is module. If you find a plugin that doesn't work, remove `"type": "module"` from package.json. ([Laravel vite plugin](https://github.com/laravel/vite-plugin) etc.)
+From 0.7.4, the default project type is module. If you find a plugin that doesn't work, remove `"type": "module"` from package.json.
+
+## Checklist
+
+When you use this template, try follow the checklist to update your info properly
+
+- [ ] Change the author name in `LICENSE` and `package.json`
+- [ ] Change the favicon in `public` and `src/assets`
+- [ ] Remove the `.github` folder which contains the funding info
+- [ ] Clean up the READMEs and remove routes
 
 ## See Also
 
