@@ -86,6 +86,7 @@
     "rollup-plugin-visualizer": "^5.8.1",
     "sass": "1.32.12",
     "stylelint": "^14.11.0",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-scss": "^7.0.0",
     "stylelint-config-recommended-vue": "^1.4.0",
     "stylelint-order": "^5.0.0",

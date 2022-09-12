@@ -5780,6 +5780,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"stylelint-config-prettier@npm:^9.0.3":
+  version: 9.0.3
+  resolution: "stylelint-config-prettier@npm:9.0.3"
+  peerDependencies:
+    stylelint: ">=11.0.0"
+  bin:
+    stylelint-config-prettier: bin/check.js
+    stylelint-config-prettier-check: bin/check.js
+  checksum: 9ff3f719daf3865878615ba52c31de6ef0a0d25d41cb58c41afe2f1c459a838997ff912cc4a5b4d401f92e2193667ff4d140b6d303cf8192e894b5cb454c41b9
+  languageName: node
+  linkType: hard
+
 "stylelint-config-recommended-scss@npm:^7.0.0":
   version: 7.0.0
   resolution: "stylelint-config-recommended-scss@npm:7.0.0"
@@ -6415,6 +6427,7 @@ __metadata:
     rollup-plugin-visualizer: ^5.8.1
     sass: 1.32.12
     stylelint: ^14.11.0
+    stylelint-config-prettier: ^9.0.3
     stylelint-config-recommended-scss: ^7.0.0
     stylelint-config-recommended-vue: ^1.4.0
     stylelint-order: ^5.0.0
