@@ -68,9 +68,6 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
           lintCommand: 'eslint', // for example, lint .ts & .tsx
         },
       }),
-      // compress assets
-      // https://github.com/vbenjs/vite-plugin-compression
-      // viteCompression(),
     ],
     css: {
       postcss: {
@@ -117,6 +114,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
               'vue-class-component',
               'vue-property-decorator',
               'vue-router',
+              'vue-router/composables',
               'vue2-teleport',
               'vuex',
               'vuex-persist',
