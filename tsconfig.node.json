@@ -4,6 +4,7 @@
   "compilerOptions": {
     "newLine": "lf",
     "paths": { "@/*": ["./src/*"] },
+    "types": ["vite/client"],
     "composite": true
   },
   "include": ["vite.config.ts", "vitest.config.ts"]
