@@ -16,7 +16,7 @@ export interface RootState {
   /* + Loading overlay */
   loading: boolean;
   /** ProgressBar Percentage */
-  progress: number;
+  progress: number | null;
   /** SnackBar Text */
   message?: string;
   /** Error Message */
@@ -34,7 +34,7 @@ const state: RootState = {
 /** Getters */
 const getters: GetterTree<RootState, RootState> = {
   loading: (s): boolean => s.loading,
-  progress: (s): number => s.progress,
+  progress: (s): number | null => s.progress,
   message: (s): string | undefined => s.message,
   error: (s): string | undefined => s.error,
 };
@@ -49,6 +49,9 @@ const mutations: MutationTree<RootState> = {
    */
   storeLoading(s, display: boolean) {
     s.loading = display;
+    if (!display) {
+      s.progress = 0;
+    }
   },
   /**
    * Store progress
@@ -56,7 +59,7 @@ const mutations: MutationTree<RootState> = {
    * @param s - Vuex state
    * @param progress - Payload
    */
-  storeProgress(s, progress: number) {
+  storeProgress(s, progress: number | null) {
     s.progress = progress;
     s.loading = true;
   },
@@ -98,7 +101,7 @@ const actions: ActionTree<RootState, RootState> = {
    * Loading progress bar value
    *
    * @param context - Vuex Context
-   * @param progress - Percentage(0~100)
+   * @param progress - Percentage(0~100), null is intermediate
    */
   setProgress(
     context: ActionContext<RootState, RootState>,

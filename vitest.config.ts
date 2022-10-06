@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitest/config';
+import { fileURLToPath } from 'url';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
-import vue from '@vitejs/plugin-vue2';
 import Components from 'unplugin-vue-components/vite';
-import path from 'path';
+import vue from '@vitejs/plugin-vue2';
 
 /**
  * Vitest Configure
@@ -13,20 +13,20 @@ export default defineConfig({
   // Resolver
   resolve: {
     // https://vitejs.dev/config/shared-options.html#resolve-alias
-    alias: [
-      {
-        // vue @ shortcut fix
-        find: '@/',
-        replacement: `${path.resolve(__dirname, './src')}/`,
-      },
-    ],
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
   // plugins
   plugins: [
     {
       name: 'vitest-plugin-beforeall',
       config: () => ({
-        test: { setupFiles: ['./vitest/beforeAll.ts'] },
+        test: {
+          setupFiles: [
+            fileURLToPath(new URL('./vitest/beforeAll.ts', import.meta.url)),
+          ],
+        },
       }),
     } as any,
     // Vue2
@@ -57,7 +57,7 @@ export default defineConfig({
   test: {
     // https://vitest.dev/guide/#configuring-vitest
     globals: true,
-    globalSetup: ['./vitest/setup.ts'],
+    globalSetup: [fileURLToPath(new URL('./vitest/setup.ts', import.meta.url))],
     environment: 'jsdom',
     deps: {
       inline: ['vuetify'],
