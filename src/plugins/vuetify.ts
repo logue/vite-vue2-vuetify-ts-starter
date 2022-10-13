@@ -1,8 +1,6 @@
 /** Vuetify Plugin */
-import type { UserVuetifyPreset } from 'vuetify';
+import { createVuetify } from '@logue/vue2-helpers/vuetify';
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
-import Vuetify from 'vuetify/lib/framework';
-import Vue from 'vue';
 
 /*
 // Locale
@@ -41,9 +39,3 @@ export default createVuetify({
     },
   },
 });
-
-/** Create Vuetify */
-export function createVuetify(options: UserVuetifyPreset): Vuetify {
-  Vue.use(Vuetify);
-  return new Vuetify(options);
-}

@@ -1,3 +1,6 @@
+/** Vuex Store */
+import { createStore } from '@logue/vue2-helpers/vuex';
+import VuexPersistence from 'vuex-persist';
 import type {
   ActionContext,
   ActionTree,
@@ -5,8 +8,6 @@ import type {
   MutationTree,
   StoreOptions,
 } from 'vuex';
-import { createStore } from '@logue/vue2-helpers/vuex';
-import VuexPersistence from 'vuex-persist';
 
 // Modules
 import ConfigModule from './ConfigModule';
@@ -18,25 +19,25 @@ export interface RootState {
   /** ProgressBar Percentage */
   progress: number | null;
   /** SnackBar Text */
-  message?: string;
+  message: string;
   /** Error Message */
-  error?: string;
+  error: string;
 }
 
 /** State Default value */
 const state: RootState = {
   loading: false,
   progress: 0,
-  message: undefined,
-  error: undefined,
+  message: '',
+  error: '',
 };
 
 /** Getters */
 const getters: GetterTree<RootState, RootState> = {
   loading: (s): boolean => s.loading,
   progress: (s): number | null => s.progress,
-  message: (s): string | undefined => s.message,
-  error: (s): string | undefined => s.error,
+  message: (s): string => s.message,
+  error: (s): string => s.error,
 };
 
 /** Mutations */
@@ -105,7 +106,7 @@ const actions: ActionTree<RootState, RootState> = {
    */
   setProgress(
     context: ActionContext<RootState, RootState>,
-    progress: number = 0
+    progress: number | null = 0
   ) {
     context.commit('storeProgress', progress);
   },

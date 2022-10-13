@@ -110,7 +110,7 @@ export default defineComponent({
 
     /** Title */
     const title: Ref<string> = ref(
-      import.meta.env.VITE_APP_TITLE || 'Vite APP'
+      import.meta.env.VITE_APP_TITLE || 'Vite Vuetify Application'
     );
     /** Drawer menu visibility */
     const drawer: Ref<boolean> = ref(false);

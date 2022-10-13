@@ -1,16 +1,15 @@
 /** Vue Router Configure */
+import { createRouter } from '@logue/vue2-helpers/vue-router';
 import { nextTick } from 'vue';
-import type { NavigationGuardNext, Route } from 'vue-router';
-import type { Position, PositionResult } from 'vue-router/types/router';
-import {
-  createRouter,
-  type Router,
-  type RouteRecordRaw,
-} from '@logue/vue2-helpers/vue-router';
-
-import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
-import goTo from 'vuetify/lib/services/goto';
 import store from '@/store';
+import type VueRouter from 'vue-router';
+import type { NavigationGuardNext, Route } from 'vue-router';
+import type { RouteRecordRaw } from '@logue/vue2-helpers/vue-router';
+import type { Position, PositionResult } from 'vue-router/types/router';
+
+// Vuetify
+import goTo from 'vuetify/lib/services/goto';
+import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
 
 /** Router Config */
 const routes: RouteRecordRaw[] = [
@@ -31,7 +30,7 @@ const routes: RouteRecordRaw[] = [
   },
 ];
 
-const router: Router = createRouter({
+const router: VueRouter = createRouter({
   base: import.meta.env.BASE_URL,
   mode: 'history', // abstract, hash, history
   scrollBehavior: async (

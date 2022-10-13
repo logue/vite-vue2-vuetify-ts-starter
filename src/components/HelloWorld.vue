@@ -46,6 +46,13 @@
       <v-col class="mb-4">
         <h1 class="text-h3 font-weight-bold mb-3">Welcome to Vuetify</h1>
         <p>
+          <a
+            href="https://github.com/logue/vite-vue2-vuetify-ts-starter#readme"
+            target="_blank"
+            rel="noopener"
+          >
+            vite-vue2-vuetify-ts-starter
+          </a>
           Build:
           <time
             :datetime="meta.date"
