@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "vite-vue2-vuetify-ts-starter",
   "description": "Vue2 Vuetify TypeScript Startar project for Vite.",
-  "version": "0.9.1",
+  "version": "0.9.6",
   "license": "MIT",
   "type": "module",
   "private": true,
@@ -42,7 +42,7 @@
   "dependencies": {
     "@logue/vue2-helpers": "^2.1.1",
     "@mdi/font": "^7.0.96",
-    "vue": "^2.7.12",
+    "vue": "^2.7.13",
     "vue-router": "^3.6.5",
     "vuetify": "^2.6.11",
     "vuex": "^3.6.2",
@@ -80,9 +80,9 @@
     "prettier": "^2.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rollup-plugin-visualizer": "^5.8.2",
+    "rollup-plugin-visualizer": "^5.8.3",
     "sass": "1.32.12",
-    "stylelint": "^14.13.0",
+    "stylelint": "^14.14.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-scss": "^7.0.0",
     "stylelint-config-recommended-vue": "^1.4.0",
@@ -93,8 +93,8 @@
     "vite-plugin-checker": "^0.5.1",
     "vitest": "^0.24.3",
     "vue-eslint-parser": "^9.1.0",
-    "vue-template-compiler": "^2.7.12",
-    "vue-tsc": "1.0.3"
+    "vue-template-compiler": "^2.7.13",
+    "vue-tsc": "^1.0.8"
   },
   "husky": {
     "hooks": {

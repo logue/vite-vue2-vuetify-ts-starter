@@ -18,6 +18,12 @@ Also, when the development server is executed, it is checked in real time by [vi
 
 [Vitest](https://github.com/vuejs/vue-test-utils) is included in the program for testing.
 
+### Known issue
+
+`vue-tsc` outputs an error with `v-checkbox`. (Because of the specification to write `v-model` and value together)
+
+If you encounter this kind of trouble, set `vueTsc: false` in `vite-plugin-checker` in `vite.config.ts` and remove `vue-tsc --noEmit` from the `build` command in `package.json`.
+
 ### Composition API
 
 With the standard support for [Composition API](https://composition-api.vuejs.org/) in vue 2.7, the default format is composition api.
@@ -26,7 +32,8 @@ With the standard support for [Composition API](https://composition-api.vuejs.or
 
 ### Teleport
 
-Vue3 adds a mechanism called [`Teleport`](https://v3.vuejs.org/guide/teleport.html), which allows you to install vue components anywhere. This starter template is for vue2, but you can do the same with [@logue/vue2-helpers/vue2-teleport](https://github.com/logue/vue2-helpers).
+Vue3 adds a mechanism called [`Teleport`](https://v3.vuejs.org/guide/teleport.html), which allows you to install vue components anywhere.
+This starter template is for vue2, but you can do the same with [@logue/vue2-helpers/vue2-teleport](https://github.com/logue/vue2-helpers).
 
 #### Teleport JSON-LD Example
 

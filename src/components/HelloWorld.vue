@@ -239,20 +239,12 @@ export default defineComponent({
         href: 'https://devtools.vuejs.org/',
       },
       {
+        text: 'vitest',
+        href: 'https://vitest.dev/',
+      },
+      {
         text: '@logue/vue2-helpers',
         href: 'https://github.com/logue/vue2-helpers',
-      },
-      {
-        text: 'vue2-teleport',
-        href: 'https://github.com/Mechazawa/vue2-teleport',
-      },
-      {
-        text: 'vue-class-component',
-        href: 'https://class-component.vuejs.org/',
-      },
-      {
-        text: 'vue-property-decorator',
-        href: 'https://github.com/kaorun343/vue-property-decorator',
       },
     ];
 

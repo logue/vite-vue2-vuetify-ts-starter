@@ -6,7 +6,6 @@
     "vue-router",
     "vuex",
     "@vue/test-utils",
-    "vue-tsc",
     "sass"
   ]
 }
