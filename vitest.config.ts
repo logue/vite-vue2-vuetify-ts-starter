@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitest/config';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import vue from '@vitejs/plugin-vue2';

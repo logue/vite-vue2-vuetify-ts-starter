@@ -20,7 +20,7 @@ Also, when the development server is executed, it is checked in real time by [vi
 
 ### Known issue
 
-`vue-tsc` outputs an error with `v-checkbox`. (Because of the specification to write `v-model` and value together)
+`vue-tsc` outputs an error with `v-checkbox`. (Because of the specification to write `v-model` and `value` together)
 
 If you encounter this kind of trouble, set `vueTsc: false` in `vite-plugin-checker` in `vite.config.ts` and remove `vue-tsc --noEmit` from the `build` command in `package.json`.
 

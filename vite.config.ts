@@ -1,10 +1,10 @@
 import { defineConfig, type UserConfig } from 'vite';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import checker from 'vite-plugin-checker';
-import fs from 'fs';
+import fs from 'node:fs';
 import vue from '@vitejs/plugin-vue2';
 
 /**
