@@ -10,7 +10,6 @@ extends:
   - plugin:import/typescript
   - plugin:jsdoc/recommended
   - plugin:vue/recommended
-  - plugin:vuetify/recommended
   - plugin:vuejs-accessibility/recommended
   - plugin:yaml/recommended
   - plugin:jsonc/prettier
@@ -50,10 +49,12 @@ settings:
     typescript: {}
     alias:
       map:
-        - ['@/', './src/']
+        - ['@', './src']
       extensions:
         - .js
         - .ts
         - .jsx
         - .tsx
         - .vue
+    vite:
+      configPath: ./vite.config.ts

@@ -1,4 +1,4 @@
-import webFontLoader, { load } from 'webfontloader';
+import { load } from 'webfontloader';
 /**
  * Webfont loader
  *
@@ -33,15 +33,7 @@ export async function loadFonts(): Promise<void> {
         'Noto+Colr+Emoji+Glyf:400',
       ],
     },
-    active: () => {
-      sessionStorage.fonts = true;
-    },
-    inactive: () => {
-      sessionStorage.fonts = false;
-    },
   };
 
-  if (typeof webFontLoader === 'object' || !sessionStorage.fonts) {
-    load(WebFontConfig);
-  }
+  load(WebFontConfig);
 }
