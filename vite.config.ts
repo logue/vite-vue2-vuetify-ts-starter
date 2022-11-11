@@ -107,7 +107,6 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
       // Rollup Options
       // https://vitejs.dev/config/build-options.html#build-rollupoptions
       rollupOptions: {
-        // @ts-ignore
         output: {
           manualChunks: {
             // Split external library from transpiled code.
@@ -150,7 +149,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
               },
             }),
             */
-          ].filter(item => item !== undefined),
+          ],
         },
       },
       // Minify option

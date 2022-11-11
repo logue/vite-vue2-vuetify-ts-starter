@@ -4,7 +4,7 @@ import { load } from 'webfontloader';
  *
  * @see {@link https://github.com/typekit/webfontloader | Webfontloader documentation}
  */
-export async function loadFonts(): Promise<void> {
+export function loadFonts() {
   /** dns-prefetch */
   const prefetch = document.createElement('link');
   prefetch.rel = 'dns-prefetch';
