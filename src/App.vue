@@ -4,9 +4,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-app-bar-title>{{ title }}</v-app-bar-title>
       <v-spacer />
-      <v-btn icon @click="themeDark = !themeDark">
-        <v-icon>mdi-theme-light-dark</v-icon>
-      </v-btn>
+      <app-bar-menu-component />
       <v-progress-linear
         :active="loading"
         :indeterminate="progress === null"
@@ -18,24 +16,7 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app>
-      <v-list link>
-        <v-list-item :to="{ name: 'Home' }">
-          <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item :to="{ name: 'About' }">
-          <v-list-item-icon>
-            <v-icon>mdi-information</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>About</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      <drawer-component />
     </v-navigation-drawer>
 
     <v-main>
@@ -61,16 +42,13 @@
         </v-btn>
       </template>
     </v-snackbar>
+
     <teleport to="head">
       <meta
         name="theme-color"
         :content="vuetify.theme.currentTheme.primary?.toString()"
       />
-      <link
-        rel="icon"
-        :href="require('@/assets/vuetify.svg')"
-        type="image/svg+xml"
-      />
+      <link rel="icon" :href="logo" type="image/svg+xml" />
     </teleport>
   </v-app>
 </template>
@@ -79,6 +57,7 @@
 import {
   computed,
   defineComponent,
+  nextTick,
   onMounted,
   ref,
   watch,
@@ -90,8 +69,17 @@ import { useRoute, useRouter } from 'vue-router/composables';
 import { useStore } from '@logue/vue2-helpers/vuex';
 import { useVuetify } from '@logue/vue2-helpers/vuetify';
 
+import AppBarMenuComponent from '@/components/AppBarMenuComponent.vue';
+import DrawerComponent from '@/components/DrawerComponent.vue';
+
+import logo from '@/assets/vuetify.svg';
+
 /** App */
 export default defineComponent({
+  components: {
+    AppBarMenuComponent,
+    DrawerComponent,
+  },
   /**
    * Setup
    *
@@ -116,8 +104,6 @@ export default defineComponent({
     const drawer: Ref<boolean> = ref(false);
     /** Snackbar visibility */
     const snackbar: Ref<boolean> = ref(false);
-    /** current page name */
-    const name: Ref<string | null | undefined> = ref(route?.name);
 
     /** Snackbar text */
     const snackbarText: Ref<string> = computed({
@@ -137,20 +123,17 @@ export default defineComponent({
       set: v => store.dispatch('setLoading', v),
     });
 
-    /** Toggle Theme Dark/Light mode */
-    const themeDark: Ref<boolean> = computed({
-      get: () => store.getters['ConfigModule/themeDark'],
-      set: v => store.dispatch('ConfigModule/setThemeDark', v),
-    });
-
     /** Error Message */
     const error: ComputedRef<boolean> = computed(() => store.getters.error);
 
-    /** Modify snackbar text */
-    watch(snackbarText, () => (snackbar.value = true));
-
     /** When route change, hide snackbar */
-    watch(name, () => (snackbar.value = false));
+    watch(
+      () => route?.name,
+      () => {
+        snackbar.value = false;
+        onSnackbarChanged();
+      }
+    );
 
     /** When loading */
     watch(
@@ -161,15 +144,14 @@ export default defineComponent({
     /** When error has occurred */
     watch(error, () => router.push({ name: 'Error' }));
 
-    /** Toggle Dark Mode */
-    watch(themeDark, current => (vuetify.theme.dark = current));
-
-    /** Reset SnackbarText when snackbar closed. */
-    watch(snackbar, visibility => {
-      if (!visibility) {
-        snackbarText.value = '';
+    // When snackbar text has been set, show snackbar.
+    watch(
+      () => snackbarText.value,
+      async value => {
+        snackbar.value = value !== '';
+        await nextTick();
       }
-    });
+    );
 
     /** Run once. */
     onMounted(() => {
@@ -177,7 +159,14 @@ export default defineComponent({
       loading.value = false;
     });
 
+    /** Clear store when snackbar hide */
+    const onSnackbarChanged = async () => {
+      store.dispatch('setMessage');
+      await nextTick();
+    };
+
     return {
+      logo,
       vuetify,
       title,
       drawer,
@@ -186,14 +175,14 @@ export default defineComponent({
       progress,
       loading,
       error,
-      themeDark,
+      onSnackbarChanged,
     };
   },
 });
 </script>
 
 <style lang="scss">
-@import 'node_modules/vuetify/src/styles/styles';
+@import '~/vuetify/src/styles/styles';
 
 html {
   // Fix always scrollbar shown.

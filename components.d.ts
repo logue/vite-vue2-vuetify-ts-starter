@@ -5,6 +5,8 @@ export {}
         
 declare module 'vue' {
   export interface GlobalComponents {
+    AppBarMenuComponent: typeof import('./src/components/AppBarMenuComponent.vue')['default']
+    DrawerComponent: typeof import('./src/components/DrawerComponent.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -18,12 +20,14 @@ declare module 'vue' {
     VCardTitle: typeof import('vuetify/lib')['VCardTitle']
     VCol: typeof import('vuetify/lib')['VCol']
     VContainer: typeof import('vuetify/lib')['VContainer']
+    VDivider: typeof import('vuetify/lib')['VDivider']
     VFadeTransition: typeof import('vuetify/lib')['VFadeTransition']
     VIcon: typeof import('vuetify/lib')['VIcon']
     VImg: typeof import('vuetify/lib')['VImg']
     VList: typeof import('vuetify/lib')['VList']
     VListItem: typeof import('vuetify/lib')['VListItem']
     VListItemContent: typeof import('vuetify/lib')['VListItemContent']
+    VListItemGroup: typeof import('vuetify/lib')['VListItemGroup']
     VListItemIcon: typeof import('vuetify/lib')['VListItemIcon']
     VListItemTitle: typeof import('vuetify/lib')['VListItemTitle']
     VMain: typeof import('vuetify/lib')['VMain']

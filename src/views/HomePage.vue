@@ -4,7 +4,7 @@
     <teleport to="head">
       <meta
         name="keyword"
-        content="template, typescript, vue2, vue-property-decorator, vue-class-component, vite, vite-template, composition-api, volar"
+        content="template, typescript, vue2, vite, vite-template, composition-api, volar"
       />
       <meta name="description" content="Vite Vue2 TypeScript Demo" />
       <component :is="'script'" type="application/ld+json">

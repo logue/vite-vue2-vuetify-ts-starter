@@ -1,6 +1,6 @@
 /** Vuex Store */
 import { createStore } from '@logue/vue2-helpers/vuex';
-import VuexPersistence from 'vuex-persist';
+import { VuexPersistence } from 'vuex-persist';
 import type {
   ActionContext,
   ActionTree,
@@ -116,7 +116,10 @@ const actions: ActionTree<RootState, RootState> = {
    * @param context - Vuex Context
    * @param message - Message text
    */
-  setMessage(context: ActionContext<RootState, RootState>, message?: string) {
+  setMessage(
+    context: ActionContext<RootState, RootState>,
+    message: string = ''
+  ) {
     context.commit('storeMessage', message);
   },
   /**

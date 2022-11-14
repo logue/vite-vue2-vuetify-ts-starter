@@ -12,5 +12,5 @@ ignoreFiles:
 rules:
   color-function-notation: legacy
   function-no-unknown: null
-  scss/no-global-function-names: null
   no-descending-specificity: null
+  scss/no-global-function-names: null

@@ -1,1 +1,11 @@
-$body-font-family: 'Roboto', 'Noto Colr Emoji Glyf', sans-serif;
+$body-font-family: Roboto, 'Noto Color Emoji', sans-serif;
+// $body-font-family: 'Noto Sans', 'Noto Sans JP', 'Noto Color Emoji', sans-serif;
+
+// Fix for monospace Font.
+code,
+kbd,
+pre,
+samp {
+  font-family: 'Roboto Mono', monospace !important;
+  // font-family: 'Noto Sans Mono', monospace !important;
+}
