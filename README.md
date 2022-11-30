@@ -87,6 +87,8 @@ In addition, the conventional method using `$t()` written in non composition-api
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=vue.volar) (and disable Vetur).
 
+And use [Volar Takeover Mode](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode) for better performance.
+
 ## Commands
 
 It is designed to be close to [create-vue](https://github.com/vuejs/create-vue) commands.

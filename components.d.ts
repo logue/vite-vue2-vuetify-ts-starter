@@ -2,7 +2,7 @@
 // We suggest you to commit this file into source control
 // Read more: https://github.com/vuejs/core/pull/3399
 export {}
-        
+
 declare module 'vue' {
   export interface GlobalComponents {
     AppBarMenuComponent: typeof import('./src/components/AppBarMenuComponent.vue')['default']
@@ -26,7 +26,6 @@ declare module 'vue' {
     VImg: typeof import('vuetify/lib')['VImg']
     VList: typeof import('vuetify/lib')['VList']
     VListItem: typeof import('vuetify/lib')['VListItem']
-    VListItemContent: typeof import('vuetify/lib')['VListItemContent']
     VListItemGroup: typeof import('vuetify/lib')['VListItemGroup']
     VListItemIcon: typeof import('vuetify/lib')['VListItemIcon']
     VListItemTitle: typeof import('vuetify/lib')['VListItemTitle']

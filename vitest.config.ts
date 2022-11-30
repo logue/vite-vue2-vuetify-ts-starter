@@ -11,14 +11,6 @@ import { fileURLToPath, URL } from 'node:url';
  * @see {@link https://vitest.dev/config/}
  */
 export default defineConfig({
-  // Resolver
-  resolve: {
-    // https://vitejs.dev/config/shared-options.html#resolve-alias
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
-    },
-  },
   // plugins
   plugins: [
     {
@@ -56,6 +48,14 @@ export default defineConfig({
       ],
     }),
   ],
+  // Resolver
+  resolve: {
+    // https://vitejs.dev/config/shared-options.html#resolve-alias
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
+    },
+  },
   test: {
     // https://vitest.dev/guide/#configuring-vitest
     globals: true,
