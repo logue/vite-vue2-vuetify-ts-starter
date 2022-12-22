@@ -124,6 +124,12 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
               '@logue/vue2-helpers/vue-router',
               '@logue/vue2-helpers/vuex',
             ],
+            vuetify: [
+              'vuetify/lib',
+              '@logue/vue2-helpers/vuetify',
+              'webfontloader',
+            ],
+            materialdesignicons: ['@mdi/font/css/materialdesignicons.css'],
           },
           plugins: [
             mode === 'analyze'
@@ -132,8 +138,8 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
                 visualizer({
                   open: true,
                   filename: 'dist/stats.html',
-                  gzipSize: true,
-                  brotliSize: true,
+                  // gzipSize: true,
+                  // brotliSize: true,
                 })
               : undefined,
             /*
@@ -145,7 +151,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
               },
             }),
             */
-          ].filter(item => item !== undefined),
+          ],
         },
       },
       // Minify option
