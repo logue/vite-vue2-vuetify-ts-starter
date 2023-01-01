@@ -60,6 +60,7 @@ settings:
     alias:
       map:
         - ['@', './src']
+        - ['~', './node_modules']
       extensions:
         - .js
         - .ts
