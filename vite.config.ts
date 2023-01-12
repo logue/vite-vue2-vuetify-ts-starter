@@ -63,6 +63,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
         '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
       },
+      extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
     },
     // https://vitejs.dev/config/server-options.html
     server: {
@@ -142,15 +143,6 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
                   // brotliSize: true,
                 })
               : undefined,
-            /*
-            // if you use Code encryption by rollup-plugin-obfuscator
-            // https://github.com/getkey/rollup-plugin-obfuscator
-            obfuscator({
-              globalOptions: {
-                debugProtection: true,
-              },
-            }),
-            */
           ],
         },
       },

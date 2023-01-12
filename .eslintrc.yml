@@ -56,7 +56,8 @@ settings:
       - .ts
       - .tsx
   import/resolver:
-    typescript: {}
+    typescript: true
+    node: true
     alias:
       map:
         - ['@', './src']
