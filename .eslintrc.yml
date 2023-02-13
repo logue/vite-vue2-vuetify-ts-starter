@@ -14,7 +14,6 @@ extends:
   - plugin:vuejs-accessibility/recommended
   - plugin:vuetify/recommended
   - plugin:yaml/recommended
-  - plugin:jsonc/prettier
   - '@vue/eslint-config-prettier'
 plugins:
   - '@typescript-eslint'

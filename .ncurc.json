@@ -1,11 +1,12 @@
 {
   "upgrade": true,
   "reject": [
-    "vue",
-    "vue-template-compiler",
-    "vue-router",
-    "vuex",
     "@vue/test-utils",
-    "sass"
+    "sass",
+    "vue-router",
+    "vue-template-compiler",
+    "vue",
+    "vuetify",
+    "vuex"
   ]
 }

@@ -41,6 +41,8 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
             names: ['RouterLink', 'RouterView'],
           },
         ],
+        // Vue version of project.
+        version: 2.7,
       }),
       // vite-plugin-checker
       // https://github.com/fi3ework/vite-plugin-checker

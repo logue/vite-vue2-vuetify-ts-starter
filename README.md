@@ -8,6 +8,8 @@ This is a [starter project](https://github.com/logue/vite-vue2-ts-starter) that 
 
 Vuetify3 version is [here](https://github.com/logue/vite-vuetify-ts-starter).
 
+⚠ Important notice: Vuetify has been default since 3.1.4. Therefore, it is not recommended to use it in new projects. We recommend migrating to [vite-vuetify-ts-starter](https://github.com/logue/vite-vuetify-ts-starter).
+
 ## Description
 
 This template is for using Vue2 with TypeScript in Vite. Includes [vue-router](https://router.vuejs.org/) and [Vuex](https://vuex.vuejs.org/).
