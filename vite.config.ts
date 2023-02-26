@@ -1,12 +1,12 @@
+import { fileURLToPath, URL } from 'node:url';
+import fs from 'node:fs';
+
 import { checker } from 'vite-plugin-checker';
 import { defineConfig, type UserConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import vue from '@vitejs/plugin-vue2';
-
-import { fileURLToPath, URL } from 'node:url';
-import fs from 'node:fs';
 
 /**
  * Vite Configure
@@ -54,9 +54,6 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
             'eslint --cache --cache-location ./node_modules/.vite/vite-plugin-eslint', // for example, lint .ts & .tsx
         },
       }),
-      // compress assets
-      // https://github.com/vbenjs/vite-plugin-compression
-      // viteCompression(),
     ],
     // Resolver
     resolve: {

@@ -53,7 +53,7 @@
           >
             vite-vue2-vuetify-ts-starter
           </a>
-          Build:
+          &nbsp;/&nbsp;Build:
           <time
             :datetime="meta.date"
             v-text="new Date(meta.date).toLocaleString()"

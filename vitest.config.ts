@@ -1,9 +1,9 @@
-import { defineConfig } from 'vitest/config';
+import { fileURLToPath, URL } from 'node:url';
+
+import { configDefaults, defineConfig } from 'vitest/config';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import vue from '@vitejs/plugin-vue2';
-
-import { fileURLToPath, URL } from 'node:url';
 
 /**
  * Vitest Configure
@@ -58,11 +58,13 @@ export default defineConfig({
   },
   test: {
     // https://vitest.dev/guide/#configuring-vitest
-    globals: true,
-    globalSetup: [fileURLToPath(new URL('./vitest/setup.ts', import.meta.url))],
-    environment: 'jsdom',
     deps: {
       inline: ['vuetify'],
     },
+    environment: 'jsdom',
+    globals: true,
+    globalSetup: [fileURLToPath(new URL('./vitest/setup.ts', import.meta.url))],
+    exclude: [...configDefaults.exclude, 'e2e/*'],
+    root: fileURLToPath(new URL('./', import.meta.url)),
   },
 });
