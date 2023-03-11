@@ -46,7 +46,7 @@
     <teleport to="head">
       <meta
         name="theme-color"
-        :content="vuetify.theme.currentTheme.primary?.toString()"
+        :content="theme.currentTheme.primary?.toString()"
       />
       <link rel="icon" :href="logo" type="image/svg+xml" />
     </teleport>
@@ -67,7 +67,7 @@ import {
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router/composables';
 import { useStore } from '@logue/vue2-helpers/vuex';
-import { useVuetify } from '@logue/vue2-helpers/vuetify';
+import { useTheme } from '@logue/vue2-helpers/vuetify';
 
 import AppBarMenuComponent from '@/components/AppBarMenuComponent.vue';
 import DrawerComponent from '@/components/DrawerComponent.vue';
@@ -93,8 +93,8 @@ export default defineComponent({
     const router = useRouter();
     /** Router */
     const route = useRoute();
-    /** Vuetify */
-    const vuetify = useVuetify();
+    /** Vuetify Theme */
+    const theme = useTheme();
 
     /** Title */
     const title: Ref<string> = ref(
@@ -167,7 +167,7 @@ export default defineComponent({
 
     return {
       logo,
-      vuetify,
+      theme,
       title,
       drawer,
       snackbar,
