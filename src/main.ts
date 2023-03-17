@@ -11,7 +11,7 @@ import App from '@/App.vue';
 Vue.config.productionTip = false;
 Vue.component('Teleport', teleport);
 
-const app = new Vue({
+const vue = new Vue({
   router,
   store,
   vuetify,
@@ -19,6 +19,9 @@ const app = new Vue({
 });
 
 // Run!
-router.isReady().then(() => {
-  app.$mount('#app');
-});
+router
+  .isReady()
+  .then(() => {
+    vue.$mount('#app');
+  })
+  .catch(e => console.error(e));

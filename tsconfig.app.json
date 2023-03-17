@@ -6,7 +6,8 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["./src/*"] }
+    "paths": { "@/*": ["./src/*"] },
+    "newLine": "lf"
   },
   "vueCompilerOptions": { "target": 2.7 }
 }

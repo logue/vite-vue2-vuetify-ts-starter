@@ -1,27 +1,22 @@
-/* eslint-disable spaced-comment */
 /// <reference types="vite/client" />
+
 import {
-  ComputedOptions,
-  ComponentOptionsMixin,
-  MethodOptions,
+  type ComputedOptions,
+  type ComponentOptionsMixin,
+  type MethodOptions,
 } from 'vue/types/v3-component-options';
-import { ExtractPropTypes, ExtractDefaultPropTypes } from 'vue';
-import { EmitsOptions } from 'vue/types/v3-setup-context';
-import type { DefineComponent } from 'vue';
+import {
+  type ExtractPropTypes,
+  type ExtractDefaultPropTypes,
+  type DefineComponent,
+} from 'vue';
+import { type EmitsOptions } from 'vue/types/v3-setup-context';
 import type { Wrapper } from '@vue/test-utils';
 
 /** Vue */
 declare module '*.vue' {
   import Vue from 'vue';
   export default Vue;
-}
-
-/** VueRouter fix */
-declare module 'vue' {
-  export interface GlobalComponents {
-    RouterLink: typeof import('vue-router')['RouterLink'];
-    RouterView: typeof import('vue-router')['RouterView'];
-  }
 }
 
 /** Vuetify */
@@ -36,11 +31,16 @@ declare module 'vuetify/lib/framework' {
  * @see {@link https://github.com/vuejs/vue-test-utils/issues/2026#issuecomment-1429963862}
  */
 declare module '@vue/test-utils' {
-  /** Component declared with defineComponent */
+  /**
+   * Component declared with defineComponent
+   *
+   * @param component -
+   * @param options -
+   */
   export function mount<
-    PropsOrPropOptions = {},
-    RawBindings = {},
-    D = {},
+    PropsOrPropOptions = Record<string, any>,
+    RawBindings = Record<string, any>,
+    D = Record<string, any>,
     C extends ComputedOptions = ComputedOptions,
     M extends MethodOptions = MethodOptions,
     Mixin extends ComponentOptionsMixin = ComponentOptionsMixin,
@@ -48,7 +48,10 @@ declare module '@vue/test-utils' {
     E extends EmitsOptions = Record<string, any>,
     EE extends string = string,
     Props = Readonly<ExtractPropTypes<PropsOrPropOptions>>,
-    Defaults extends {} = ExtractDefaultPropTypes<PropsOrPropOptions>
+    Defaults extends Record<
+      string,
+      any
+    > = ExtractDefaultPropTypes<PropsOrPropOptions>
   >(
     component: DefineComponent<
       PropsOrPropOptions,
@@ -82,11 +85,16 @@ declare module '@vue/test-utils' {
     >
   >;
 
-  /** Component declared with defineComponent */
+  /**
+   * Component declared with defineComponent
+   *
+   * @param component -
+   * @param options -
+   */
   export function shallowMount<
-    PropsOrPropOptions = {},
-    RawBindings = {},
-    D = {},
+    PropsOrPropOptions = Record<string, any>,
+    RawBindings = Record<string, any>,
+    D = Record<string, any>,
     C extends ComputedOptions = ComputedOptions,
     M extends MethodOptions = MethodOptions,
     Mixin extends ComponentOptionsMixin = ComponentOptionsMixin,
@@ -94,7 +102,10 @@ declare module '@vue/test-utils' {
     E extends EmitsOptions = Record<string, any>,
     EE extends string = string,
     Props = Readonly<ExtractPropTypes<PropsOrPropOptions>>,
-    Defaults extends {} = ExtractDefaultPropTypes<PropsOrPropOptions>
+    Defaults extends Record<
+      string,
+      any
+    > = ExtractDefaultPropTypes<PropsOrPropOptions>
   >(
     component: DefineComponent<
       PropsOrPropOptions,

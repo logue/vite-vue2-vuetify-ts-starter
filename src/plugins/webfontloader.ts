@@ -4,7 +4,7 @@ import { load } from 'webfontloader';
  *
  * @see {@link https://github.com/typekit/webfontloader | Webfontloader documentation}
  */
-export async function loadFonts() {
+export async function loadFonts(): Promise<void> {
   // https://www.igvita.com/2015/08/17/eliminating-roundtrips-with-preconnect/
   /** dns-prefetch */
   const prefetch = document.createElement('link');
@@ -21,7 +21,7 @@ export async function loadFonts() {
 
   // WebFont loader Promise fix
   // https://github.com/typekit/webfontloader/issues/359#issuecomment-956395022
-  return new Promise<void>(resolve =>
+  return await new Promise<void>(resolve =>
     load(
       /** Webfont Config */
       {

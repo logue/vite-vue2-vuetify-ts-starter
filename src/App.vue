@@ -64,6 +64,7 @@ import {
   type ComputedRef,
   type Ref,
   type SetupContext,
+  type WritableComputedRef,
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router/composables';
 import { useStore } from '@logue/vue2-helpers/vuex';
@@ -106,19 +107,19 @@ export default defineComponent({
     const snackbar: Ref<boolean> = ref(false);
 
     /** Snackbar text */
-    const snackbarText: Ref<string> = computed({
+    const snackbarText: WritableComputedRef<string> = computed({
       get: () => store.getters.message,
       set: v => store.dispatch('setMessage', v),
     });
 
     /** progress percentage */
-    const progress: Ref<number> = computed({
+    const progress: WritableComputedRef<number> = computed({
       get: () => store.getters.progress,
       set: v => store.dispatch('setProgress', v),
     });
 
     /** loading overlay visibility */
-    const loading: Ref<boolean> = computed({
+    const loading: WritableComputedRef<boolean> = computed({
       get: () => store.getters.loading,
       set: v => store.dispatch('setLoading', v),
     });

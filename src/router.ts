@@ -1,6 +1,7 @@
 /** Vue Router Configure */
 import {
   createRouter,
+  type RouteLocationNormalized,
   type Router,
   type RouteRecordRaw,
 } from '@logue/vue2-helpers/vue-router';
@@ -26,7 +27,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/about',
     name: 'About',
-    component: () => import('@/views/AboutView.vue'),
+    component: async () => await import('@/views/AboutView.vue'),
   },
   {
     path: '*',
@@ -58,7 +59,11 @@ const router = createRouter({
 });
 
 router.beforeEach(
-  async (_to: Route, _from: Route, next: NavigationGuardNext<Vue>) => {
+  async (
+    _to: RouteLocationNormalized,
+    _from: RouteLocationNormalized,
+    next: NavigationGuardNext
+  ) => {
     // Show Loading
     store.dispatch('setLoading', true);
     await nextTick();
