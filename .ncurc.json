@@ -3,6 +3,7 @@
   "reject": [
     "@vue/test-utils",
     "sass",
+    "typescript",
     "vue-router",
     "vue-template-compiler",
     "vue",

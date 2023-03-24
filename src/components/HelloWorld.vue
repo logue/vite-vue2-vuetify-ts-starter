@@ -180,15 +180,15 @@ export default defineComponent({
     const whatsNext: Record<string, string>[] = [
       {
         text: 'Explore components',
-        href: 'https://vuetifyjs.com/components/api-explorer',
+        href: 'https://v2.vuetifyjs.com/components/api-explorer',
       },
       {
         text: 'Select a layout',
-        href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
+        href: 'https://v2.vuetifyjs.com/getting-started/pre-made-layouts',
       },
       {
         text: 'Frequently Asked Questions',
-        href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+        href: 'https://v2.vuetifyjs.com/getting-started/frequently-asked-questions/',
       },
     ];
 
@@ -196,7 +196,7 @@ export default defineComponent({
     const importantLinks: Record<string, string>[] = [
       {
         text: 'Documentation',
-        href: 'https://vuetifyjs.com',
+        href: 'https://v2.vuetifyjs.com',
       },
       {
         text: 'Chat',
