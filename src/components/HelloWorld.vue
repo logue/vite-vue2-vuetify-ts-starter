@@ -246,6 +246,10 @@ export default defineComponent({
         text: '@logue/vue2-helpers',
         href: 'https://github.com/logue/vue2-helpers',
       },
+      {
+        text: 'vuetify2-component-types',
+        href: 'https://github.com/IntelliTect/vuetify2-component-types',
+      },
     ];
 
     return {

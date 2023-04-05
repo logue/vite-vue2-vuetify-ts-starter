@@ -15,8 +15,9 @@ import type { Wrapper } from '@vue/test-utils';
 
 /** Vue */
 declare module '*.vue' {
-  import Vue from 'vue';
-  export default Vue;
+  import { type defineComponent } from 'vue';
+  const Component: ReturnType<typeof defineComponent>;
+  export default Component;
 }
 
 /** Vuetify */
