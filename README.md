@@ -10,6 +10,8 @@ Vuetify3 version is [here](https://github.com/logue/vite-vuetify-ts-starter).
 
 ⚠ Important notice: Vuetify has been default since 3.1.4. Therefore, it is not recommended to use it in new projects. We recommend migrating to [vite-vuetify-ts-starter](https://github.com/logue/vite-vuetify-ts-starter).
 
+`type-check` fails with [Vuex issue](https://github.com/vuejs/vuex/issues/2213). For this reason, we will consider it as a beta version.
+
 ## Description
 
 This template is for using Vue2 with TypeScript in Vite. Includes [vue-router](https://router.vuejs.org/) and [Vuex](https://vuex.vuejs.org/).
@@ -141,7 +143,13 @@ When you use this template, try follow the checklist to update your info properl
 
 ## See Also
 
-- [@logue/vue2-helpers](https://github.com/logue/vue2-helpers)
-- [vite-vue2-ts-starter](https://github.com/logue/vite-vue2-ts-starter)
-- [laravel9-vite-vue2-starter](https://github.com/logue/laravel9-vite-vue2-starter) - for Laravel + Breeze.
-- [vite-vue2-ts-ssr-starter](https://github.com/logue/vite-vue2-ts-ssr-starter) - SSR (Server Side Rendering) Version.
+- for Vue3
+  - [vite-vue3-ts-starter](https://github.com/logue/vite-vue3-ts-starter) - Vite Vue3 starter.
+  - [vite-vuetify-ts-starter](https://github.com/logue/vite-vuetify-ts-starter) - With Vuetify3
+  - [vite-elemental-plus-ts-starter](https://github.com/logue/vite-elemental-plus-ts-starter)
+  - vite-bootstrap-vue-ts-starter - Comming soon.
+- for Vue2
+  - [vite-vue2-ts-starter](https://github.com/logue/vite-vue2-ts-starter) - Vite Vue2 starter.
+  - [vite-vue2-vuetify-ts-starter](https://github.com/logue/vite-vue2-vuetify-ts-starter) - UI library using Vuetify2
+  - [laravel9-vite-vue2-starter](https://github.com/logue/laravel9-vite-vue2-starter) - Vue2 for Laravel9 + Breeze.
+  - [vite-vue2-ts-ssr-starter](https://github.com/logue/vite-vue2-ts-ssr-starter) - SSR (Server Side Rendering) Version.

@@ -8,7 +8,6 @@ import {
 import { nextTick } from 'vue';
 import store from '@/store';
 import type { NavigationGuardNext, Route } from 'vue-router';
-import type { Position, PositionResult } from 'vue-router/types/router';
 
 import HomeView from '@/views/HomeView.vue';
 import ErrorView from '@/views/ErrorView.vue';
@@ -39,11 +38,7 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   base: import.meta.env.BASE_URL,
   mode: 'history', // abstract, hash, history
-  scrollBehavior: async (
-    to: Route,
-    _from: Route,
-    savedPosition: void | Position
-  ): Promise<PositionResult> => {
+  scrollBehavior: async (to: Route, _from: Route, savedPosition) => {
     // https://vuetifyjs.com/features/scrolling/#router3067306e4f7f7528
     let scrollTo: VuetifyGoToTarget = 0;
 

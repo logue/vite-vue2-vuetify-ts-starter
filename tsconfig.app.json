@@ -1,14 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "components.d.ts", "src/**/*", "src/**/*.vue"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["./src/*"] },
-    "newLine": "lf",
-    "types": ["vuetify2-component-types"]
+    "types": ["vuetify2-component-types"],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "newLine": "lf"
   },
   "vueCompilerOptions": {
     "target": 2.7,

@@ -13,6 +13,8 @@ import {
 import { type EmitsOptions } from 'vue/types/v3-setup-context';
 import type { Wrapper } from '@vue/test-utils';
 
+declare module 'vuex';
+
 /** Vue */
 declare module '*.vue' {
   import { type defineComponent } from 'vue';

@@ -12,6 +12,7 @@ Vue.config.productionTip = false;
 Vue.component('Teleport', teleport);
 
 const vue = new Vue({
+  // @ts-expect-error
   router,
   store,
   vuetify,
@@ -19,9 +20,4 @@ const vue = new Vue({
 });
 
 // Run!
-router
-  .isReady()
-  .then(() => {
-    vue.$mount('#app');
-  })
-  .catch(e => console.error(e));
+vue.$mount('#app');
