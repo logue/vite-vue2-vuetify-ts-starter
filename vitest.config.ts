@@ -1,7 +1,8 @@
 import { fileURLToPath, URL } from 'node:url';
 
-import { configDefaults, defineConfig } from 'vitest/config';
 import vue from '@vitejs/plugin-vue2';
+import { configDefaults, defineConfig } from 'vitest/config';
+
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 
@@ -15,7 +16,7 @@ export default defineConfig({
   plugins: [
     // Vue2
     // https://github.com/vitejs/vite-plugin-vue2
-    vue(),
+    vue() as any,
     // unplugin-vue-components
     // https://github.com/antfu/unplugin-vue-components
     Components({
@@ -48,12 +49,13 @@ export default defineConfig({
   },
   test: {
     // https://vitest.dev/guide/#configuring-vitest
-    deps: {
-      inline: ['vuetify'],
-    },
     environment: 'jsdom',
     globals: true,
     exclude: [...configDefaults.exclude, 'e2e/*'],
     root: fileURLToPath(new URL('./', import.meta.url)),
+    silent: true,
+    deps: {
+      inline: ['vuetify'],
+    },
   },
 });

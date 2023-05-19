@@ -1,20 +1,22 @@
 /** Vue Router Configure */
+import { nextTick } from 'vue';
+import type { NavigationGuardNext, Route } from 'vue-router';
+
 import {
   createRouter,
   type RouteLocationNormalized,
   type Router,
   type RouteRecordRaw,
 } from '@logue/vue2-helpers/vue-router';
-import { nextTick } from 'vue';
-import store from '@/store';
-import type { NavigationGuardNext, Route } from 'vue-router';
-
-import HomeView from '@/views/HomeView.vue';
-import ErrorView from '@/views/ErrorView.vue';
 
 // Vuetify
 import goTo from 'vuetify/lib/services/goto';
 import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
+
+import ErrorView from '@/views/ErrorView.vue';
+import HomeView from '@/views/HomeView.vue';
+
+import store from '@/store';
 
 /** Router Config */
 const routes: RouteRecordRaw[] = [
@@ -42,9 +44,9 @@ const router = createRouter({
     // https://vuetifyjs.com/features/scrolling/#router3067306e4f7f7528
     let scrollTo: VuetifyGoToTarget = 0;
 
-    if (to.hash) {
+    if (to.hash.length > 0) {
       scrollTo = to.hash;
-    } else if (savedPosition) {
+    } else if (savedPosition != null) {
       scrollTo = savedPosition.y;
     }
 
@@ -60,7 +62,7 @@ router.beforeEach(
     next: NavigationGuardNext
   ) => {
     // Show Loading
-    store.dispatch('setLoading', true);
+    void store.dispatch('setLoading', true);
     await nextTick();
 
     // @see https://github.com/championswimmer/vuex-persist#how-to-know-when-async-store-has-been-replaced
@@ -72,7 +74,7 @@ router.beforeEach(
 
 router.afterEach(() => {
   // Hide Loading
-  store.dispatch('setLoading', false);
+  void store.dispatch('setLoading', false);
 });
 
 export default router as Router;

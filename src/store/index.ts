@@ -1,6 +1,4 @@
 /** Vuex Store */
-import { createStore } from '@logue/vue2-helpers/vuex';
-import { VuexPersistence } from 'vuex-persist';
 import type {
   ActionContext,
   ActionTree,
@@ -9,7 +7,9 @@ import type {
   StoreOptions,
 } from 'vuex';
 
-// Modules
+import { createStore } from '@logue/vue2-helpers/vuex';
+import { VuexPersistence } from 'vuex-persist';
+
 import ConfigModule from './ConfigModule';
 
 /** Root State Interface */

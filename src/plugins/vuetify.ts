@@ -1,5 +1,6 @@
 /** Vuetify Plugin */
 import { createVuetify } from '@logue/vue2-helpers/vuetify';
+
 import type { VuetifyParsedTheme } from 'vuetify/types/services/theme';
 
 /*
@@ -11,7 +12,7 @@ import { en, ja } from 'vuetify/lib/locale';
 import '@mdi/font/css/materialdesignicons.css';
 import { loadFonts } from './webfontloader';
 
-loadFonts();
+await loadFonts();
 
 export default createVuetify({
   icons: {

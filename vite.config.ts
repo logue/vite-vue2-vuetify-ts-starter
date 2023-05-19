@@ -1,12 +1,13 @@
-import { fileURLToPath, URL } from 'node:url';
 import { writeFileSync } from 'node:fs';
+import { fileURLToPath, URL } from 'node:url';
 
-import { checker } from 'vite-plugin-checker';
+import vue from '@vitejs/plugin-vue2';
 import { defineConfig, type UserConfig } from 'vite';
+
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
-import vue from '@vitejs/plugin-vue2';
+import { checker } from 'vite-plugin-checker';
 
 // @ts-nocheck
 import pkg from './package.json';
@@ -16,7 +17,7 @@ import pkg from './package.json';
  *
  * @see {@link https://vitejs.dev/config/}
  */
-export default defineConfig(({ command, mode }): UserConfig => {
+export default defineConfig(({ command, mode }) => {
   const config: UserConfig = {
     // https://vitejs.dev/config/shared-options.html#base
     base: './',

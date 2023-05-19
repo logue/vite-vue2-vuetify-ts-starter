@@ -1,4 +1,3 @@
-/** Config store */
 import type {
   ActionContext,
   ActionTree,
@@ -7,6 +6,7 @@ import type {
   MutationTree,
 } from 'vuex';
 
+/** Config store */
 import type { RootState } from '.';
 
 /** Config State */

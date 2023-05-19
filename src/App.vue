@@ -66,9 +66,10 @@ import {
   type SetupContext,
   type WritableComputedRef,
 } from 'vue';
-import { useRoute, useRouter } from 'vue-router/composables';
-import { useStore } from '@logue/vue2-helpers/vuex';
+
 import { useTheme } from '@logue/vue2-helpers/vuetify';
+import { useStore } from '@logue/vue2-helpers/vuex';
+import { useRoute, useRouter } from 'vue-router/composables';
 
 import AppBarMenuComponent from '@/components/AppBarMenuComponent.vue';
 import DrawerComponent from '@/components/DrawerComponent.vue';
