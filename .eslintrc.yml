@@ -34,7 +34,7 @@ rules:
   no-unused-vars: warn
   '@typescript-eslint/ban-ts-comment': off # Enable @ts-ignore etc.
   '@typescript-eslint/consistent-type-imports': # Enable import sort order, see bellow.
-    - error
+    - off
     - prefer: type-imports
   '@typescript-eslint/explicit-function-return-type': off # Fix for pinia
   '@typescript-eslint/no-confusing-void-expression':
@@ -50,7 +50,7 @@ rules:
         ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type']
       pathGroups:
         # Vue Core
-        - pattern: '{vue,vue-router,vuex,pinia,vite,vitest,vitest/**,@vitejs/**,@vue/**,@logue/vue2-helpers}'
+        - pattern: '{vue,vue-router,vuex,@/store,vue-i18n,pinia,vite,vitest,vitest/**,@vitejs/**,@vue/**,@logue/vue2-helpers}'
           group: external
           position: before
         # UI Library
@@ -58,7 +58,7 @@ rules:
           group: parent
           position: before
         # Internal Codes
-        - pattern: '{@/plugins/**,@/stores/**,@/router.ts,@/helpers/**,@/interfaces/**,@/types/**,@/components/**,@/views/**}'
+        - pattern: '{@/**}'
           group: internal
           position: before
       pathGroupsExcludedImportTypes:
@@ -72,6 +72,7 @@ rules:
     - html:
         void: always
   vue/multi-word-component-names: warn # Mitigate non-multi-word-component-names errors to warn.
+  vue/no-template-shadow: off # Vuetify Fix
 settings:
   import/parsers:
     '@typescript-eslint/parser':

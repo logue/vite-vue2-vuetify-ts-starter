@@ -13,8 +13,9 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue';
-import { useStore } from '@logue/vue2-helpers/vuex';
+
 import { useVuetify } from '@logue/vue2-helpers/vuetify';
+import { useStore } from '@logue/vue2-helpers/vuex';
 
 export default defineComponent({
   /**

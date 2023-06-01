@@ -134,13 +134,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-// Logo
-import vueLogo from '@/assets/vue.svg';
-import viteLogo from '@/assets/vite.svg';
-import vuetifyLogo from '@/assets/vuetify.svg';
-
 import type MetaInterface from '@/interfaces/MetaInterface';
+
 import Meta from '@/Meta';
+// Logo
+import viteLogo from '@/assets/vite.svg';
+import vueLogo from '@/assets/vue.svg';
+import vuetifyLogo from '@/assets/vuetify.svg';
 
 /** HelloWorld Component */
 export default defineComponent({

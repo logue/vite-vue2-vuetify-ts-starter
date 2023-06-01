@@ -1,4 +1,5 @@
 /** Vue Router Configure */
+import store from '@/store';
 import { nextTick } from 'vue';
 import type { NavigationGuardNext, Route } from 'vue-router';
 
@@ -15,8 +16,6 @@ import type { VuetifyGoToTarget } from 'vuetify/types/services/goto';
 
 import ErrorView from '@/views/ErrorView.vue';
 import HomeView from '@/views/HomeView.vue';
-
-import store from '@/store';
 
 /** Router Config */
 const routes: RouteRecordRaw[] = [

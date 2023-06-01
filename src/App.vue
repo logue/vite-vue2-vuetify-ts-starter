@@ -71,10 +71,9 @@ import { useTheme } from '@logue/vue2-helpers/vuetify';
 import { useStore } from '@logue/vue2-helpers/vuex';
 import { useRoute, useRouter } from 'vue-router/composables';
 
+import logo from '@/assets/vuetify.svg';
 import AppBarMenuComponent from '@/components/AppBarMenuComponent.vue';
 import DrawerComponent from '@/components/DrawerComponent.vue';
-
-import logo from '@/assets/vuetify.svg';
 
 /** App */
 export default defineComponent({

@@ -50,6 +50,7 @@
 
 <script lang="ts">
 import { defineComponent, type SetupContext } from 'vue';
+
 import type DrawerMenuItem from '@/interfaces/DrawerMenuItemInterface';
 
 export default defineComponent({

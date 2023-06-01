@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [
     // Vue2
     // https://github.com/vitejs/vite-plugin-vue2
-    vue() as any,
+    vue(),
     // unplugin-vue-components
     // https://github.com/antfu/unplugin-vue-components
     Components({
@@ -55,7 +55,7 @@ export default defineConfig({
     root: fileURLToPath(new URL('./', import.meta.url)),
     silent: true,
     deps: {
-      inline: ['vuetify'],
+      inline: [/vuetify/],
     },
   },
-});
+} as any);

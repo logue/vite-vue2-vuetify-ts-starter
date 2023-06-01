@@ -2,6 +2,7 @@
   "upgrade": true,
   "reject": [
     "@vue/test-utils",
+    "eslint-plugin-vuetify",
     "sass",
     "vue-router",
     "vue-template-compiler",
