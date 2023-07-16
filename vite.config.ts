@@ -24,9 +24,11 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       // Vue2
       // https://github.com/vitejs/vite-plugin-vue2
+      // @ts-expect-error
       vue(),
       // unplugin-vue-components
       // https://github.com/antfu/unplugin-vue-components
+      // @ts-expect-error
       Components({
         // generate `components.d.ts` global declarations
         // https://github.com/antfu/unplugin-vue-components#typescript
@@ -53,10 +55,7 @@ export default defineConfig(({ command, mode }) => {
       checker({
         typescript: true,
         vueTsc: true,
-        eslint: {
-          lintCommand:
-            'eslint --cache --cache-location ./node_modules/.vite/vite-plugin-eslint', // for example, lint .ts & .tsx
-        },
+        // eslint: {lintCommand:'eslint '},
       }),
     ],
     // Resolver
