@@ -16,9 +16,11 @@ export default defineConfig({
   plugins: [
     // Vue2
     // https://github.com/vitejs/vite-plugin-vue2
+    // @ts-expect-error
     vue(),
     // unplugin-vue-components
     // https://github.com/antfu/unplugin-vue-components
+    // @ts-expect-error
     Components({
       // generate `components.d.ts` global declarations
       // https://github.com/antfu/unplugin-vue-components#typescript

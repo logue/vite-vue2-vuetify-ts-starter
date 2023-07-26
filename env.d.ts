@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="vitest" />
 
 import type { Wrapper } from '@vue/test-utils';
 import {
