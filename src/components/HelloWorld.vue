@@ -27,7 +27,7 @@
         </a>
       </v-col>
       <v-col>
-        <a href="https://vuetifyjs.com/" target="_blank">
+        <a href="https://v2.vuetifyjs.com/" target="_blank">
           <v-img
             :src="vuetifyLogo"
             class="mx-auto logo vuetify"

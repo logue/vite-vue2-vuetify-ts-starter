@@ -16,11 +16,12 @@
 
 <script lang="ts">
 import { defineComponent, watch, type SetupContext } from 'vue';
+
 // import { useStore } from '@logue/vue2-helpers/vuex';
 import { useRoute } from 'vue-router/composables';
 
-import HelloWorld from '@/components/HelloWorld.vue';
 import logo from '@/assets/vuetify.svg';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 /** Home Component */
 export default defineComponent({
@@ -49,7 +50,7 @@ export default defineComponent({
         name: 'Vite Vue2 TypeScript Startar',
         url: 'https://github.com/logue/vite-vue2-vuetify-ts-starter',
         description: 'Vite Vue2 TypeScript Demo Page',
-        logo: logo,
+        logo,
       },
       null,
       2
