@@ -1,16 +1,14 @@
 env:
   browser: true
-  es2022: true
+  es2021: true
 extends:
   - plugin:vue/recommended
   - standard-with-typescript
   - plugin:import/recommended
   - plugin:import/typescript
   - plugin:vuejs-accessibility/recommended
-  - plugin:vuetify/recommended
   - plugin:yaml/recommended
   - '@vue/eslint-config-prettier'
-overrides: []
 parser: vue-eslint-parser
 parserOptions:
   ecmaVersion: latest
@@ -32,7 +30,13 @@ plugins:
 rules:
   require-jsdoc: warn
   no-unused-vars: warn
+  '@typescript-eslint/array-type':
+    - error
+    - default: array # const lines: string[] = []; style
   '@typescript-eslint/ban-ts-comment': off # Enable @ts-ignore etc.
+  '@typescript-eslint/consistent-generic-constructors':
+    - error
+    - type-annotation # Left-hand side style
   '@typescript-eslint/consistent-type-imports': # Enable import sort order, see bellow.
     - off
     - prefer: type-imports
@@ -71,8 +75,7 @@ rules:
     - error
     - html:
         void: always
-  vue/multi-word-component-names: warn # Mitigate non-multi-word-component-names errors to warn.
-  vue/no-template-shadow: off # Vuetify Fix
+  vue/multi-word-component-names: warn # Mitigate non-multiword component name errors to warnings.
 settings:
   import/parsers:
     '@typescript-eslint/parser':
