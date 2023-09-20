@@ -1,0 +1,10 @@
+upgrade: true
+reject:
+  - '@vue/test-utils'
+  - eslint-plugin-vuetify
+  - sass
+  - vue
+  - vue-router
+  - vue-template-compiler
+  - vuetify
+  - vuex
