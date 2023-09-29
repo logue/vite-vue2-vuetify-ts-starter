@@ -10,18 +10,20 @@
  * @logue/vue2-helpers
  *
  * @description A util package to use Vue 2 with Composition API easily
- * @version 2.1.12
+ * @version 2.1.13
  * @license Apache-2.0
- * @see {@link https://github.com/logue/vue2-helpers#readme} *
- * Build: 2023-08-23T07:05:05.111Z
+ * @see {@link https://github.com/logue/vue2-helpers#readme}
+ *
+ * Build: 2023-09-22T02:45:25.857Z
  */const{warn:Oc}=console,xc="getCurrentInstance() returned null. Method must be called at the top of a setup() function.";function Xl(t){return mo?.use(es),new Y(t)}function Yl(){const t=mn();if(t!=null)return t.proxy.$store;Oc(`[vue2-helpers/vuex] ${xc}`)}function Ec(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var Ac=function(e){return Tc(e)&&!Rc(e)};function Tc(t){return!!t&&typeof t=="object"}function Rc(t){var e=Object.prototype.toString.call(t);return e==="[object RegExp]"||e==="[object Date]"||Ic(t)}var Pc=typeof Symbol=="function"&&Symbol.for,Mc=Pc?Symbol.for("react.element"):60103;function Ic(t){return t.$$typeof===Mc}function jc(t){return Array.isArray(t)?[]:{}}function Oe(t,e){return e.clone!==!1&&e.isMergeableObject(t)?re(jc(t),t,e):t}function Nc(t,e,r){return t.concat(e).map(function(n){return Oe(n,r)})}function Lc(t,e){if(!e.customMerge)return re;var r=e.customMerge(t);return typeof r=="function"?r:re}function kc(t){return Object.getOwnPropertySymbols?Object.getOwnPropertySymbols(t).filter(function(e){return Object.propertyIsEnumerable.call(t,e)}):[]}function qi(t){return Object.keys(t).concat(kc(t))}function yo(t,e){try{return e in t}catch{return!1}}function Dc(t,e){return yo(t,e)&&!(Object.hasOwnProperty.call(t,e)&&Object.propertyIsEnumerable.call(t,e))}function Fc(t,e,r){var n={};return r.isMergeableObject(t)&&qi(t).forEach(function(i){n[i]=Oe(t[i],r)}),qi(e).forEach(function(i){Dc(t,i)||(yo(t,i)&&r.isMergeableObject(e[i])?n[i]=Lc(i,r)(t[i],e[i],r):n[i]=Oe(e[i],r))}),n}function re(t,e,r){r=r||{},r.arrayMerge=r.arrayMerge||Nc,r.isMergeableObject=r.isMergeableObject||Ac,r.cloneUnlessOtherwiseSpecified=Oe;var n=Array.isArray(e),i=Array.isArray(t),a=n===i;return a?n?r.arrayMerge(t,e,r):Fc(t,e,r):Oe(e,r)}re.all=function(e,r){if(!Array.isArray(e))throw new Error("first argument should be an array");return e.reduce(function(n,i){return re(n,i,r)},{})};var Hc=re,Uc=Hc;const zc=Ec(Uc);let an;an=class{get length(){return Object.keys(this).length}key(t){return Object.keys(this)[t]}setItem(t,e){this[t]=e.toString()}getItem(t){return this[t]}removeItem(t){delete this[t]}clear(){for(let t of Object.keys(this))delete this[t]}};class Bc{constructor(){this._queue=[],this._flushing=!1}enqueue(e){return this._queue.push(e),this._flushing?Promise.resolve():this.flushQueue()}flushQueue(){this._flushing=!0;const e=()=>{const r=this._queue.shift();if(r)return r.then(e);this._flushing=!1};return Promise.resolve(e())}}const Gc={replaceArrays:{arrayMerge:(t,e,r)=>e},concatArrays:{arrayMerge:(t,e,r)=>t.concat(...e)}};function he(t,e,r){return zc(t,e,Gc[r])}let ve=JSON;class Zl{constructor(e){this._mutex=new Bc,this.subscriber=n=>i=>n.subscribe(i),typeof e>"u"&&(e={}),this.key=e.key!=null?e.key:"vuex",this.subscribed=!1,this.supportCircular=e.supportCircular||!1,this.supportCircular&&(ve=require("flatted")),this.mergeOption=e.mergeOption||"replaceArrays";let r=!0;try{window.localStorage.getItem("")}catch{r=!1}if(e.storage)this.storage=e.storage;else if(r)this.storage=window.localStorage;else if(an)this.storage=new an;else throw new Error("Neither 'window' is defined, nor 'MockStorage' is available");this.reducer=e.reducer!=null?e.reducer:e.modules==null?n=>n:n=>e.modules.reduce((i,a)=>he(i,{[a]:n[a]},this.mergeOption),{}),this.filter=e.filter||(n=>!0),this.strictMode=e.strictMode||!1,this.RESTORE_MUTATION=function(i,a){const o=he(i,a||{},this.mergeOption);for(const s of Object.keys(o))this._vm.$set(i,s,o[s])},this.asyncStorage=e.asyncStorage||!1,this.asyncStorage?(this.restoreState=e.restoreState!=null?e.restoreState:(n,i)=>i.getItem(n).then(a=>typeof a=="string"?this.supportCircular?ve.parse(a||"{}"):JSON.parse(a||"{}"):a||{}),this.saveState=e.saveState!=null?e.saveState:(n,i,a)=>a.setItem(n,this.asyncStorage?he({},i||{},this.mergeOption):this.supportCircular?ve.stringify(i):JSON.stringify(i)),this.plugin=n=>{n.restored=this.restoreState(this.key,this.storage).then(i=>{this.strictMode?n.commit("RESTORE_MUTATION",i):n.replaceState(he(n.state,i||{},this.mergeOption)),this.subscriber(n)((a,o)=>{this.filter(a)&&this._mutex.enqueue(this.saveState(this.key,this.reducer(o),this.storage))}),this.subscribed=!0})}):(this.restoreState=e.restoreState!=null?e.restoreState:(n,i)=>{const a=i.getItem(n);return typeof a=="string"?this.supportCircular?ve.parse(a||"{}"):JSON.parse(a||"{}"):a||{}},this.saveState=e.saveState!=null?e.saveState:(n,i,a)=>a.setItem(n,this.supportCircular?ve.stringify(i):JSON.stringify(i)),this.plugin=n=>{const i=this.restoreState(this.key,this.storage);this.strictMode?n.commit("RESTORE_MUTATION",i):n.replaceState(he(n.state,i||{},this.mergeOption)),this.subscriber(n)((a,o)=>{this.filter(a)&&this.saveState(this.key,this.reducer(o),this.storage)}),this.subscribed=!0})}}/**
  * @logue/vue2-helpers
  *
  * @description A util package to use Vue 2 with Composition API easily
- * @version 2.1.12
+ * @version 2.1.13
  * @license Apache-2.0
- * @see {@link https://github.com/logue/vue2-helpers#readme} *
- * Build: 2023-08-23T07:05:05.105Z
+ * @see {@link https://github.com/logue/vue2-helpers#readme}
+ *
+ * Build: 2023-09-22T02:45:25.821Z
  */const qc=(t,e={},r)=>tu(t,e,r),Ql={name:"Teleport",props:{to:{type:String,required:!0},where:{type:String,default:"after"},disabled:{type:Boolean,default:!1}},setup(t,e){const r=Jt(),n=Jt([]),i=Jt(!1),a=Jt(null),o=Jt(null),s=Jt(null);Or(()=>t.to,()=>{u()}),Or(()=>t.where,()=>{u()}),Or(()=>t.disabled,_=>{_?(c(),b()):(g(),f())}),iu(()=>{r.value!=null&&(n.value=Array.from(r.value.childNodes)),t.disabled||g(),u()}),au(()=>{c(),b()});const u=()=>{t.disabled||f()},f=()=>{if(i.value=!1,s.value=document.querySelector(t.to),s.value==null){c(),i.value=!0;return}t.where==="before"?s.value.prepend(v()):s.value.appendChild(v())},c=()=>{r.value?.appendChild(v()),s.value=null},v=()=>{const _=document.createDocumentFragment();return n.value.forEach(y=>_.appendChild(y)),_},d=_=>{let y=!1;_.forEach(w=>{const S=Array.from(w.addedNodes).filter(E=>!n.value.includes(E));s.value!=null&&Array.from(w.removedNodes).includes(s.value)?(c(),i.value=!t.disabled):i.value&&S.length>0&&(y=!0)}),y&&f()},g=()=>{a.value==null&&(a.value=new MutationObserver(_=>{d(_)}),a.value.observe(document.body,{childList:!0,subtree:!0,attributes:!1,characterData:!1})),o.value==null&&(o.value=new MutationObserver(_=>{_.find(w=>w.target===r.value)!=null&&r.value!=null&&(n.value=Array.from(r.value.childNodes),u())}))},b=()=>{a.value!=null&&(a.value.disconnect(),a.value=null),o.value!=null&&(o.value.disconnect(),o.value=null)};return{teleport:r,nodes:n,waiting:i,observer:a,parent:s}},render(){return qc("div",{ref:"teleport",class:"vue-teleport",style:this.$props.disabled?"":"visibility: hidden; display: none;"},this.$slots.default)}};/*!
   * vue-router v3.6.5
   * (c) 2022 Evan You
@@ -34,8 +36,9 @@
  * @logue/vue2-helpers
  *
  * @description A util package to use Vue 2 with Composition API easily
- * @version 2.1.12
+ * @version 2.1.13
  * @license Apache-2.0
- * @see {@link https://github.com/logue/vue2-helpers#readme} *
- * Build: 2023-08-23T07:05:05.118Z
+ * @see {@link https://github.com/logue/vue2-helpers#readme}
+ *
+ * Build: 2023-09-22T02:45:25.853Z
  */pn.prototype.isReady=async function(){await new Promise((t,e)=>{this.onReady(t,e)})};function ep(t){return mo?.use(pn),new pn(t)}export{Ql as T,B as V,mo as a,Zl as b,Xl as c,Jl as d,Kl as e,Vl as f,mn as g,tp as h,ep as i,Sn as n,iu as o,Jt as r,Yl as u,Or as w};
