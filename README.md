@@ -132,6 +132,8 @@ Due to [yarn issues](https://github.com/yarnpkg/berry/issues/4448), it may not w
 
 From 0.7.4, the default project type is module. If you find a plugin that doesn't work, remove `"type": "module"` from package.json.
 
+It will not work properly if you are using Node v21.0.0. Please upgrade to 21.1.0 or later.
+
 ## Checklist
 
 When you use this template, try follow the checklist to update your info properly
