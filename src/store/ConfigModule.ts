@@ -25,16 +25,16 @@ const state: ConfigState = {
 
 /** Getters */
 const getters: GetterTree<ConfigState, RootState> = {
-  themeDark: (s): boolean => s.themeDark,
-  locale: (s): string => s.locale,
+  themeDark: (s: ConfigState): boolean => s.themeDark,
+  locale: (s: ConfigState): string => s.locale,
 };
 
 /** Mutations */
 const mutations: MutationTree<ConfigState> = {
-  storeThemeDark(s) {
+  storeThemeDark(s: ConfigState) {
     s.themeDark = !s.themeDark;
   },
-  storeLocale(s, locale: string) {
+  storeLocale(s: ConfigState, locale: string) {
     s.locale = locale;
   },
 };

@@ -1,0 +1,14 @@
+diff --git a/node_modules/vuex/package.json b/node_modules/vuex/package.json
+index e8a851e..4cd1fce 100644
+--- a/node_modules/vuex/package.json
++++ b/node_modules/vuex/package.json
+@@ -7,7 +7,8 @@
+     ".": {
+       "module": "./dist/vuex.esm.js",
+       "require": "./dist/vuex.common.js",
+-      "import": "./dist/vuex.mjs"
++      "import": "./dist/vuex.mjs",
++      "types": "./types/index.d.ts"
+     },
+     "./": "./"
+   },

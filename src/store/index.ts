@@ -34,10 +34,10 @@ const state: RootState = {
 
 /** Getters */
 const getters: GetterTree<RootState, RootState> = {
-  loading: (s): boolean => s.loading,
-  progress: (s): number | null => s.progress,
-  message: (s): string => s.message,
-  error: (s): string => s.error,
+  loading: (s: RootState): boolean => s.loading,
+  progress: (s: RootState): number | null => s.progress,
+  message: (s: RootState): string => s.message,
+  error: (s: RootState): string => s.error,
 };
 
 /** Mutations */
@@ -48,7 +48,7 @@ const mutations: MutationTree<RootState> = {
    * @param s - Vuex state
    * @param display - Payload
    */
-  storeLoading(s, display: boolean) {
+  storeLoading(s: RootState, display: boolean) {
     s.loading = display;
     if (!display) {
       s.progress = 0;
@@ -60,7 +60,7 @@ const mutations: MutationTree<RootState> = {
    * @param s - Vuex state
    * @param progress - Payload
    */
-  storeProgress(s, progress: number | null) {
+  storeProgress(s: RootState, progress: number | null) {
     s.progress = progress;
     s.loading = true;
   },
@@ -70,7 +70,7 @@ const mutations: MutationTree<RootState> = {
    * @param s - Vuex state
    * @param message - Payload
    */
-  storeMessage(s, message: string) {
+  storeMessage(s: RootState, message: string) {
     s.message = message;
   },
   /**
@@ -79,7 +79,7 @@ const mutations: MutationTree<RootState> = {
    * @param s - Vuex state
    * @param error - Payload
    */
-  storeError(s, error: string) {
+  storeError(s: RootState, error: string) {
     s.error = error;
   },
 };
@@ -128,7 +128,7 @@ const actions: ActionTree<RootState, RootState> = {
    * @param context - Vuex Context
    * @param error - Error message etc.
    */
-  setError(context: ActionContext<RootState, RootState>, error) {
+  setError(context: ActionContext<RootState, RootState>, error: any) {
     context.commit('storeError', error);
   },
 };
