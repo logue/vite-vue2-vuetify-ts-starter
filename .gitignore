@@ -10,8 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-coverage
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -32,5 +32,9 @@ coverage
 # !/.yarn/sdks
 # !/.yarn/cache
 
+# Vitest coverage
+coverage/
+
 # Special File
+.husky/
 src/Meta.ts

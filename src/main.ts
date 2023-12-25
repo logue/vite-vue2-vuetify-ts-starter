@@ -12,10 +12,10 @@ Vue.config.productionTip = false;
 Vue.component('Teleport', teleport);
 
 const vue = new Vue({
-  // @ts-expect-error
   router,
   store,
   vuetify,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   render: h => h(App),
 });
 

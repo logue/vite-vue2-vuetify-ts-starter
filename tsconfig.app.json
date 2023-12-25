@@ -5,12 +5,12 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
+    "noEmit": true,
     "baseUrl": ".",
     "types": ["vuetify2-component-types"],
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "newLine": "lf"
+    }
   },
   "vueCompilerOptions": {
     "target": 2.7,

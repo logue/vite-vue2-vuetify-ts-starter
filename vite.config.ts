@@ -51,7 +51,7 @@ export default defineConfig(({ command, mode }) => {
       // https://github.com/fi3ework/vite-plugin-checker
       checker({
         typescript: true,
-        vueTsc: true,
+        // vueTsc: true,
         // eslint: {lintCommand:'eslint '},
       }),
     ],
